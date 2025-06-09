@@ -1,9 +1,7 @@
 import Page from "@/components/page-templates/page/page";
 
 interface DynamicPageProps {
-  params: {
-    slug: string[];
-  };
+  params: Promise<{ slug: string[] }>;
 }
 
 export default async function DynamicPage({ params }: DynamicPageProps) {
