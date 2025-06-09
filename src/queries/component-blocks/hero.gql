@@ -1,0 +1,7 @@
+fragment HeroFragment on ComponentHero {
+  sys {
+    id
+  }
+  __typename
+  heroName
+}
