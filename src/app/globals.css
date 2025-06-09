@@ -118,8 +118,12 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply flex min-h-screen flex-col bg-background text-foreground;
 
     font-family: var(--font-geist-sans);
+
+    main {
+      @apply grow;
+    }
   }
 }
