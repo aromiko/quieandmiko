@@ -23,7 +23,7 @@ export default function RsvpCodePage() {
 
   return (
     <div className="mx-auto max-w-md space-y-6 p-6">
-      <h1 className="text-2xl font-bold">RSVP</h1>
+      <h1>RSVP</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <p>Enter your RSVP code to continue:</p>
         <Input

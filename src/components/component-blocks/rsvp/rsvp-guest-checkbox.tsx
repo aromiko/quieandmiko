@@ -23,6 +23,7 @@ export default function RsvpGuestCheckbox({
         onCheckedChange={(checked: boolean | "indeterminate") =>
           onChange(Boolean(checked))
         }
+        className="size-6"
       />
       <span>{name}</span>
     </label>

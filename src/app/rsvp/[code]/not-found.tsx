@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function RsvpNotFoundPage() {
   return (
     <div className="mx-auto max-w-xl space-y-4 p-6 text-center">
-      <h1 className="text-2xl font-bold">RSVP Code Not Found</h1>
+      <h1>RSVP Code Not Found</h1>
       <p className="text-muted-foreground">
         We couldn’t find a match for that RSVP code.
       </p>

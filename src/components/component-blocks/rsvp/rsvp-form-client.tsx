@@ -61,7 +61,7 @@ export default function RsvpClientForm({
 
   return (
     <div className="mx-auto max-w-xl space-y-6 p-6">
-      <h1 className="text-2xl font-bold">{"Répondez s'il vous plaît"}</h1>
+      <h1>{"Répondez s'il vous plaît"}</h1>
 
       <div className="space-y-2">
         <p>
@@ -77,8 +77,9 @@ export default function RsvpClientForm({
 
       {groupGuests.length > 0 && (
         <div className="space-y-2">
-          <p className="mt-4 text-muted-foreground">
-            {`You can also RSVP for other members of your group ${groupLabel}:`}
+          <p className="mt-4">
+            You can also RSVP for other members of your group{" "}
+            {groupLabel && <strong>{groupLabel}</strong>}
           </p>
           {groupGuests.map((guest) => (
             <RsvpGuestCheckbox
@@ -92,7 +93,7 @@ export default function RsvpClientForm({
         </div>
       )}
 
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-base">
         {"You've confirmed for "}
         <strong>
           {Object.values(responses).filter((val) => val).length}

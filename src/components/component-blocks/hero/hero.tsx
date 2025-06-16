@@ -8,11 +8,11 @@ export default function Hero({
 }: TypeComponentHero) {
   return (
     <section className="justify-items-center">
-      <div className="container my-20 w-2xl justify-center justify-items-center space-y-2 p-4 text-center">
+      <div className="w-2xl container my-20 justify-center justify-items-center space-y-2 p-4 text-center">
         {heroImage && (
           <BasicMedia data={heroImage} wrapperCssClass="w-100 h-100" />
         )}
-        {heroTitle && <h2 className="text-4xl font-bold">{heroTitle}</h2>}
+        {heroTitle && <h2>{heroTitle}</h2>}
         {heroTitle && <p>{heroBody}</p>}
       </div>
     </section>
