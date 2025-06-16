@@ -61,7 +61,7 @@ export default function RsvpClientForm({
 
   return (
     <div className="mx-auto max-w-xl space-y-6 p-6">
-      <h1 className="text-2xl font-bold">RSVP</h1>
+      <h1 className="text-2xl font-bold">{"Répondez s'il vous plaît"}</h1>
 
       <div className="space-y-2">
         <p>
@@ -69,7 +69,7 @@ export default function RsvpClientForm({
         </p>
         <RsvpGuestCheckbox
           id={primaryGuest.id}
-          name={primaryGuest.full_name}
+          name={"Attending"}
           checked={responses[primaryGuest.id.toString()]}
           onChange={(checked) => handleChange(primaryGuest.id, checked)}
         />

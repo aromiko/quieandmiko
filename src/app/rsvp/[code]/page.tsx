@@ -9,7 +9,6 @@ export default async function RsvpPage({
 }: {
   params: Promise<{ code: string }>;
 }) {
-  // ✅ Destructure safely BEFORE any await
   const { code } = await params;
 
   const supabase = await createSupabaseServerClient();
