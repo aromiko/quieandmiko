@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 export default async function RsvpPage({
   params
 }: {
-  params: { code: string };
+  params: Promise<{ code: string }>;
 }) {
   // ✅ Destructure safely BEFORE any await
   const { code } = await params;
