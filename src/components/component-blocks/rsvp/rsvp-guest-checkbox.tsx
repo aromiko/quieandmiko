@@ -1,6 +1,7 @@
 "use client";
 
 import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 interface GuestCheckboxProps {
   id: number;
@@ -16,7 +17,7 @@ export default function RsvpGuestCheckbox({
   onChange
 }: GuestCheckboxProps) {
   return (
-    <label className="flex cursor-pointer items-center space-x-2">
+    <div className="flex cursor-pointer items-center space-x-2">
       <Checkbox
         id={`cb-${id}`}
         checked={checked}
@@ -25,7 +26,7 @@ export default function RsvpGuestCheckbox({
         }
         className="size-6"
       />
-      <span>{name}</span>
-    </label>
+      <Label htmlFor={`cb-${id}`}>{name}</Label>
+    </div>
   );
 }

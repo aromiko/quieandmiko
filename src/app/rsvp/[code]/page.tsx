@@ -1,38 +1,39 @@
-import RsvpClientForm from "@/components/component-blocks/rsvp/rsvp-form-client";
-// keep UI interactive
+import RsvpGuestForm from "@/components/component-blocks/rsvp/rsvp-guest-form";
 import { createSupabaseServerClient } from "@/lib/services/supabase-server";
-// use a server-side client
+import { generateDeterministicCode } from "@/lib/utils/crypto";
 import { notFound } from "next/navigation";
 
 export default async function RsvpPage({
   params
 }: {
-  params: Promise<{ code: string }>;
+  params: Promise<{ code: string }>; // No need to await
 }) {
   const { code } = await params;
 
   const supabase = await createSupabaseServerClient();
 
-  const { data: primary, error: matchError } = await supabase
+  // Get all guests and compare deterministic hashes
+  const { data: guests } = await supabase
     .from("guests")
-    .select("id, full_name, group_id, group_label, is_attending")
-    .eq("rsvp_code", code)
-    .maybeSingle();
+    .select("id, rsvp_code, full_name, group_id, group_label, is_attending");
 
-  if (matchError || !primary) return notFound();
+  if (!guests) return notFound();
 
-  const { data: group } = await supabase
-    .from("guests")
-    .select("id, full_name, is_attending")
-    .eq("group_id", primary.group_id);
+  const primary = guests.find(
+    (guest) => generateDeterministicCode(guest.rsvp_code || "") === code
+  );
 
-  const guests = group?.filter((g) => g.id !== primary.id) || [];
+  if (!primary) return notFound();
+
+  const group = guests.filter(
+    (g) => g.group_id === primary.group_id && g.id !== primary.id
+  );
 
   return (
-    <RsvpClientForm
+    <RsvpGuestForm
       primaryGuest={primary}
       groupLabel={primary.group_label}
-      groupGuests={guests}
+      groupGuests={group}
     />
   );
 }
