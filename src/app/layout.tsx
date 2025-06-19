@@ -1,7 +1,7 @@
 import "@/app/assets/styles/globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
-import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import { Parisienne, Playfair_Display, Source_Sans_3 } from "next/font/google";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -11,6 +11,12 @@ const sourceSans = Source_Sans_3({
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
   subsets: ["latin"]
+});
+
+const parisienne = Parisienne({
+  variable: "--font-parisienne",
+  subsets: ["latin"],
+  weight: "400"
 });
 
 export const metadata: Metadata = {
@@ -26,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sourceSans.variable} ${playfairDisplay.variable} antialiased`}
+        className={`${sourceSans.variable} ${playfairDisplay.variable} ${parisienne.variable} antialiased`}
       >
         {children}
         <Toaster position="top-center" />
