@@ -7,9 +7,10 @@ import { notFound } from "next/navigation";
 
 interface PageProps {
   slug: string;
+  injectedComponent?: React.ReactNode;
 }
 
-export default async function Page({ slug }: PageProps) {
+export default async function Page({ slug, injectedComponent }: PageProps) {
   // This facade method should now return page data with all component fields populated
   const page = await PageTemplatesFacade.getPageBySlug(slug);
 
@@ -39,7 +40,10 @@ export default async function Page({ slug }: PageProps) {
   return (
     <>
       <SectionRenderer components={headerComponents} sectionAs="header" />
-      <SectionRenderer components={mainComponents} sectionAs="main" />
+      <main>
+        {injectedComponent}
+        <SectionRenderer components={mainComponents} sectionAs="div" />
+      </main>
       <SectionRenderer components={footerComponents} sectionAs="footer" />
     </>
   );

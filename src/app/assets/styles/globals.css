@@ -41,6 +41,9 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --font-source-sans: var(--font-source-sans);
+  --font-playfair-display: var(--font-playfair-display);
+  --font-parisienne: var(--font-parisienne);
 }
 
 :root {
@@ -118,12 +121,41 @@
   }
 
   body {
-    @apply flex min-h-screen flex-col bg-background text-foreground;
+    @apply bg-background text-foreground flex min-h-screen flex-col text-lg;
 
-    font-family: var(--font-geist-sans);
+    font-family: var(--font-source-sans);
 
     main {
       @apply grow;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply font-playfair-display;
+    }
+
+    h1 {
+      @apply scroll-m-20 text-balance text-center text-4xl font-extrabold tracking-tight;
+    }
+
+    h2 {
+      @apply scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0;
+    }
+
+    h3 {
+      @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+    }
+
+    h4 {
+      @apply scroll-m-20 text-xl font-semibold tracking-tight;
+    }
+
+    p {
+      @apply leading-7;
     }
   }
 }
