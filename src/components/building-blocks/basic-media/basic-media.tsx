@@ -1,7 +1,7 @@
 import { BasicMediaLink } from "@/components/building-blocks/basic-media/basic-media-link/basic-media-with-link";
+import Image from "next/image";
 import { TypeComponentBasicMedia } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
-import Image from "next/image";
 
 interface BasicMediaProps {
   data: TypeComponentBasicMedia;
@@ -31,6 +31,7 @@ export default function BasicMedia({
             }
             fill={true}
             loading={data.basicMediaEager ? "eager" : "lazy"}
+            priority={data.basicMediaPriority}
           />
         </div>
       </BasicMediaLink>
@@ -54,6 +55,7 @@ export default function BasicMedia({
           height={data.basicMediaHeight || data.basicMediaImage.height}
           width={data.basicMediaWidth || data.basicMediaImage.width}
           loading={data.basicMediaEager ? "eager" : "lazy"}
+          priority={data.basicMediaPriority}
         />
       </div>
     </BasicMediaLink>

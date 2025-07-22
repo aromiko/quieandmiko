@@ -1,53 +1,54 @@
 // src/components/component-blocks/adaptive-renderers/component-selector/component-selector.tsx
 // Adjust the path as per your project structure
-import Footer from "@/components/component-blocks/footer/footer";
-// Adjust path as needed
 
-// Import all your actual presentational components that can be rendered
-import Header from "@/components/component-blocks/header/header";
-import Hero from "@/components/component-blocks/hero/hero";
-import { ComponentTypenames } from "@/lib/configurations/component-registry";
 import {
-  TypeComponentFooter,
-  TypeComponentHeader,
-  TypeComponentHero,
-  TypePageContentItem
-} from "@/lib/types";
-import { JSX } from "react";
+  ComponentRegistry,
+  ComponentTypenames
+} from "@/lib/configurations/component-registry";
+import React, { Suspense } from "react";
 
-// import Hero from '@/components/component-blocks/hero/hero';
-// ... import other components (TextBlock, etc.)
+import { TypePageContentItem } from "@/lib/types";
 
 interface ComponentSelectorProps {
-  // 'content' is the full data object for the component.
-  // It's already been validated to exist and have a __typename by the ComponentRenderer.
   data: TypePageContentItem;
-  // 'typeName' is the validated, non-empty string __typename.
   typeName: ComponentTypenames;
 }
+
+// Note: We use 'any' for the lazy component type because each component expects different props.
+// In a dynamic system, strict typing is not feasible unless all components share a common prop interface.
+const componentMap: Record<
+  string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  React.LazyExoticComponent<React.ComponentType<any>>
+> = {
+  [ComponentRegistry.Header]: React.lazy(
+    () => import("@/components/component-blocks/header/header")
+  ),
+  [ComponentRegistry.Footer]: React.lazy(
+    () => import("@/components/component-blocks/footer/footer")
+  ),
+  [ComponentRegistry.Hero]: React.lazy(
+    () => import("@/components/component-blocks/hero/hero")
+  )
+};
 
 export default function ComponentSelector({
   data,
   typeName
-}: ComponentSelectorProps): JSX.Element | null {
-  // The typeName is guaranteed by ComponentRenderer to be a valid, non-falsy string here.
-  // The content object corresponds to this typeName.
+}: ComponentSelectorProps) {
+  const DynamicComponent = typeName ? componentMap[typeName] : undefined;
 
-  switch (typeName) {
-    case "ComponentHeader":
-      // We cast 'content' to its specific type, which is safe due to the 'typeName' check.
-      return <Header {...(data as TypeComponentHeader)} />;
-    case "ComponentFooter":
-      return <Footer {...(data as TypeComponentFooter)} />;
-    case "ComponentHero":
-      return <Hero {...(data as TypeComponentHero)} />;
-    default:
-      // Fallback for __typename values that are valid strings but have no matching component.
-      // The initial console.warn can be here or in the ComponentRenderer.
-      // For consistency, if ComponentRenderer already warns, this could just be the fallback UI.
-      console.warn(
-        `[ComponentSelector] No component implemented for __typename: "${typeName}" (ID: ${data.sys.id})`
-      );
-      return <div>{`Component type "${typeName}" not found.`}</div>;
+  if (!DynamicComponent) {
+    console.warn(
+      `[ComponentSelector] No component implemented for __typename: "${typeName}" (ID: ${data.sys.id})`
+    );
+    return <div>{`Component type "${typeName}" not found.`}</div>;
   }
+
+  return (
+    <Suspense fallback={<div>Loading component...</div>}>
+      {/* Spread data as props for maximum compatibility */}
+      <DynamicComponent {...data} />
+    </Suspense>
+  );
 }

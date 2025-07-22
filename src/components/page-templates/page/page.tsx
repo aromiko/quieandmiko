@@ -1,8 +1,8 @@
-import SectionRenderer from "@/components/component-blocks/adaptive-renderers/section-renderer/section-renderer";
 import { ComponentSections } from "@/lib/configurations/component-sections";
+import { ContentsFacade } from "@/queries/content-facade";
+import SectionRenderer from "@/components/component-blocks/adaptive-renderers/section-renderer/section-renderer";
 import { TypePageContentItem } from "@/lib/types";
 import { filterComponentsForAssembly } from "@/lib/utils/component-filter";
-import { PageTemplatesFacade } from "@/queries/page-templates/page-templates-facade";
 import { notFound } from "next/navigation";
 
 interface PageProps {
@@ -12,7 +12,7 @@ interface PageProps {
 
 export default async function Page({ slug, injectedComponent }: PageProps) {
   // This facade method should now return page data with all component fields populated
-  const page = await PageTemplatesFacade.getPageBySlug(slug);
+  const page = await ContentsFacade.getPageBySlug(slug);
 
   if (!page || slug === "404") {
     return notFound();

@@ -1,3 +1,5 @@
+// Maps logical component names to their Contentful __typename values.
+// Used for dynamic rendering and type safety when working with Contentful data.
 export const ComponentRegistry = {
   // Building Blocks
   BasicLink: "ComponentBasicLink",
