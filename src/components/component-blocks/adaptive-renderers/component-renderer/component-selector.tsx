@@ -5,50 +5,42 @@ import {
   ComponentRegistry,
   ComponentTypenames
 } from "@/lib/configurations/component-registry";
-import React, { Suspense } from "react";
+import {
+  TypeComponentFooter,
+  TypeComponentHeader,
+  TypeComponentHero,
+  TypePageContentItem
+} from "@/lib/types";
 
-import { TypePageContentItem } from "@/lib/types";
+import Footer from "@/components/component-blocks/footer/footer";
+import Header from "@/components/component-blocks/header/header";
+import Hero from "@/components/component-blocks/hero/hero";
+import { JSX } from "react";
 
 interface ComponentSelectorProps {
   data: TypePageContentItem;
   typeName: ComponentTypenames;
 }
 
-// Note: We use 'any' for the lazy component type because each component expects different props.
-// In a dynamic system, strict typing is not feasible unless all components share a common prop interface.
-const componentMap: Record<
-  string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  React.LazyExoticComponent<React.ComponentType<any>>
-> = {
-  [ComponentRegistry.Header]: React.lazy(
-    () => import("@/components/component-blocks/header/header")
-  ),
-  [ComponentRegistry.Footer]: React.lazy(
-    () => import("@/components/component-blocks/footer/footer")
-  ),
-  [ComponentRegistry.Hero]: React.lazy(
-    () => import("@/components/component-blocks/hero/hero")
-  )
-};
-
 export default function ComponentSelector({
   data,
   typeName
-}: ComponentSelectorProps) {
-  const DynamicComponent = typeName ? componentMap[typeName] : undefined;
-
-  if (!DynamicComponent) {
-    console.warn(
-      `[ComponentSelector] No component implemented for __typename: "${typeName}" (ID: ${data.sys.id})`
-    );
-    return <div>{`Component type "${typeName}" not found.`}</div>;
+}: ComponentSelectorProps): JSX.Element | null {
+  switch (typeName) {
+    case ComponentRegistry.Header:
+      // We cast 'content' to its specific type, which is safe due to the 'typeName' check.
+      return <Header {...(data as TypeComponentHeader)} />;
+    case ComponentRegistry.Footer:
+      return <Footer {...(data as TypeComponentFooter)} />;
+    case ComponentRegistry.Hero:
+      return <Hero {...(data as TypeComponentHero)} />;
+    default:
+      // Fallback for __typename values that are valid strings but have no matching component.
+      // The initial console.warn can be here or in the ComponentRenderer.
+      // For consistency, if ComponentRenderer already warns, this could just be the fallback UI.
+      console.warn(
+        `[ComponentSelector] No component implemented for __typename: "${typeName}" (ID: ${data.sys.id})`
+      );
+      return <div>{`Component type "${typeName}" not found.`}</div>;
   }
-
-  return (
-    <Suspense fallback={<div>Loading component...</div>}>
-      {/* Spread data as props for maximum compatibility */}
-      <DynamicComponent {...data} />
-    </Suspense>
-  );
 }
