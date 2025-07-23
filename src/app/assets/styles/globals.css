@@ -126,7 +126,7 @@
     font-family: var(--font-source-sans);
 
     main {
-      @apply grow;
+      @apply flex grow flex-col;
     }
 
     h1,
