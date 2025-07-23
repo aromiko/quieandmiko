@@ -123,7 +123,6 @@
   body {
     @apply bg-background text-foreground flex min-h-screen flex-col text-lg;
 
-    background-color: #ffffff;
     background-image: url("/paper.png");
 
     font-family: var(--font-source-sans);
