@@ -123,10 +123,12 @@
   body {
     @apply bg-background text-foreground flex min-h-screen flex-col text-lg;
 
+    background-image: url("/paper.png");
+
     font-family: var(--font-source-sans);
 
     main {
-      @apply grow;
+      @apply flex grow flex-col;
     }
 
     h1,
@@ -135,7 +137,7 @@
     h4,
     h5,
     h6 {
-      @apply font-playfair-display;
+      @apply font-playfair-display text-[#80091B];
     }
 
     h1 {

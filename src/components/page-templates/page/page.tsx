@@ -46,7 +46,11 @@ export default async function Page({ slug, injectedComponent }: PageProps) {
       />
       <main>
         {injectedComponent}
-        <SectionRenderer components={mainComponents} sectionAs="div" />
+        <SectionRenderer
+          components={mainComponents}
+          sectionAs="div"
+          className="w-full"
+        />
       </main>
       <SectionRenderer components={footerComponents} sectionAs="footer" />
     </>
