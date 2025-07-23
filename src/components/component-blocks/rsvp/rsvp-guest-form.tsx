@@ -21,7 +21,7 @@ export default function RsvpGuestForm({
   groupGuests: Guest[];
   groupLabel: string | null;
 }) {
-  const originalResponses = useMemo(() => {
+  const [originalResponses, setOriginalResponses] = useState(() => {
     const map: Record<string, boolean> = {
       [primaryGuest.id.toString()]: primaryGuest.is_attending ?? false
     };
@@ -29,7 +29,7 @@ export default function RsvpGuestForm({
       map[g.id.toString()] = g.is_attending ?? false;
     });
     return map;
-  }, [primaryGuest, groupGuests]);
+  });
 
   const [responses, setResponses] =
     useState<Record<string, boolean>>(originalResponses);
@@ -63,6 +63,7 @@ export default function RsvpGuestForm({
       toast.error("Failed to submit RSVP.");
     } else {
       toast.success("RSVP submitted!");
+      setOriginalResponses({ ...responses });
     }
 
     setLoading(false);

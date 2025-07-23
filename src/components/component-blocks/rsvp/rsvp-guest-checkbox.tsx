@@ -17,7 +17,7 @@ export default function RsvpGuestCheckbox({
   onChange
 }: GuestCheckboxProps) {
   return (
-    <div className="flex cursor-pointer items-center space-x-2">
+    <div className="flex items-center space-x-2">
       <Checkbox
         id={`cb-${id}`}
         checked={checked}
@@ -26,7 +26,9 @@ export default function RsvpGuestCheckbox({
         }
         className="size-6"
       />
-      <Label htmlFor={`cb-${id}`}>{name}</Label>
+      <Label htmlFor={`cb-${id}`} className="cursor-pointer">
+        {name}
+      </Label>
     </div>
   );
 }
