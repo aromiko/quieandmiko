@@ -13,6 +13,7 @@ export type { TypeComponentHero } from "@/lib/types/component-blocks/TypeCompone
 //Page Templates
 export type { TypePageContentItem } from "@/lib/types/page-templates/TypePageContentItem";
 export type { TypePageData } from "@/lib/types/page-templates/TypePageData";
+export type { TypePageSeo } from "@/lib/types/page-templates/TypePageSeo";
 
 //Database
 export type { Database } from "@/lib/types/supabase/TypeSupabase";

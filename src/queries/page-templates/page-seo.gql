@@ -1,0 +1,9 @@
+fragment PageSeoFragment on PageSeo {
+  pageSeoTitle
+  pageSeoDescription
+  pageSeoOgImage {
+    url
+  }
+  pageSeoCanonicalUrl
+  pageSeoNoIndex
+}

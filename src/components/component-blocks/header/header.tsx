@@ -1,8 +1,8 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
-import { buttonVariants } from "@/components/ui/button";
-import { TypeComponentHeader } from "@/lib/types";
-import { cn } from "@/lib/utils/classnames";
 import Link from "next/link";
+import { TypeComponentHeader } from "@/lib/types";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils/classnames";
 
 export default function Header({ headerLogo }: TypeComponentHeader) {
   return (

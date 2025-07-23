@@ -39,7 +39,11 @@ export default async function Page({ slug, injectedComponent }: PageProps) {
 
   return (
     <>
-      <SectionRenderer components={headerComponents} sectionAs="header" />
+      <SectionRenderer
+        components={headerComponents}
+        sectionAs="header"
+        className="sticky top-0 z-50"
+      />
       <main>
         {injectedComponent}
         <SectionRenderer components={mainComponents} sectionAs="div" />

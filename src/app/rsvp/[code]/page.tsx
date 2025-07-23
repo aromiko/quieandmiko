@@ -1,8 +1,13 @@
-import RsvpGuestForm from "@/components/component-blocks/rsvp/rsvp-guest-form";
 import Page from "@/components/page-templates/page/page";
+import RsvpGuestForm from "@/components/component-blocks/rsvp/rsvp-guest-form";
+import { buildMetadata } from "@/lib/utils/seo";
 import { createSupabaseServerClient } from "@/lib/services/supabase-server";
 import { generateDeterministicCode } from "@/lib/utils/crypto";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata() {
+  return buildMetadata("rsvp-form");
+}
 
 export default async function RsvpPage({
   params

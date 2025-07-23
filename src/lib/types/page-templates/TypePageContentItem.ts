@@ -1,7 +1,8 @@
-import { TypeComponentFooter } from "@/lib/types/component-blocks/TypeComponentFooter";
-import { TypeComponentHeader } from "@/lib/types/component-blocks/TypeComponentHeader";
-
-import { TypeComponentHero } from "../component-blocks/TypeComponentHero";
+import {
+  TypeComponentFooter,
+  TypeComponentHeader,
+  TypeComponentHero
+} from "@/lib/types";
 
 export type TypePageContentItem =
   | TypeComponentHeader
