@@ -7,6 +7,7 @@ export interface TypeComponentBasicMedia {
   basicMediaWidth?: number;
   basicMediaHeight?: number;
   basicMediaFill?: boolean;
+  basicMediaPriority?: boolean;
   basicMediaEager?: boolean;
   basicMediaLinkUrl?: string;
   basicMediaLinkIsExternal?: boolean;

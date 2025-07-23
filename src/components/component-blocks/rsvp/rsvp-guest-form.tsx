@@ -1,8 +1,9 @@
 "use client";
 
-import RsvpGuestCheckbox from "@/components/component-blocks/rsvp/rsvp-guest-checkbox";
-import { Button } from "@/components/ui/button";
 import { useMemo, useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import RsvpGuestCheckbox from "@/components/component-blocks/rsvp/rsvp-guest-checkbox";
 import { toast } from "sonner";
 
 interface Guest {
@@ -68,7 +69,7 @@ export default function RsvpGuestForm({
   };
 
   return (
-    <div className="mx-auto max-w-xl space-y-6 p-6">
+    <section className="mx-auto max-w-xl space-y-6 p-6">
       <h1>{"Répondez s'il vous plaît"}</h1>
 
       <div className="space-y-2">
@@ -112,6 +113,6 @@ export default function RsvpGuestForm({
       <Button onClick={handleSubmit} disabled={loading || !hasChanges}>
         {loading ? "Submitting..." : "Submit RSVP"}
       </Button>
-    </div>
+    </section>
   );
 }

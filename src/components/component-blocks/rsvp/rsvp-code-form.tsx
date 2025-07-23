@@ -3,9 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { toast } from "sonner";
 
 export default function RsvpCodeForm() {
   const [code, setCode] = useState("");
@@ -40,7 +40,7 @@ export default function RsvpCodeForm() {
   };
 
   return (
-    <div className="mx-auto max-w-xl space-y-6 p-6">
+    <section className="mx-auto max-w-xl space-y-6 p-6">
       <h1>{"Répondez s'il vous plaît"}</h1>
       <form onSubmit={handleSubmit} className="space-y-6">
         <Label htmlFor="rsvp-code-input">
@@ -54,6 +54,6 @@ export default function RsvpCodeForm() {
         />
         <Button type="submit">Continue</Button>
       </form>
-    </div>
+    </section>
   );
 }

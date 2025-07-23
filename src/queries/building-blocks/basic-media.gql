@@ -14,6 +14,7 @@ fragment BasicMediaFragment on ComponentBasicMedia {
   basicMediaWidth
   basicMediaFill
   basicMediaEager
+  basicMediaPriority
   basicMediaLinkUrl
   basicMediaLinkIsExternal
 }
