@@ -7,6 +7,8 @@ fragment HeroFragment on ComponentHero {
   __typename
   heroName
   heroTitle
+  heroSubtitle
+  heroCaption
   heroBody
   heroImage {
     ...BasicMediaFragment

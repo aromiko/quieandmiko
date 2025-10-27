@@ -1,23 +1,12 @@
 import "@/app/assets/styles/globals.css";
+import {
+  ApercuMono,
+  ApercuPro,
+  KuenstlerScript,
+  ProximaSera
+} from "@/app/fonts";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
-import { Parisienne, Playfair_Display, Source_Sans_3 } from "next/font/google";
-
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
-  subsets: ["latin"]
-});
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
-  subsets: ["latin"]
-});
-
-const parisienne = Parisienne({
-  variable: "--font-parisienne",
-  subsets: ["latin"],
-  weight: "400"
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sourceSans.variable} ${playfairDisplay.variable} ${parisienne.variable} antialiased`}
+        className={`${ApercuPro.variable} ${ApercuMono.variable} ${ProximaSera.variable} ${KuenstlerScript.variable} antialiased`}
       >
         {children}
         <Toaster position="top-center" />

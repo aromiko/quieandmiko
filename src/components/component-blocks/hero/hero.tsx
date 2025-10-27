@@ -3,6 +3,8 @@ import { TypeComponentHero } from "@/lib/types";
 
 export default function Hero({
   heroTitle,
+  heroSubtitle,
+  heroCaption,
   heroBody,
   heroImage
 }: TypeComponentHero) {
@@ -12,8 +14,12 @@ export default function Hero({
         {heroImage && (
           <BasicMedia data={heroImage} wrapperCssClass="w-100 h-100" />
         )}
-        {heroTitle && <h2>{heroTitle}</h2>}
-        {heroTitle && <p>{heroBody}</p>}
+        {heroTitle && <h2 className="text-8xl">{heroTitle}</h2>}
+        {heroSubtitle && (
+          <h3 className="font-serif font-normal">SAVE THE DATE</h3>
+        )}
+        {heroCaption && <p className="font-mono font-medium">05.22.2026</p>}
+        {heroBody && <p className="whitespace-pre-line">{heroBody}</p>}
       </div>
     </section>
   );
