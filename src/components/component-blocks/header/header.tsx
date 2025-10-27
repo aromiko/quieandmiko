@@ -1,8 +1,8 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
-import Link from "next/link";
-import { TypeComponentHeader } from "@/lib/types";
 import { buttonVariants } from "@/components/ui/button";
+import { TypeComponentHeader } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
+import Link from "next/link";
 
 export default function Header({ headerLogo }: TypeComponentHeader) {
   return (
@@ -14,14 +14,14 @@ export default function Header({ headerLogo }: TypeComponentHeader) {
           href="/"
           className={cn(
             buttonVariants({ variant: "link" }),
-            "font-playfair-display text-2xl font-bold"
+            "font-serif text-2xl font-bold"
           )}
         >
           Quie & Miko
         </Link>
 
         <ul>
-          <li>
+          <li className="font-serif">
             <Link
               href="/rsvp"
               className={cn(buttonVariants({ variant: "link" }))}

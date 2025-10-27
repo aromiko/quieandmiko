@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./colors.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -48,72 +49,99 @@
 }
 
 :root {
+  /* base radius */
   --radius: 0.625rem;
-  --background: oklch(100% 0 0deg);
-  --foreground: oklch(14.5% 0 0deg);
-  --card: oklch(100% 0 0deg);
-  --card-foreground: oklch(14.5% 0 0deg);
-  --popover: oklch(100% 0 0deg);
-  --popover-foreground: oklch(14.5% 0 0deg);
-  --primary: oklch(20.5% 0 0deg);
-  --primary-foreground: oklch(98.5% 0 0deg);
-  --secondary: oklch(97% 0 0deg);
-  --secondary-foreground: oklch(20.5% 0 0deg);
-  --muted: oklch(97% 0 0deg);
-  --muted-foreground: oklch(55.6% 0 0deg);
-  --accent: oklch(97% 0 0deg);
-  --accent-foreground: oklch(20.5% 0 0deg);
+
+  /* semantic mapping for light mode */
+  --background: var(--color-cream);
+  --foreground: oklch(14.5% 0 0deg); /* deep neutral text */
+
+  --card: var(--color-cream);
+  --card-foreground: var(--foreground);
+
+  --popover: var(--color-cream);
+  --popover-foreground: var(--foreground);
+
+  /* choose your brand "primary" */
+  --primary: var(--color-wine);
+  --primary-foreground: var(--color-cream);
+
+  /* supporting roles */
+  --secondary: var(--color-sugar);
+  --secondary-foreground: var(--color-cream);
+
+  --accent: var(--color-matcha);
+  --accent-foreground: var(--color-cream);
+
+  /* soft surfaces and text */
+  --muted: var(--color-froth);
+  --muted-foreground: oklch(40% 0 0deg);
+
+  /* destructive can stay a red */
   --destructive: oklch(57.7% 0.245 27.325deg);
-  --border: oklch(92.2% 0 0deg);
-  --input: oklch(92.2% 0 0deg);
-  --ring: oklch(70.8% 0 0deg);
-  --chart-1: oklch(64.6% 0.222 41.116deg);
-  --chart-2: oklch(60% 0.118 184.704deg);
-  --chart-3: oklch(39.8% 0.07 227.392deg);
-  --chart-4: oklch(82.8% 0.189 84.429deg);
-  --chart-5: oklch(76.9% 0.188 70.08deg);
-  --sidebar: oklch(98.5% 0 0deg);
-  --sidebar-foreground: oklch(14.5% 0 0deg);
-  --sidebar-primary: oklch(20.5% 0 0deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent: oklch(97% 0 0deg);
-  --sidebar-accent-foreground: oklch(20.5% 0 0deg);
-  --sidebar-border: oklch(92.2% 0 0deg);
-  --sidebar-ring: oklch(70.8% 0 0deg);
+  --border: color-mix(in oklab, var(--color-froth) 70%, white);
+  --input: var(--border);
+  --ring: color-mix(in oklab, var(--primary) 40%, white);
+
+  /* charts and sidebar, mapped to brand where it helps */
+  --chart-1: var(--color-wine);
+  --chart-2: var(--color-matcha);
+  --chart-3: var(--color-sugar);
+  --chart-4: var(--color-froth);
+  --chart-5: var(--color-coffee);
+
+  --sidebar: color-mix(in oklab, var(--color-cream) 92%, white);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--muted);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
 
 .dark {
+  /* semantic mapping for dark mode */
   --background: oklch(14.5% 0 0deg);
-  --foreground: oklch(98.5% 0 0deg);
+  --foreground: var(--color-cream);
+
   --card: oklch(20.5% 0 0deg);
-  --card-foreground: oklch(98.5% 0 0deg);
+  --card-foreground: var(--color-cream);
+
   --popover: oklch(20.5% 0 0deg);
-  --popover-foreground: oklch(98.5% 0 0deg);
-  --primary: oklch(92.2% 0 0deg);
-  --primary-foreground: oklch(20.5% 0 0deg);
-  --secondary: oklch(26.9% 0 0deg);
-  --secondary-foreground: oklch(98.5% 0 0deg);
-  --muted: oklch(26.9% 0 0deg);
-  --muted-foreground: oklch(70.8% 0 0deg);
-  --accent: oklch(26.9% 0 0deg);
-  --accent-foreground: oklch(98.5% 0 0deg);
+  --popover-foreground: var(--color-cream);
+
+  --primary: var(--color-cream);
+  --primary-foreground: var(--color-wine);
+
+  --secondary: color-mix(in oklab, var(--color-sugar) 55%, black);
+  --secondary-foreground: var(--color-cream);
+
+  --accent: color-mix(in oklab, var(--color-matcha) 65%, black);
+  --accent-foreground: var(--color-cream);
+
+  --muted: color-mix(in oklab, var(--color-froth) 30%, black);
+  --muted-foreground: oklch(78% 0 0deg);
+
   --destructive: oklch(70.4% 0.191 22.216deg);
   --border: oklch(100% 0 0deg / 10%);
   --input: oklch(100% 0 0deg / 15%);
-  --ring: oklch(55.6% 0 0deg);
-  --chart-1: oklch(48.8% 0.243 264.376deg);
-  --chart-2: oklch(69.6% 0.17 162.48deg);
-  --chart-3: oklch(76.9% 0.188 70.08deg);
-  --chart-4: oklch(62.7% 0.265 303.9deg);
-  --chart-5: oklch(64.5% 0.246 16.439deg);
+  --ring: color-mix(in oklab, var(--primary) 50%, white);
+
+  --chart-1: var(--color-wine);
+  --chart-2: var(--color-matcha);
+  --chart-3: var(--color-sugar);
+  --chart-4: var(--color-froth);
+  --chart-5: var(--color-coffee);
+
   --sidebar: oklch(20.5% 0 0deg);
-  --sidebar-foreground: oklch(98.5% 0 0deg);
-  --sidebar-primary: oklch(48.8% 0.243 264.376deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent: oklch(26.9% 0 0deg);
-  --sidebar-accent-foreground: oklch(98.5% 0 0deg);
+  --sidebar-foreground: var(--color-cream);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: color-mix(in oklab, var(--muted) 70%, black);
+  --sidebar-accent-foreground: var(--color-cream);
   --sidebar-border: oklch(100% 0 0deg / 10%);
-  --sidebar-ring: oklch(55.6% 0 0deg);
+  --sidebar-ring: var(--ring);
 }
 
 @layer base {
@@ -122,15 +150,7 @@
   }
 
   body {
-    @apply bg-background text-foreground flex min-h-screen flex-col text-lg;
-
-    * {
-      @apply font-sans;
-    }
-
-    background-image: url("/paper.png");
-
-    font-family: var(--font-source-sans);
+    @apply bg-background text-foreground flex min-h-screen flex-col font-sans text-lg;
 
     main {
       @apply flex grow flex-col;
@@ -142,7 +162,7 @@
     h4,
     h5,
     h6 {
-      @apply font-script text-[#80091B];
+      @apply font-script text-wine dark:text-froth;
     }
 
     h1 {
