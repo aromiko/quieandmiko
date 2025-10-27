@@ -16,9 +16,9 @@ export default function Hero({
         )}
         {heroTitle && <h2 className="text-8xl">{heroTitle}</h2>}
         {heroSubtitle && (
-          <h3 className="font-serif font-normal">SAVE THE DATE</h3>
+          <h3 className="font-serif font-normal">{heroSubtitle}</h3>
         )}
-        {heroCaption && <p className="font-mono font-medium">05.22.2026</p>}
+        {heroCaption && <p className="font-mono font-medium">{heroCaption}</p>}
         {heroBody && <p className="whitespace-pre-line">{heroBody}</p>}
       </div>
     </section>
