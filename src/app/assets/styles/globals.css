@@ -41,9 +41,10 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --font-source-sans: var(--font-source-sans);
-  --font-playfair-display: var(--font-playfair-display);
-  --font-parisienne: var(--font-parisienne);
+  --font-sans: var(--font-apercupro), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-proximasera), ui-serif, Georgia, serif;
+  --font-mono: var(--font-apercumono), ui-monospace, SFMono-Regular, monospace;
+  --font-script: var(--font-kuenstlerscript), cursive;
 }
 
 :root {
@@ -123,6 +124,10 @@
   body {
     @apply bg-background text-foreground flex min-h-screen flex-col text-lg;
 
+    * {
+      @apply font-sans;
+    }
+
     background-image: url("/paper.png");
 
     font-family: var(--font-source-sans);
@@ -137,27 +142,27 @@
     h4,
     h5,
     h6 {
-      @apply font-playfair-display text-[#80091B];
+      @apply font-script text-[#80091B];
     }
 
     h1 {
-      @apply scroll-m-20 text-balance text-center text-4xl font-extrabold tracking-tight;
+      @apply scroll-m-20 text-balance text-center text-8xl font-extrabold tracking-tight;
     }
 
     h2 {
-      @apply scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0;
+      @apply scroll-m-20 text-6xl font-semibold tracking-tight first:mt-0;
     }
 
     h3 {
-      @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+      @apply scroll-m-20 text-4xl font-semibold tracking-tight;
     }
 
     h4 {
-      @apply scroll-m-20 text-xl font-semibold tracking-tight;
+      @apply scroll-m-20 text-2xl font-semibold tracking-tight;
     }
 
     p {
-      @apply leading-7;
+      @apply font-sans leading-7;
     }
   }
 }

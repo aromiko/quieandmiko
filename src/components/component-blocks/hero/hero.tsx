@@ -12,7 +12,9 @@ export default function Hero({
         {heroImage && (
           <BasicMedia data={heroImage} wrapperCssClass="w-100 h-100" />
         )}
-        {heroTitle && <h2>{heroTitle}</h2>}
+        {heroTitle && <h1>{heroTitle}</h1>}
+        <h4 className="font-serif">SUBHEADING</h4>
+        <p className="font-mono">05.22.2026</p>
         {heroTitle && <p>{heroBody}</p>}
       </div>
     </section>
