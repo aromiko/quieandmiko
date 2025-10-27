@@ -14,12 +14,20 @@ export default function Hero({
         {heroImage && (
           <BasicMedia data={heroImage} wrapperCssClass="w-100 h-100" />
         )}
-        {heroTitle && <h2 className="text-8xl">{heroTitle}</h2>}
+        {heroTitle && <h2 className="text-6xl sm:text-8xl">{heroTitle}</h2>}
         {heroSubtitle && (
-          <h3 className="font-serif font-normal">SAVE THE DATE</h3>
+          <h3 className="font-serif text-2xl font-normal sm:text-4xl">
+            {heroSubtitle}
+          </h3>
         )}
-        {heroCaption && <p className="font-mono font-medium">05.22.2026</p>}
-        {heroBody && <p className="whitespace-pre-line">{heroBody}</p>}
+        {heroCaption && (
+          <p className="font-mono text-lg font-medium sm:text-xl">
+            {heroCaption}
+          </p>
+        )}
+        {heroBody && (
+          <p className="whitespace-pre-line text-base sm:text-lg">{heroBody}</p>
+        )}
       </div>
     </section>
   );
