@@ -6,5 +6,10 @@ export async function generateMetadata() {
 }
 
 export default function Home() {
-  return <Page slug="home" />;
+  return (
+    <Page
+      slug="home"
+      mainClassName="min-h-screen flex items-center justify-center"
+    />
+  );
 }

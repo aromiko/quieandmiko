@@ -1,16 +1,22 @@
-import { ComponentSections } from "@/lib/configurations/component-sections";
-import { ContentsFacade } from "@/queries/content-facade";
 import SectionRenderer from "@/components/component-blocks/adaptive-renderers/section-renderer/section-renderer";
+import { ComponentSections } from "@/lib/configurations/component-sections";
 import { TypePageContentItem } from "@/lib/types";
+import { cn } from "@/lib/utils/classnames";
 import { filterComponentsForAssembly } from "@/lib/utils/component-filter";
+import { ContentsFacade } from "@/queries/content-facade";
 import { notFound } from "next/navigation";
 
 interface PageProps {
   slug: string;
   injectedComponent?: React.ReactNode;
+  mainClassName?: string;
 }
 
-export default async function Page({ slug, injectedComponent }: PageProps) {
+export default async function Page({
+  slug,
+  injectedComponent,
+  mainClassName
+}: PageProps) {
   // This facade method should now return page data with all component fields populated
   const page = await ContentsFacade.getPageBySlug(slug);
 
@@ -44,7 +50,7 @@ export default async function Page({ slug, injectedComponent }: PageProps) {
         sectionAs="header"
         className="sticky top-0 z-50"
       />
-      <main>
+      <main className={cn(mainClassName)}>
         {injectedComponent}
         <SectionRenderer
           components={mainComponents}
