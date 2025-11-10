@@ -1,5 +1,6 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
 import { TypeComponentHero } from "@/lib/types";
+import { sanitizeAndParse } from "@/lib/utils/sanitizer-parser";
 
 export default function Hero({
   heroTitle,
@@ -26,7 +27,9 @@ export default function Hero({
           </p>
         )}
         {heroBody && (
-          <p className="whitespace-pre-line text-base sm:text-lg">{heroBody}</p>
+          <p className="whitespace-pre-line text-base sm:text-lg">
+            {sanitizeAndParse(heroBody)}
+          </p>
         )}
       </div>
     </section>
