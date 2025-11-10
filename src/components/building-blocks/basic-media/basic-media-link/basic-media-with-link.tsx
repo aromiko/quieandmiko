@@ -12,7 +12,7 @@ export function BasicMediaLink({
   children
 }: BasicMediaLinkProps) {
   const linkClassName =
-    "flex items-center justify-center transition-opacity duration-300 ease-in-out hover:opacity-80";
+    "flex items-center justify-center transition-opacity duration-300 ease-in-out hover:opacity-50";
 
   if (url) {
     if (isExternal) {
