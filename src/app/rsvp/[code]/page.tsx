@@ -1,5 +1,4 @@
 import RsvpGuestForm from "@/components/component-blocks/rsvp/rsvp-guest-form";
-import Page from "@/components/page-templates/page/page";
 import { createSupabaseServerClient } from "@/lib/services/supabase-server";
 import { generateDeterministicCode } from "@/lib/utils/crypto";
 import { notFound } from "next/navigation";
@@ -40,15 +39,12 @@ export default async function RsvpPage({
   );
 
   return (
-    <Page
-      slug="rsvp-form"
-      injectedComponent={
-        <RsvpGuestForm
-          primaryGuest={primary}
-          groupLabel={primary.group_label}
-          groupGuests={group}
-        />
-      }
-    />
+    <main>
+      <RsvpGuestForm
+        primaryGuest={primary}
+        groupLabel={primary.group_label}
+        groupGuests={group}
+      />
+    </main>
   );
 }
