@@ -27,7 +27,7 @@ export default function LoginPage() {
 
   return (
     <main>
-      <section className="min-w-4xl mx-auto flex h-screen items-center justify-center p-6">
+      <section className="mx-auto flex h-screen max-w-4xl items-center justify-center p-6">
         <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
           <Monogram />
           <div className="mt-10 flex gap-4">
