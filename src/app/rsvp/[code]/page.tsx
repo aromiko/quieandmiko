@@ -1,12 +1,16 @@
-import Page from "@/components/page-templates/page/page";
 import RsvpGuestForm from "@/components/component-blocks/rsvp/rsvp-guest-form";
-import { buildMetadata } from "@/lib/utils/seo";
+import Page from "@/components/page-templates/page/page";
 import { createSupabaseServerClient } from "@/lib/services/supabase-server";
 import { generateDeterministicCode } from "@/lib/utils/crypto";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata() {
-  return buildMetadata("rsvp-form");
+  return {
+    title: "RSVP | Quie & Miko",
+    description:
+      "Let Quie and Miko know you’re joining their special day. RSVP here to confirm your attendance and receive important wedding updates.",
+    robots: "noindex, nofollow"
+  };
 }
 
 export default async function RsvpPage({
