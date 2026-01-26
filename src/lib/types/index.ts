@@ -9,6 +9,7 @@ export type { TypeComponentMedia } from "@/lib/types/building-blocks/TypeCompone
 export type { TypeComponentFooter } from "@/lib/types/component-blocks/TypeComponentFooter";
 export type { TypeComponentHeader } from "@/lib/types/component-blocks/TypeComponentHeader";
 export type { TypeComponentHero } from "@/lib/types/component-blocks/TypeComponentHero";
+export type { TypeComponentMainHero } from "@/lib/types/component-blocks/TypeComponentMainHero";
 
 //Page Templates
 export type { TypePageContentItem } from "@/lib/types/page-templates/TypePageContentItem";

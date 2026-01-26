@@ -162,23 +162,23 @@
     h4,
     h5,
     h6 {
-      @apply font-script text-wine dark:text-froth;
+      @apply font-script text-wine dark:text-froth tracking-normal;
     }
 
     h1 {
-      @apply scroll-m-20 text-balance text-center text-8xl font-extrabold tracking-tight;
+      @apply scroll-m-20 text-balance text-center text-8xl font-extrabold;
     }
 
     h2 {
-      @apply scroll-m-20 text-6xl font-semibold tracking-tight first:mt-0;
+      @apply scroll-m-20 text-6xl font-semibold first:mt-0;
     }
 
     h3 {
-      @apply scroll-m-20 text-4xl font-semibold tracking-tight;
+      @apply scroll-m-20 text-4xl font-semibold;
     }
 
     h4 {
-      @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+      @apply scroll-m-20 text-2xl font-semibold;
     }
 
     p {

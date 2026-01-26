@@ -1,6 +1,6 @@
 #import "@/queries/component-blocks/header.gql"
 #import "@/queries/component-blocks/footer.gql"
-#import "@/queries/component-blocks/hero.gql"
+#import "@/queries/component-blocks/main-hero.gql"
 #import "@/queries/page-templates/page-seo.gql"
 
 query QUERY_PAGE_BY_SLUG($slug: String!, $isPreview: Boolean!) {
@@ -23,8 +23,8 @@ query QUERY_PAGE_BY_SLUG($slug: String!, $isPreview: Boolean!) {
           ... on ComponentFooter {
             ...FooterFragment
           }
-          ... on ComponentHero {
-            ...HeroFragment
+          ... on ComponentMainHero {
+            ...MainHeroFragment
           }
         }
       }

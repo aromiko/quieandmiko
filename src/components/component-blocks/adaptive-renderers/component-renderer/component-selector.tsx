@@ -1,6 +1,9 @@
 // src/components/component-blocks/adaptive-renderers/component-selector/component-selector.tsx
 // Adjust the path as per your project structure
-
+import Footer from "@/components/component-blocks/footer/footer";
+import Header from "@/components/component-blocks/header/header";
+import Hero from "@/components/component-blocks/hero/hero";
+import MainHero from "@/components/component-blocks/hero/main-hero";
 import {
   ComponentRegistry,
   ComponentTypenames
@@ -9,12 +12,9 @@ import {
   TypeComponentFooter,
   TypeComponentHeader,
   TypeComponentHero,
+  TypeComponentMainHero,
   TypePageContentItem
 } from "@/lib/types";
-
-import Footer from "@/components/component-blocks/footer/footer";
-import Header from "@/components/component-blocks/header/header";
-import Hero from "@/components/component-blocks/hero/hero";
 import { JSX } from "react";
 
 interface ComponentSelectorProps {
@@ -34,6 +34,10 @@ export default function ComponentSelector({
       return <Footer {...(data as TypeComponentFooter)} />;
     case ComponentRegistry.Hero:
       return <Hero {...(data as TypeComponentHero)} />;
+    case ComponentRegistry.Hero:
+      return <Hero {...(data as TypeComponentHero)} />;
+    case ComponentRegistry.MainHero:
+      return <MainHero {...(data as TypeComponentMainHero)} />;
     default:
       // Fallback for __typename values that are valid strings but have no matching component.
       // The initial console.warn can be here or in the ComponentRenderer.
