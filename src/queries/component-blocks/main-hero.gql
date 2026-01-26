@@ -1,0 +1,22 @@
+#import "@/queries/building-blocks/basic-media.gql"
+
+fragment MainHeroFragment on ComponentMainHero {
+  sys {
+    id
+  }
+  __typename
+  mainHeroTitle
+  mainHeroInitials1
+  mainHeroInitials2
+  mainHeroMonogram {
+    ...BasicMediaFragment
+  }
+  mainHeroDateBadge {
+    ...BasicMediaFragment
+  }
+  mainHeroImagesCollection(limit: 6) {
+    items {
+      ...BasicMediaFragment
+    }
+  }
+}

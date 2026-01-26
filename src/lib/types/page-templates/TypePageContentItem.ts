@@ -1,10 +1,12 @@
 import {
   TypeComponentFooter,
   TypeComponentHeader,
-  TypeComponentHero
+  TypeComponentHero,
+  TypeComponentMainHero
 } from "@/lib/types";
 
 export type TypePageContentItem =
   | TypeComponentHeader
   | TypeComponentFooter
-  | TypeComponentHero;
+  | TypeComponentHero
+  | TypeComponentMainHero;

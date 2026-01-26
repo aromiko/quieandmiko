@@ -1,0 +1,7 @@
+fragment BasicLinkFragment on ComponentBasicLink {
+  sys {
+    id
+  }
+  linkText
+  linkUrl
+}
