@@ -18,7 +18,7 @@ export default function MainHero({
         {mainHeroMonogram && (
           <BasicMedia
             data={mainHeroMonogram}
-            wrapperCssClass="w-76 h-76 md:w-[350px] md:h-[350px] z-10"
+            wrapperCssClass="w-50 h-50 md:w-[350px] md:h-[350px] z-10"
           />
         )}
       </div>
@@ -71,7 +71,7 @@ export default function MainHero({
         const positions = [
           "top-56 -left-18 md:top-56 md:-left-18 rotate-[-101.07deg]",
           "top-62 -left-8 md:top-62 md:-left-8 rotate-[31.84deg]",
-          "bottom-32 left-8 md:bottom-32 md:left-24 rotate-[-4.95deg]",
+          "bottom-32 -left-2 md:bottom-32 md:left-24 rotate-[-15.95deg] md:rotate-[-4.95deg]",
           "top-4 right-24 md:top-50 md:right-34 rotate-[8.33deg]",
           "top-24 -right-10 md:top-80 md:right-0 rotate-[-18.53deg]"
         ];
