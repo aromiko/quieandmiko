@@ -69,7 +69,7 @@ export default function MainHero({
         const positions = [
           "bottom-18 lg:bottom-18 -left-18 rotate-[-101.07deg]",
           "bottom-16 lg:bottom-16 -left-8 rotate-[31.84deg]",
-          "-left-8 top-56 lg:left-24 rotate-[-15.95deg] lg:rotate-[-4.95deg]",
+          "-left-8 top-50 lg:left-24 rotate-[-15.95deg] lg:rotate-[-4.95deg]",
           "top-16 right-24 lg:top-30 lg:right-34 rotate-[8.33deg]",
           "top-28 -right-10 lg:top-60 lg:right-0 rotate-[-18.53deg]",
           "bottom-48 -right-2 lg:bottom-32 lg:right-48 rotate-[-5.93deg]"
