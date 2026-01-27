@@ -20,7 +20,9 @@ const SimpleBlockStory = ({
       <div className="absolute z-10 flex aspect-[10/7] w-full lg:h-[700px] lg:w-[1000px] lg:pb-16 lg:pt-8">
         <div className="flex w-1/2 flex-col items-center justify-center lg:ml-24 lg:p-8">
           {simpleBlockTitle && (
-            <h2 className="ml-22 mb-12 lg:mb-0 lg:ml-0">{simpleBlockTitle}</h2>
+            <h2 className="ml-18 mb-12 text-4xl md:text-5xl lg:mb-0 lg:ml-0 lg:text-6xl">
+              {simpleBlockTitle}
+            </h2>
           )}
           {simpleBlockBody1 && (
             <p className="hidden text-sm lg:mr-16 lg:mt-4 lg:block">
@@ -37,7 +39,7 @@ const SimpleBlockStory = ({
           {simpleBlockImage2 && (
             <BasicMedia
               data={simpleBlockImage2}
-              wrapperCssClass="w-[60%] lg:w-[463px] lg:h-[308px] absolute z-10 rotate-[-6.65deg] bottom-10 right-2 lg:-bottom-20 lg:-right-40 aspect-[1.5/1]"
+              wrapperCssClass="w-[60%] lg:w-[463px] lg:h-[308px] absolute z-10 rotate-[-6.65deg] bottom-10 right-2 lg:-bottom-20 lg:-right-20 aspect-[1.5/1]"
             />
           )}
           {simpleBlockImage3 && (
