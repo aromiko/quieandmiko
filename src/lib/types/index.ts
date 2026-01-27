@@ -10,6 +10,7 @@ export type { TypeComponentFooter } from "@/lib/types/component-blocks/TypeCompo
 export type { TypeComponentHeader } from "@/lib/types/component-blocks/TypeComponentHeader";
 export type { TypeComponentHero } from "@/lib/types/component-blocks/TypeComponentHero";
 export type { TypeComponentMainHero } from "@/lib/types/component-blocks/TypeComponentMainHero";
+export type { TypeComponentSimpleBlock } from "@/lib/types/component-blocks/TypeComponentSimpleBlock";
 
 //Page Templates
 export type { TypePageContentItem } from "@/lib/types/page-templates/TypePageContentItem";

@@ -2,11 +2,13 @@ import {
   TypeComponentFooter,
   TypeComponentHeader,
   TypeComponentHero,
-  TypeComponentMainHero
+  TypeComponentMainHero,
+  TypeComponentSimpleBlock
 } from "@/lib/types";
 
 export type TypePageContentItem =
   | TypeComponentHeader
   | TypeComponentFooter
   | TypeComponentHero
-  | TypeComponentMainHero;
+  | TypeComponentMainHero
+  | TypeComponentSimpleBlock;

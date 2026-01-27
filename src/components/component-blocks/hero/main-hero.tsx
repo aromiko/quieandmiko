@@ -11,7 +11,7 @@ export default function MainHero({
   mainHeroImagesCollection
 }: TypeComponentMainHero) {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-12 py-16">
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-8 py-16 lg:px-12">
       <div>
         {mainHeroMonogram && (
           <BasicMedia
