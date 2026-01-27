@@ -31,7 +31,7 @@ const SimpleBlockInvitation = ({
         {simpleBlockImage3 && (
           <BasicMedia
             data={simpleBlockImage3}
-            wrapperCssClass="w-40 md:w-50 lg:w-[200px] lg:h-[200px] aspect-[1/1]"
+            wrapperCssClass="mt-4 lg:mt-0 w-40 md:w-50 lg:w-[200px] lg:h-[200px] aspect-[1/1]"
           />
         )}
       </div>
