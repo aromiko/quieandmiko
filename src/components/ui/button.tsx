@@ -13,7 +13,7 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+          "border shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
         secondary:
           "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
         ghost:
@@ -22,14 +22,48 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5 text-base",
+        lg: "h-10 rounded-md px-6 has-[>svg]:px-4 text-base lg:text-lg",
         icon: "size-9"
+      },
+      inverted: {
+        true: "",
+        false: ""
       }
     },
+    compoundVariants: [
+      // Default inverted
+      {
+        variant: "default",
+        inverted: true,
+        className: "bg-white/90 text-black hover:bg-white"
+      },
+
+      // Outline inverted
+      {
+        variant: "outline",
+        inverted: true,
+        className: "border-white/60 text-white hover:bg-white/10"
+      },
+
+      // Ghost inverted
+      {
+        variant: "ghost",
+        inverted: true,
+        className: "text-white hover:bg-white/10"
+      },
+
+      // Link inverted
+      {
+        variant: "link",
+        inverted: true,
+        className: "text-white hover:text-white/80"
+      }
+    ],
     defaultVariants: {
       variant: "default",
-      size: "default"
+      size: "default",
+      inverted: false
     }
   }
 );
@@ -38,6 +72,7 @@ function Button({
   className,
   variant,
   size,
+  inverted,
   asChild = false,
   ...props
 }: React.ComponentProps<"button"> &
@@ -49,7 +84,7 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, inverted, className }))}
       {...props}
     />
   );
