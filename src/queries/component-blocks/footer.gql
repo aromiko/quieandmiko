@@ -1,7 +1,15 @@
+#import "@/queries/building-blocks/basic-media.gql"
+
 fragment FooterFragment on ComponentFooter {
   sys {
     id
   }
   __typename
-  footerName
+  footerText
+  footerBackground {
+    ...BasicMediaFragment
+  }
+  footerLogo {
+    ...BasicMediaFragment
+  }
 }

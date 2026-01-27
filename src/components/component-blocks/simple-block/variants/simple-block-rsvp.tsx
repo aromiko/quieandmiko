@@ -18,7 +18,7 @@ const SimpleBlockRsvp = ({
           <BasicMedia
             data={{ ...simpleBlockImage1, basicMediaFill: true }}
             wrapperCssClass="w-full h-full"
-            imageCssClass="object-cover"
+            imageCssClass="object-cover object-left lg:object-center"
           />
         </div>
       )}
