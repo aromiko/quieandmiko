@@ -10,15 +10,13 @@ export default function MainHero({
   mainHeroDateBadge,
   mainHeroImagesCollection
 }: TypeComponentMainHero) {
-  console.log(mainHeroImagesCollection);
-
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-12 py-16">
       <div>
         {mainHeroMonogram && (
           <BasicMedia
             data={mainHeroMonogram}
-            wrapperCssClass="w-50 h-50 md:w-[350px] md:h-[350px] z-10"
+            wrapperCssClass="w-50 h-50 lg:w-[350px] lg:h-[350px] z-10"
           />
         )}
       </div>
@@ -39,9 +37,9 @@ export default function MainHero({
           const [first, , second] = mainHeroTitle.split(" ");
 
           return (
-            <h1 className="font-script z-10 text-7xl text-[#5b1a12] md:text-9xl">
+            <h1 className="font-script text-wine z-10 text-7xl lg:text-9xl">
               <span>{first}</span>{" "}
-              <span className="relative -top-6 mx-1 inline-block rotate-[-20deg] text-5xl md:-top-8 md:text-7xl">
+              <span className="relative -top-6 mx-1 inline-block rotate-[-20deg] text-5xl lg:-top-8 lg:text-7xl">
                 and
               </span>{" "}
               <span className="-ml-5">{second}</span>
@@ -63,32 +61,32 @@ export default function MainHero({
       {mainHeroDateBadge && (
         <BasicMedia
           data={mainHeroDateBadge}
-          wrapperCssClass="h-40 w-40 md:h-[240px] md:w-[240px] z-10 -mt-10 md:-mt-16"
+          wrapperCssClass="h-40 w-40 lg:h-[240px] lg:w-[240px] z-10 -mt-10 lg:-mt-16"
         />
       )}
 
       {mainHeroImagesCollection?.items.map((image, index) => {
         const positions = [
-          "top-56 -left-18 md:top-56 md:-left-18 rotate-[-101.07deg]",
-          "top-62 -left-8 md:top-62 md:-left-8 rotate-[31.84deg]",
-          "bottom-32 -left-2 md:bottom-32 md:left-24 rotate-[-15.95deg] md:rotate-[-4.95deg]",
-          "top-4 right-24 md:top-50 md:right-34 rotate-[8.33deg]",
-          "top-24 -right-10 md:top-80 md:right-0 rotate-[-18.53deg]"
+          "top-56 -left-18 lg:top-56 lg:-left-18 rotate-[-101.07deg]",
+          "top-62 -left-8 lg:top-62 lg:-left-8 rotate-[31.84deg]",
+          "bottom-32 -left-2 lg:bottom-32 lg:left-24 rotate-[-15.95deg] lg:rotate-[-4.95deg]",
+          "top-4 right-24 lg:top-50 lg:right-34 rotate-[8.33deg]",
+          "top-24 -right-10 lg:top-80 lg:right-0 rotate-[-18.53deg]"
         ];
 
         const sizes = [
-          "w-[170px] h-[240px] md:w-[255px] md:h-[360px]",
-          "w-[120px] h-[150px] md:w-[198px] md:h-[248px]",
-          "w-[150px] h-[96px] md:w-[218px] md:h-[141px]",
-          "w-[112px] h-[150px] md:w-[158px] md:h-[211px]",
-          "w-[150px] h-[200px] md:w-[186px] md:h-[248px]"
+          "w-[170px] h-[240px] lg:w-[255px] lg:h-[360px]",
+          "w-[120px] h-[150px] lg:w-[198px] lg:h-[248px]",
+          "w-[150px] h-[96px] lg:w-[218px] lg:h-[141px]",
+          "w-[112px] h-[150px] lg:w-[158px] lg:h-[211px]",
+          "w-[150px] h-[200px] lg:w-[186px] lg:h-[248px]"
         ];
 
         return (
           <div
             key={index}
             className={cn(
-              "outline-6 saturate absolute z-0 shadow-lg outline-white",
+              "outline-6 saturate shadow-lg/50 absolute z-0 outline-white",
               positions[index] ?? ""
             )}
           >

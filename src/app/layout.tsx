@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ApercuPro.variable} ${ApercuMono.variable} ${ProximaSera.variable} ${KuenstlerScript.variable} antialiased`}
+        className={`${ApercuPro.variable} ${ApercuMono.variable} ${ProximaSera.variable} ${KuenstlerScript.variable}`}
       >
         {children}
         <Toaster position="top-center" />
