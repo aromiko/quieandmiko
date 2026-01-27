@@ -26,4 +26,7 @@ fragment SimpleBlockFragment on ComponentSimpleBlock {
   simpleBlockImage4 {
     ...BasicMediaFragment
   }
+  simpleBlockImage5 {
+    ...BasicMediaFragment
+  }
 }
