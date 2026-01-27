@@ -67,11 +67,12 @@ export default function MainHero({
 
       {mainHeroImagesCollection?.items.map((image, index) => {
         const positions = [
-          "top-56 -left-18 lg:top-56 lg:-left-18 rotate-[-101.07deg]",
-          "top-62 -left-8 lg:top-62 lg:-left-8 rotate-[31.84deg]",
-          "bottom-32 -left-2 lg:bottom-32 lg:left-24 rotate-[-15.95deg] lg:rotate-[-4.95deg]",
-          "top-4 right-24 lg:top-50 lg:right-34 rotate-[8.33deg]",
-          "top-24 -right-10 lg:top-80 lg:right-0 rotate-[-18.53deg]"
+          "bottom-18 lg:bottom-18 -left-18 rotate-[-101.07deg]",
+          "bottom-16 lg:bottom-16 -left-8 rotate-[31.84deg]",
+          "-left-8 top-56 lg:left-24 rotate-[-15.95deg] lg:rotate-[-4.95deg]",
+          "top-16 right-24 lg:top-30 lg:right-34 rotate-[8.33deg]",
+          "top-28 -right-10 lg:top-60 lg:right-0 rotate-[-18.53deg]",
+          "bottom-48 -right-2 lg:bottom-32 lg:right-48 rotate-[-5.93deg]"
         ];
 
         const sizes = [
@@ -79,7 +80,8 @@ export default function MainHero({
           "w-[120px] h-[150px] lg:w-[198px] lg:h-[248px]",
           "w-[150px] h-[96px] lg:w-[218px] lg:h-[141px]",
           "w-[112px] h-[150px] lg:w-[158px] lg:h-[211px]",
-          "w-[150px] h-[200px] lg:w-[186px] lg:h-[248px]"
+          "w-[150px] h-[200px] lg:w-[186px] lg:h-[248px]",
+          "w-[120px] h-[120px] lg:w-[160px] lg:h-[160px]"
         ];
 
         return (

@@ -111,8 +111,8 @@
   --popover: oklch(20.5% 0 0deg);
   --popover-foreground: var(--color-cream);
 
-  --primary: var(--color-cream);
-  --primary-foreground: var(--color-wine);
+  --primary: var(--color-wine);
+  --primary-foreground: var(--color-cream);
 
   --secondary: color-mix(in oklab, var(--color-sugar) 55%, black);
   --secondary-foreground: var(--color-cream);

@@ -14,9 +14,10 @@ export interface TypeComponentSimpleBlock extends TypeComponentBase {
   simpleBlockBody1?: string;
   simpleBlockBody2?: string;
   simpleBlockCta?: TypeComponentBasicLink;
-  simpleBlockVariant?: "image" | "invitation" | "rsvp" | "story";
+  simpleBlockVariant?: "gallery" | "image" | "invitation" | "rsvp" | "story";
   simpleBlockImage1?: TypeComponentBasicMedia;
   simpleBlockImage2?: TypeComponentBasicMedia;
   simpleBlockImage3?: TypeComponentBasicMedia;
   simpleBlockImage4?: TypeComponentBasicMedia;
+  simpleBlockImage5?: TypeComponentBasicMedia;
 }
