@@ -10,7 +10,8 @@ export const ComponentRegistry = {
   Footer: "ComponentFooter",
   Header: "ComponentHeader",
   Hero: "ComponentHero",
-  MainHero: "ComponentMainHero"
+  MainHero: "ComponentMainHero",
+  SimpleBlock: "ComponentSimpleBlock"
 } as const;
 
 export type ComponentTypenames =

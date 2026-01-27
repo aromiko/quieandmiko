@@ -13,9 +13,12 @@ import {
   TypeComponentHeader,
   TypeComponentHero,
   TypeComponentMainHero,
+  TypeComponentSimpleBlock,
   TypePageContentItem
 } from "@/lib/types";
 import { JSX } from "react";
+
+import SimpleBlock from "../../simple-block/simple-block";
 
 interface ComponentSelectorProps {
   data: TypePageContentItem;
@@ -38,6 +41,8 @@ export default function ComponentSelector({
       return <Hero {...(data as TypeComponentHero)} />;
     case ComponentRegistry.MainHero:
       return <MainHero {...(data as TypeComponentMainHero)} />;
+    case ComponentRegistry.SimpleBlock:
+      return <SimpleBlock {...(data as TypeComponentSimpleBlock)} />;
     default:
       // Fallback for __typename values that are valid strings but have no matching component.
       // The initial console.warn can be here or in the ComponentRenderer.

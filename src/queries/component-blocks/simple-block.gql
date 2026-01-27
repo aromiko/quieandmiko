@@ -1,0 +1,29 @@
+#import "@/queries/building-blocks/basic-link.gql"
+#import "@/queries/building-blocks/basic-media.gql"
+
+fragment SimpleBlockFragment on ComponentSimpleBlock {
+  sys {
+    id
+  }
+  __typename
+  simpleBlockTitle
+  simpleBlockSubtitle
+  simpleBlockBody1
+  simpleBlockBody2
+  simpleBlockCta {
+    ...BasicLinkFragment
+  }
+  simpleBlockVariant
+  simpleBlockImage1 {
+    ...BasicMediaFragment
+  }
+  simpleBlockImage2 {
+    ...BasicMediaFragment
+  }
+  simpleBlockImage3 {
+    ...BasicMediaFragment
+  }
+  simpleBlockImage4 {
+    ...BasicMediaFragment
+  }
+}
