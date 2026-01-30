@@ -14,7 +14,7 @@ const SimpleBlockRsvp = ({
     <section className="h-144 relative overflow-hidden">
       {/* Background image */}
       {simpleBlockImage1 && (
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 -left-12 z-0 lg:left-0">
           <BasicMedia
             data={{ ...simpleBlockImage1, basicMediaFill: true }}
             wrapperCssClass="w-full h-full"

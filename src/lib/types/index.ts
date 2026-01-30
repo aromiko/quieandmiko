@@ -6,6 +6,8 @@ export type { TypeComponentBasicLinkList } from "@/lib/types/building-blocks/Typ
 //Component Blocks
 export type { TypeComponentBasicMedia } from "@/lib/types/building-blocks/TypeComponentBasicMedia";
 export type { TypeComponentMedia } from "@/lib/types/building-blocks/TypeComponentMedia";
+export type { TypeComponentAttireBlock } from "@/lib/types/component-blocks/TypeComponentAttireBlock";
+export type { TypeComponentAttireCard } from "@/lib/types/component-blocks/TypeComponentAttireCard";
 export type { TypeComponentFooter } from "@/lib/types/component-blocks/TypeComponentFooter";
 export type { TypeComponentHeader } from "@/lib/types/component-blocks/TypeComponentHeader";
 export type { TypeComponentHero } from "@/lib/types/component-blocks/TypeComponentHero";

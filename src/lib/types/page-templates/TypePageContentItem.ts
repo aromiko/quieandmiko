@@ -1,4 +1,5 @@
 import {
+  TypeComponentAttireBlock,
   TypeComponentFooter,
   TypeComponentHeader,
   TypeComponentHero,
@@ -11,4 +12,5 @@ export type TypePageContentItem =
   | TypeComponentFooter
   | TypeComponentHero
   | TypeComponentMainHero
-  | TypeComponentSimpleBlock;
+  | TypeComponentSimpleBlock
+  | TypeComponentAttireBlock;

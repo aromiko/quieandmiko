@@ -1,0 +1,17 @@
+#import "@/queries/component-blocks/attire-card.gql"
+
+fragment AttireBlockFragment on ComponentAttireBlock {
+  sys {
+    id
+  }
+  __typename
+  attireBlockTitle
+  attireBlockBody
+  attireBlockCardsCollection(limit: 3) {
+    items {
+      ... on ComponentAttireCard {
+        ...AttireCardFragment
+      }
+    }
+  }
+}

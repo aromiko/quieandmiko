@@ -7,7 +7,7 @@ export default function Footer({
   footerLogo
 }: TypeComponentFooter) {
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center justify-center">
+    <section className="h-144 relative flex w-full flex-col items-center justify-center">
       {footerBackground && (
         <div className="absolute inset-0 z-0">
           <BasicMedia

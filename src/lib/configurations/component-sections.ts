@@ -5,7 +5,9 @@ export const ComponentSections = {
   Main: [
     ComponentRegistry.Hero,
     ComponentRegistry.MainHero,
-    ComponentRegistry.SimpleBlock
+    ComponentRegistry.SimpleBlock,
+    ComponentRegistry.AttireCard,
+    ComponentRegistry.AttireBlock
   ],
   Footer: [ComponentRegistry.Footer]
 };

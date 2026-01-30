@@ -11,7 +11,7 @@ export default function MainHero({
   mainHeroImagesCollection
 }: TypeComponentMainHero) {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-8 py-16 lg:px-12">
+    <section className="relative flex h-screen flex-col items-center justify-center overflow-hidden px-8 py-16 lg:px-12">
       <div>
         {mainHeroMonogram && (
           <BasicMedia
@@ -22,7 +22,7 @@ export default function MainHero({
       </div>
 
       {mainHeroInitials1 && (
-        <div className="absolute left-12 top-16 flex flex-col items-center space-y-1 font-mono text-base leading-none text-[#B6AE94]">
+        <div className="absolute left-12 top-12 flex flex-col items-center space-y-1 font-mono text-base leading-none text-[#B6AE94] lg:top-16">
           {mainHeroInitials1
             .split(".")
             .filter(Boolean)
@@ -48,7 +48,7 @@ export default function MainHero({
         })()}
 
       {mainHeroInitials2 && (
-        <div className="absolute bottom-16 right-12 flex flex-col items-center space-y-1 font-mono text-base leading-none text-[#B6AE94]">
+        <div className="absolute bottom-12 right-12 flex flex-col items-center space-y-1 font-mono text-base leading-none text-[#B6AE94] lg:bottom-16">
           {mainHeroInitials2
             .split(".")
             .filter(Boolean)
@@ -67,12 +67,12 @@ export default function MainHero({
 
       {mainHeroImagesCollection?.items.map((image, index) => {
         const positions = [
-          "bottom-18 lg:bottom-18 -left-18 rotate-[-101.07deg]",
-          "bottom-16 lg:bottom-16 -left-8 rotate-[31.84deg]",
-          "-left-8 top-50 lg:left-24 rotate-[-15.95deg] lg:rotate-[-4.95deg]",
-          "top-16 right-24 lg:top-30 lg:right-34 rotate-[8.33deg]",
-          "top-28 -right-10 lg:top-60 lg:right-0 rotate-[-18.53deg]",
-          "bottom-48 -right-2 lg:bottom-32 lg:right-48 rotate-[-5.93deg]"
+          "bottom-8 lg:bottom-18 -left-24 lg:-left-18 rotate-[-101.07deg]",
+          "bottom-6 -left-10 lg:bottom-16 lg:-left-8 rotate-[31.84deg]",
+          "-left-12 top-40 lg:left-24 rotate-[-10.95deg] lg:rotate-[-4.95deg]",
+          "top-4 right-10 lg:top-30 lg:right-34 rotate-[8.33deg]",
+          "top-22 -right-18 lg:top-60 lg:right-0 rotate-[-8.53deg] lg:rotate-[-18.53deg]",
+          "bottom-44 -right-6 lg:bottom-32 lg:right-48 rotate-[-5.93deg]"
         ];
 
         const sizes = [
