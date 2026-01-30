@@ -44,14 +44,14 @@ const TimelineItem = ({
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
-            className="mt-8 h-96"
+            className="h-120 mt-8 lg:h-96"
           />
         )}
 
         {timelineItemBodyImage && (
           <BasicMedia
             data={timelineItemBodyImage}
-            wrapperCssClass="mt-8 w-full h-96 overflow-hidden"
+            wrapperCssClass="mt-8 w-full h-120 lg:h-96 overflow-hidden"
             imageCssClass="object-cover object-top"
           />
         )}
