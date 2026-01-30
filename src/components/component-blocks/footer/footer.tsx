@@ -1,13 +1,19 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
 import { TypeComponentFooter } from "@/lib/types";
+import { cn } from "@/lib/utils/classnames";
 
 export default function Footer({
   footerText,
   footerBackground,
-  footerLogo
+  footerLogo,
+  footerVariant
 }: TypeComponentFooter) {
   return (
-    <section className="h-144 relative flex w-full flex-col items-center justify-center">
+    <section
+      className={cn("h-144 relative flex w-full flex-col", {
+        "items-center": footerVariant === "center"
+      })}
+    >
       {footerBackground && (
         <div className="absolute inset-0 z-0">
           <BasicMedia
