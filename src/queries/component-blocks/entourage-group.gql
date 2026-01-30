@@ -1,0 +1,10 @@
+#import "@/queries/building-blocks/text.gql"
+
+fragment EntourageGroupFragment on ComponentEntourageGroup {
+  sys {
+    id
+  }
+  __typename
+  entourageGroupTitle
+  entourageGroupNames
+}

@@ -1,9 +1,11 @@
 import {
+  TypeComponentAttireBlock,
   TypeComponentFooter,
   TypeComponentHeader,
   TypeComponentHero,
   TypeComponentMainHero,
-  TypeComponentSimpleBlock
+  TypeComponentSimpleBlock,
+  TypeComponentTimelineBlock
 } from "@/lib/types";
 
 export type TypePageContentItem =
@@ -11,4 +13,6 @@ export type TypePageContentItem =
   | TypeComponentFooter
   | TypeComponentHero
   | TypeComponentMainHero
-  | TypeComponentSimpleBlock;
+  | TypeComponentSimpleBlock
+  | TypeComponentAttireBlock
+  | TypeComponentTimelineBlock;

@@ -7,4 +7,5 @@ export interface TypeComponentFooter extends TypeComponentBase {
   footerText?: string;
   footerBackground?: TypeComponentBasicMedia;
   footerLogo?: TypeComponentBasicMedia;
+  footerVariant?: "center" | "left";
 }

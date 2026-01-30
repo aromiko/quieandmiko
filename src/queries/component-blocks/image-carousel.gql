@@ -1,0 +1,14 @@
+#import "@/queries/building-blocks/basic-media.gql"
+
+fragment ImageCarouselFragment on ComponentImageCarousel {
+  sys {
+    id
+  }
+  __typename
+  imageCarouselTitle
+  imageCarouselItemsCollection(limit: 5) {
+    items {
+      ...BasicMediaFragment
+    }
+  }
+}

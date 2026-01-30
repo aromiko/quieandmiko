@@ -1,0 +1,21 @@
+#import "@/queries/building-blocks/basic-media.gql"
+#import "@/queries/component-blocks/entourage-group.gql"
+
+fragment EntourageBlockFragment on ComponentEntourageBlock {
+  sys {
+    id
+  }
+  __typename
+  entourageBlockTitle
+  entourageBlockImage {
+    ...BasicMediaFragment
+  }
+  entourageBlockBackgroundImage {
+    ...BasicMediaFragment
+  }
+  entourageBlockGroupsCollection(limit: 9) {
+    items {
+      ...EntourageGroupFragment
+    }
+  }
+}

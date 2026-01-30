@@ -1,0 +1,33 @@
+#import "@/queries/building-blocks/basic-media.gql"
+#import "@/queries/building-blocks/text.gql"
+
+fragment AttireCardFragment on ComponentAttireCard {
+  sys {
+    id
+  }
+  __typename
+  attireCardTitle
+  attireCardMenTitle
+  attireCardMenBody
+  attireCardMenColorsTitle
+  attireCardMenColorsCollection(limit: 3) {
+    items {
+      ... on ComponentText {
+        ...TextFragment
+      }
+    }
+  }
+  attireCardWomenTitle
+  attireCardWomenBody
+  attireCardWomenColorsTitle
+  attireCardWomenColorsCollection(limit: 3) {
+    items {
+      ... on ComponentText {
+        ...TextFragment
+      }
+    }
+  }
+  attireCardBackground {
+    ...BasicMediaFragment
+  }
+}

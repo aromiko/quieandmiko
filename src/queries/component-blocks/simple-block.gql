@@ -17,6 +17,7 @@ fragment SimpleBlockFragment on ComponentSimpleBlock {
   simpleBlockImage1 {
     ...BasicMediaFragment
   }
+  simpleBlockImage1Position
   simpleBlockImage2 {
     ...BasicMediaFragment
   }
@@ -29,4 +30,5 @@ fragment SimpleBlockFragment on ComponentSimpleBlock {
   simpleBlockImage5 {
     ...BasicMediaFragment
   }
+  simpleBlockClassName
 }

@@ -1,5 +1,6 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
 import { TypeComponentSimpleBlock } from "@/lib/types";
+import { cn } from "@/lib/utils/classnames";
 
 const SimpleBlockGallery = ({
   simpleBlockBody1,
@@ -7,15 +8,21 @@ const SimpleBlockGallery = ({
   simpleBlockImage2,
   simpleBlockImage3,
   simpleBlockImage4,
-  simpleBlockImage5
+  simpleBlockImage5,
+  simpleBlockClassName
 }: TypeComponentSimpleBlock) => {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center gap-10 px-8 py-16 lg:flex-row lg:px-12">
+    <section
+      className={cn(
+        "flex flex-col items-center justify-center gap-16 px-8 py-16 lg:flex-row lg:gap-10 lg:px-12",
+        simpleBlockClassName
+      )}
+    >
       <div className="lg:mr-15 flex w-full flex-col items-center gap-16 lg:w-1/2">
         {simpleBlockImage1 && (
           <BasicMedia
             data={simpleBlockImage1}
-            wrapperCssClass="h-[300px] lg:h-[550px] aspect-[9/11]"
+            wrapperCssClass="h-[300px] lg:h-[530px] aspect-[9/11]"
             imageCssClass="object-cover"
           />
         )}

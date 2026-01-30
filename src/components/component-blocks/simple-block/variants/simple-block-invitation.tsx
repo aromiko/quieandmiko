@@ -5,7 +5,8 @@ const SimpleBlockInvitation = ({
   simpleBlockTitle,
   simpleBlockImage1,
   simpleBlockImage2,
-  simpleBlockImage3
+  simpleBlockImage3,
+  simpleBlockImage4
 }: TypeComponentSimpleBlock) => {
   return (
     <section className="bg-wine flex min-h-screen flex-col items-center justify-center px-8 py-16 lg:px-12">
@@ -24,7 +25,14 @@ const SimpleBlockInvitation = ({
         {simpleBlockImage1 && (
           <BasicMedia
             data={simpleBlockImage1}
-            wrapperCssClass="w-full shadow-lg/50 aspect-[1.42/1]"
+            wrapperCssClass="hidden lg:block w-full shadow-lg/50 aspect-[1.42/1]"
+          />
+        )}
+
+        {simpleBlockImage4 && (
+          <BasicMedia
+            data={simpleBlockImage4}
+            wrapperCssClass="block lg:hidden w-full shadow-lg/50 aspect-[1/1.42]"
           />
         )}
 

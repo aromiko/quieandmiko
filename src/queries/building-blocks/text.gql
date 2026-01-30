@@ -1,0 +1,6 @@
+fragment TextFragment on ComponentText {
+  sys {
+    id
+  }
+  textValue
+}
