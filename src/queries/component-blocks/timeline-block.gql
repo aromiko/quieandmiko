@@ -1,0 +1,13 @@
+#import "@/queries/component-blocks/timeline-item.gql"
+
+fragment TimelineBlockFragment on ComponentTimelineBlock {
+  sys {
+    id
+  }
+  __typename
+  timelineBlockItemsCollection(limit: 4) {
+    items {
+      ...TimelineItemFragment
+    }
+  }
+}

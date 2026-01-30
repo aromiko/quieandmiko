@@ -6,8 +6,10 @@ export const ComponentSections = {
     ComponentRegistry.Hero,
     ComponentRegistry.MainHero,
     ComponentRegistry.SimpleBlock,
-    ComponentRegistry.AttireCard,
-    ComponentRegistry.AttireBlock
+    ComponentRegistry.AttireBlock,
+    ComponentRegistry.TimelineBlock,
+    ComponentRegistry.EntourageBlock,
+    ComponentRegistry.ImageCarousel
   ],
   Footer: [ComponentRegistry.Footer]
 };

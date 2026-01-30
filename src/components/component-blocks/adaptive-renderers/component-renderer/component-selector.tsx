@@ -6,6 +6,7 @@ import Header from "@/components/component-blocks/header/header";
 import Hero from "@/components/component-blocks/hero/hero";
 import MainHero from "@/components/component-blocks/hero/main-hero";
 import SimpleBlock from "@/components/component-blocks/simple-block/simple-block";
+import TimelineBlock from "@/components/component-blocks/timeline-block/timeline-block";
 import {
   ComponentRegistry,
   ComponentTypenames
@@ -17,6 +18,7 @@ import {
   TypeComponentHero,
   TypeComponentMainHero,
   TypeComponentSimpleBlock,
+  TypeComponentTimelineBlock,
   TypePageContentItem
 } from "@/lib/types";
 import { JSX } from "react";
@@ -46,6 +48,8 @@ export default function ComponentSelector({
       return <SimpleBlock {...(data as TypeComponentSimpleBlock)} />;
     case ComponentRegistry.AttireBlock:
       return <AttireBlock {...(data as TypeComponentAttireBlock)} />;
+    case ComponentRegistry.TimelineBlock:
+      return <TimelineBlock {...(data as TypeComponentTimelineBlock)} />;
     default:
       // Fallback for __typename values that are valid strings but have no matching component.
       // The initial console.warn can be here or in the ComponentRenderer.

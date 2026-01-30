@@ -13,6 +13,8 @@ export type { TypeComponentHeader } from "@/lib/types/component-blocks/TypeCompo
 export type { TypeComponentHero } from "@/lib/types/component-blocks/TypeComponentHero";
 export type { TypeComponentMainHero } from "@/lib/types/component-blocks/TypeComponentMainHero";
 export type { TypeComponentSimpleBlock } from "@/lib/types/component-blocks/TypeComponentSimpleBlock";
+export type { TypeComponentTimelineBlock } from "@/lib/types/component-blocks/TypeComponentTimelineBlock";
+export type { TypeComponentTimelineItem } from "@/lib/types/component-blocks/TypeComponentTimelineItem";
 
 //Page Templates
 export type { TypePageContentItem } from "@/lib/types/page-templates/TypePageContentItem";

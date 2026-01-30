@@ -22,6 +22,7 @@ export interface TypeComponentSimpleBlock extends TypeComponentBase {
     | "rsvp"
     | "story";
   simpleBlockImage1?: TypeComponentBasicMedia;
+  simpleBlockImage1Position?: "center" | "top" | "bottom";
   simpleBlockImage2?: TypeComponentBasicMedia;
   simpleBlockImage3?: TypeComponentBasicMedia;
   simpleBlockImage4?: TypeComponentBasicMedia;

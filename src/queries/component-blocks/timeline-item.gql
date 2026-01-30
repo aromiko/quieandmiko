@@ -1,0 +1,18 @@
+#import "@/queries/building-blocks/basic-media.gql"
+
+fragment TimelineItemFragment on ComponentTimelineItem {
+  sys {
+    id
+  }
+  __typename
+  timelineItemTime
+  timelineItemTitle
+  timelineItemBody
+  timelineItemBodyImage {
+    ...BasicMediaFragment
+  }
+  timelineItemImage {
+    ...BasicMediaFragment
+  }
+  timelineItemMapLink
+}

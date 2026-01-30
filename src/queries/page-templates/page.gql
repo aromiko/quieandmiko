@@ -3,6 +3,9 @@
 #import "@/queries/component-blocks/main-hero.gql"
 #import "@/queries/component-blocks/attire-block.gql"
 #import "@/queries/component-blocks/simple-block.gql"
+#import "@/queries/component-blocks/timeline-block.gql"
+#import "@/queries/component-blocks/entourage-block.gql"
+#import "@/queries/component-blocks/image-carousel.gql"
 #import "@/queries/page-templates/page-seo.gql"
 
 query QUERY_PAGE_BY_SLUG($slug: String!, $isPreview: Boolean!) {
@@ -33,6 +36,15 @@ query QUERY_PAGE_BY_SLUG($slug: String!, $isPreview: Boolean!) {
           }
           ... on ComponentAttireBlock {
             ...AttireBlockFragment
+          }
+          ... on ComponentTimelineBlock {
+            ...TimelineBlockFragment
+          }
+          ... on ComponentEntourageBlock {
+            ...EntourageBlockFragment
+          }
+          ... on ComponentImageCarousel {
+            ...ImageCarouselFragment
           }
         }
       }

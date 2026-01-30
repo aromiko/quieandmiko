@@ -13,7 +13,11 @@ export const ComponentRegistry = {
   MainHero: "ComponentMainHero",
   SimpleBlock: "ComponentSimpleBlock",
   AttireCard: "ComponentAttireCard",
-  AttireBlock: "ComponentAttireBlock"
+  AttireBlock: "ComponentAttireBlock",
+  TimelineBlock: "ComponentTimelineBlock",
+  TimelineItem: "ComponentTimelineItem",
+  EntourageBlock: "ComponentEntourageBlock",
+  ImageCarousel: "ComponentImageCarousel"
 } as const;
 
 export type ComponentTypenames =
