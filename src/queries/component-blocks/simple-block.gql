@@ -30,4 +30,5 @@ fragment SimpleBlockFragment on ComponentSimpleBlock {
   simpleBlockImage5 {
     ...BasicMediaFragment
   }
+  simpleBlockClassName
 }

@@ -1,14 +1,21 @@
 import { TypeComponentAttireBlock } from "@/lib/types";
+import { cn } from "@/lib/utils/classnames";
 
 import AttireCard from "../attire-card/attire-card";
 
 const AttireBlock = ({
   attireBlockTitle,
   attireBlockBody,
-  attireBlockCardsCollection
+  attireBlockCardsCollection,
+  attireBlockClassName
 }: TypeComponentAttireBlock) => {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center px-8 py-16 lg:px-12">
+    <section
+      className={cn(
+        "flex flex-col items-center justify-center px-8 py-16 lg:px-12",
+        attireBlockClassName
+      )}
+    >
       <h2 className="text-coffee text-7xl">{attireBlockTitle}</h2>
 
       {attireBlockCardsCollection && (

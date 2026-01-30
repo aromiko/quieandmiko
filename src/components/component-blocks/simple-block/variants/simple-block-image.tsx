@@ -7,7 +7,7 @@ const SimpleBlockImage = ({
   simpleBlockImage1Position
 }: TypeComponentSimpleBlock) => {
   return (
-    <section className="h-100 md:h-144 flex items-center justify-center">
+    <section className="h-100 md:h-200 flex items-center justify-center">
       {simpleBlockImage1 && (
         <BasicMedia
           data={simpleBlockImage1}

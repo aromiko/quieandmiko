@@ -7,4 +7,5 @@ export interface TypeComponentAttireBlock extends TypeComponentBase {
   attireBlockTitle?: string;
   attireBlockBody?: string;
   attireBlockCardsCollection?: { items: TypeComponentAttireCard[] };
+  attireBlockClassName?: string;
 }

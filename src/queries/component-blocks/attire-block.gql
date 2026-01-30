@@ -14,4 +14,5 @@ fragment AttireBlockFragment on ComponentAttireBlock {
       }
     }
   }
+  attireBlockClassName
 }

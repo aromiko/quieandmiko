@@ -27,4 +27,5 @@ export interface TypeComponentSimpleBlock extends TypeComponentBase {
   simpleBlockImage3?: TypeComponentBasicMedia;
   simpleBlockImage4?: TypeComponentBasicMedia;
   simpleBlockImage5?: TypeComponentBasicMedia;
+  simpleBlockClassName?: string;
 }
