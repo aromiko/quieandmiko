@@ -1,10 +1,13 @@
 // src/components/component-blocks/adaptive-renderers/component-selector/component-selector.tsx
 // Adjust the path as per your project structure
 import AttireBlock from "@/components/component-blocks/attire-block/attire-block";
+import EntourageBlock from "@/components/component-blocks/entourage-block/entourage-block";
 import Footer from "@/components/component-blocks/footer/footer";
 import Header from "@/components/component-blocks/header/header";
 import Hero from "@/components/component-blocks/hero/hero";
 import MainHero from "@/components/component-blocks/hero/main-hero";
+import ImageCarousel from "@/components/component-blocks/image-carousel/image-carousel";
+import RecommendationBlock from "@/components/component-blocks/recommendation-block/recommendation-block";
 import SimpleBlock from "@/components/component-blocks/simple-block/simple-block";
 import TimelineBlock from "@/components/component-blocks/timeline-block/timeline-block";
 import {
@@ -13,10 +16,13 @@ import {
 } from "@/lib/configurations/component-registry";
 import {
   TypeComponentAttireBlock,
+  TypeComponentEntourageBlock,
   TypeComponentFooter,
   TypeComponentHeader,
   TypeComponentHero,
+  TypeComponentImageCarousel,
   TypeComponentMainHero,
+  TypeComponentRecommendationBlock,
   TypeComponentSimpleBlock,
   TypeComponentTimelineBlock,
   TypePageContentItem
@@ -50,6 +56,15 @@ export default function ComponentSelector({
       return <AttireBlock {...(data as TypeComponentAttireBlock)} />;
     case ComponentRegistry.TimelineBlock:
       return <TimelineBlock {...(data as TypeComponentTimelineBlock)} />;
+    case ComponentRegistry.EntourageBlock:
+      return <EntourageBlock {...(data as TypeComponentEntourageBlock)} />;
+    case ComponentRegistry.RecommendationBlock:
+      return (
+        <RecommendationBlock {...(data as TypeComponentRecommendationBlock)} />
+      );
+    case ComponentRegistry.RecommendationBlock:
+      return <ImageCarousel {...(data as TypeComponentImageCarousel)} />;
+    case ComponentRegistry.ImageCarousel:
     default:
       // Fallback for __typename values that are valid strings but have no matching component.
       // The initial console.warn can be here or in the ComponentRenderer.

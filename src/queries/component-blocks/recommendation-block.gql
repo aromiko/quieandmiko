@@ -1,0 +1,16 @@
+#import "@/queries/building-blocks/basic-media.gql"
+#import "@/queries/component-blocks/recommendation-item.gql"
+
+fragment RecommendationBlockFragment on ComponentRecommendationBlock {
+  sys {
+    id
+  }
+  __typename
+  recommendationBlockTitle
+  recommendationBlockItemsCollection(limit: 5) {
+    items {
+      ...RecommendationItemFragment
+    }
+  }
+  recommendationBlockVariant
+}

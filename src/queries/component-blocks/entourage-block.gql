@@ -13,7 +13,7 @@ fragment EntourageBlockFragment on ComponentEntourageBlock {
   entourageBlockBackgroundImage {
     ...BasicMediaFragment
   }
-  entourageBlockGroupsCollection(limit: 9) {
+  entourageBlockGroupsCollection(limit: 13) {
     items {
       ...EntourageGroupFragment
     }

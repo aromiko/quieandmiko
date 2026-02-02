@@ -6,6 +6,7 @@
 #import "@/queries/component-blocks/timeline-block.gql"
 #import "@/queries/component-blocks/entourage-block.gql"
 #import "@/queries/component-blocks/image-carousel.gql"
+#import "@/queries/component-blocks/recommendation-block.gql"
 #import "@/queries/page-templates/page-seo.gql"
 
 query QUERY_PAGE_BY_SLUG($slug: String!, $isPreview: Boolean!) {
@@ -45,6 +46,9 @@ query QUERY_PAGE_BY_SLUG($slug: String!, $isPreview: Boolean!) {
           }
           ... on ComponentImageCarousel {
             ...ImageCarouselFragment
+          }
+          ... on ComponentRecommendationBlock {
+            ...RecommendationBlockFragment
           }
         }
       }

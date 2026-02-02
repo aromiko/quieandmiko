@@ -11,7 +11,7 @@ export default function MainHero({
   mainHeroImagesCollection
 }: TypeComponentMainHero) {
   return (
-    <section className="relative flex h-screen flex-col items-center justify-center overflow-hidden px-8 py-16 lg:px-12">
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-8 py-16 lg:px-12">
       <div>
         {mainHeroMonogram && (
           <BasicMedia
@@ -61,7 +61,7 @@ export default function MainHero({
       {mainHeroDateBadge && (
         <BasicMedia
           data={mainHeroDateBadge}
-          wrapperCssClass="h-40 w-40 lg:h-[240px] lg:w-[240px] z-10 -mt-10 lg:-mt-16"
+          wrapperCssClass="w-40 lg:w-[240px] z-10 -mt-10 lg:-mt-16 aspect-[1/1]"
         />
       )}
 

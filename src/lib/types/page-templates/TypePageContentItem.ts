@@ -1,12 +1,18 @@
 import {
   TypeComponentAttireBlock,
+  TypeComponentEntourageBlock,
+  TypeComponentEntourageGroup,
   TypeComponentFooter,
   TypeComponentHeader,
   TypeComponentHero,
   TypeComponentMainHero,
+  TypeComponentRecommendationBlock,
+  TypeComponentRecommendationItem,
   TypeComponentSimpleBlock,
   TypeComponentTimelineBlock
 } from "@/lib/types";
+
+import { TypeComponentImageCarousel } from "../component-blocks/TypeComponentImageCarousel";
 
 export type TypePageContentItem =
   | TypeComponentHeader
@@ -15,4 +21,9 @@ export type TypePageContentItem =
   | TypeComponentMainHero
   | TypeComponentSimpleBlock
   | TypeComponentAttireBlock
-  | TypeComponentTimelineBlock;
+  | TypeComponentTimelineBlock
+  | TypeComponentEntourageBlock
+  | TypeComponentEntourageGroup
+  | TypeComponentRecommendationBlock
+  | TypeComponentRecommendationItem
+  | TypeComponentImageCarousel;
