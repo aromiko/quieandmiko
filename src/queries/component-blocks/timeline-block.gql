@@ -1,4 +1,5 @@
 #import "@/queries/component-blocks/timeline-item.gql"
+#import "@/queries/building-blocks/basic-media.gql"
 
 fragment TimelineBlockFragment on ComponentTimelineBlock {
   sys {
@@ -9,5 +10,8 @@ fragment TimelineBlockFragment on ComponentTimelineBlock {
     items {
       ...TimelineItemFragment
     }
+  }
+  timelineBlockBackgroundImage {
+    ...BasicMediaFragment
   }
 }

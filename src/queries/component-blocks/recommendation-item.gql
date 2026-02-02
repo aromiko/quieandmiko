@@ -1,0 +1,18 @@
+#import "@/queries/building-blocks/basic-media.gql"
+
+fragment RecommendationItemFragment on ComponentRecommendationItem {
+  sys {
+    id
+  }
+  __typename
+  recommendationItemTitle
+  recommendationItemNumber
+  recommendationItemBody1
+  recommendationItemBody2
+  recommendationItemImage {
+    ...BasicMediaFragment
+  }
+  recommendationItemBackgroundImage {
+    ...BasicMediaFragment
+  }
+}

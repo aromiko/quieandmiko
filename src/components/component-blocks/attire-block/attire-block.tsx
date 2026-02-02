@@ -16,7 +16,7 @@ const AttireBlock = ({
         attireBlockClassName
       )}
     >
-      <h2 className="text-coffee text-7xl">{attireBlockTitle}</h2>
+      <h2 className="text-coffee text-7xl lg:text-8xl">{attireBlockTitle}</h2>
 
       {attireBlockCardsCollection && (
         <div className="mt-12 flex w-full flex-col flex-wrap items-center justify-center gap-6 lg:flex-row">
@@ -26,7 +26,7 @@ const AttireBlock = ({
         </div>
       )}
 
-      <p className="text-coffee mt-10 max-w-md text-center font-mono text-sm font-light">
+      <p className="text-coffee mt-10 max-w-md text-center font-mono text-sm font-light lg:text-base">
         {attireBlockBody}
       </p>
     </section>

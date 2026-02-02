@@ -1,4 +1,5 @@
 #import "@/queries/building-blocks/basic-media.gql"
+#import "@/queries/building-blocks/basic-link.gql"
 
 fragment FooterFragment on ComponentFooter {
   sys {
@@ -13,4 +14,9 @@ fragment FooterFragment on ComponentFooter {
     ...BasicMediaFragment
   }
   footerVariant
+  footerLinksCollection(limit: 5) {
+    items {
+      ...BasicLinkFragment
+    }
+  }
 }
