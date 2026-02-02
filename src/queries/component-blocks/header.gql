@@ -15,4 +15,5 @@ fragment HeaderFragment on ComponentHeader {
       ...BasicLinkFragment
     }
   }
+  headerVariant
 }

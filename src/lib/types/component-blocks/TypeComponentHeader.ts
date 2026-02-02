@@ -11,4 +11,6 @@ export interface TypeComponentHeader extends TypeComponentBase {
   headerName: string;
   headerLogo?: TypeComponentBasicMedia;
   headerLinksCollection?: { items: TypeComponentBasicLink[] };
+  headerVariant?: "solid" | "transparent";
+  headerScrolled?: boolean;
 }

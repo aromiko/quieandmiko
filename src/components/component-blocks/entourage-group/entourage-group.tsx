@@ -8,14 +8,17 @@ const EntourageGroup = ({
 }: TypeComponentEntourageGroup) => {
   return (
     <article className={cn("flex flex-col", entourageGroupClassName)}>
-      <h3 className="font-serif text-2xl text-white lg:h-7">
+      <h3 className="font-serif text-xl text-white lg:h-7 lg:text-2xl">
         {entourageGroupTitle}
       </h3>
 
       {entourageGroupNames && entourageGroupNames.length > 0 && (
         <ul className="mt-6">
           {entourageGroupNames.map((name, index) => (
-            <li key={index} className="pl-6 text-xl font-light text-white">
+            <li
+              key={index}
+              className="pl-6 text-lg font-light text-white lg:text-xl"
+            >
               {name}
             </li>
           ))}

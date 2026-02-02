@@ -26,7 +26,7 @@ const AttireBlock = ({
         </div>
       )}
 
-      <p className="text-coffee mt-10 max-w-md text-center font-mono text-sm font-light">
+      <p className="text-coffee mt-10 max-w-md text-center font-mono text-sm font-light lg:text-base">
         {attireBlockBody}
       </p>
     </section>

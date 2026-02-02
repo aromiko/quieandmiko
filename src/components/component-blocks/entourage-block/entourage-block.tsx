@@ -10,7 +10,6 @@ const EntourageBlock = ({
   entourageBlockImage,
   entourageBlockGroupsCollection
 }: TypeComponentEntourageBlock) => {
-  console.log(entourageBlockGroupsCollection?.items[0].entourageGroupNames);
   return (
     <section className="container relative mx-auto flex flex-col items-center justify-center px-8 py-16 lg:px-32">
       {entourageBlockTitle && (

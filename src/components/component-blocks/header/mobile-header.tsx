@@ -18,9 +18,10 @@ type MobileHeaderProps = {
     linkText?: string | null;
     linkUrl?: string | null;
   }[];
+  variant?: "solid" | "transparent";
 };
 
-export default function MobileHeader({ links }: MobileHeaderProps) {
+export default function MobileHeader({ links, variant }: MobileHeaderProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -28,7 +29,11 @@ export default function MobileHeader({ links }: MobileHeaderProps) {
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <button aria-label="Open menu" className="p-2">
-            <Menu className="h-6 w-6" />
+            <Menu
+              className={cn("text-cream h-6 w-6", {
+                "group-data-[scrolled=false]:text-wine": variant === "solid"
+              })}
+            />
           </button>
         </SheetTrigger>
 

@@ -39,7 +39,7 @@ const SimpleBlockStory = ({
           {simpleBlockImage2 && (
             <BasicMedia
               data={simpleBlockImage2}
-              wrapperCssClass="w-[60%] lg:w-[463px] lg:h-[308px] absolute z-10 rotate-[-6.65deg] bottom-10 right-2 lg:-bottom-20 lg:-right-20 aspect-[1.5/1]"
+              wrapperCssClass="w-[50%] lg:w-[400px] absolute z-10 rotate-[-6.65deg] bottom-15 right-5 lg:-bottom-10 lg:-right-20 aspect-[1.5/1]"
             />
           )}
           {simpleBlockImage3 && (
