@@ -7,8 +7,12 @@ fragment RecommendationItemFragment on ComponentRecommendationItem {
   __typename
   recommendationItemTitle
   recommendationItemNumber
-  recommendationItemBody
+  recommendationItemBody1
+  recommendationItemBody2
   recommendationItemImage {
+    ...BasicMediaFragment
+  }
+  recommendationItemBackgroundImage {
     ...BasicMediaFragment
   }
 }

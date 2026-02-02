@@ -6,6 +6,9 @@ export interface TypeComponentRecommendationItem extends TypeComponentBase {
   sys: { id: string };
   recommendationItemTitle?: string;
   recommendationItemNumber?: string;
-  recommendationItemBody?: string;
+  recommendationItemBody1?: string;
+  recommendationItemBody2?: string;
   recommendationItemImage?: TypeComponentBasicMedia;
+  recommendationItemBackgroundImage?: TypeComponentBasicMedia;
+  recommendationItemClassName?: string;
 }
