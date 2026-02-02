@@ -4,7 +4,12 @@ import { TypeComponentHeader } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
 import Link from "next/link";
 
-export default function Header({ headerLogo }: TypeComponentHeader) {
+import MobileHeader from "./mobile-header";
+
+export default function Header({
+  headerLogo,
+  headerLinksCollection
+}: TypeComponentHeader) {
   return (
     <div className="justify-items-center">
       <div className="container flex items-center justify-between p-4 font-bold">
@@ -20,16 +25,22 @@ export default function Header({ headerLogo }: TypeComponentHeader) {
           Quie & Miko
         </Link>
 
-        <ul>
-          <li className="font-serif">
-            <Link
-              href="/rsvp"
-              className={cn(buttonVariants({ variant: "link" }))}
-            >
-              RSVP
-            </Link>
-          </li>
+        {/* Desktop nav */}
+        <ul className="hidden flex-row gap-4 md:flex">
+          {headerLinksCollection?.items?.map((headerLink, index) => (
+            <li className="font-serif" key={index}>
+              <Link
+                href={headerLink.linkUrl ?? "/"}
+                className={cn(buttonVariants({ variant: "link" }))}
+              >
+                {headerLink.linkText}
+              </Link>
+            </li>
+          ))}
         </ul>
+
+        {/* Mobile nav (client) */}
+        <MobileHeader links={headerLinksCollection?.items ?? []} />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import SectionRenderer from "@/components/component-blocks/adaptive-renderers/section-renderer/section-renderer";
+import PageTransition from "@/components/component-blocks/animation-wrapper/page-transition";
 import { ComponentSections } from "@/lib/configurations/component-sections";
 import { TypePageContentItem } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
@@ -50,14 +51,16 @@ export default async function Page({
         sectionAs="header"
         className="sticky top-0 z-50"
       />
-      <main className={cn(mainClassName)}>
-        {injectedComponent}
-        <SectionRenderer
-          components={mainComponents}
-          sectionAs="div"
-          className="w-full"
-        />
-      </main>
+      <PageTransition>
+        <main className={cn(mainClassName)}>
+          {injectedComponent}
+          <SectionRenderer
+            components={mainComponents}
+            sectionAs="div"
+            className="w-full"
+          />
+        </main>
+      </PageTransition>
       <SectionRenderer components={footerComponents} sectionAs="footer" />
     </>
   );
