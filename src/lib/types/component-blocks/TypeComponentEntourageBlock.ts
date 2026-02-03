@@ -10,4 +10,6 @@ export interface TypeComponentEntourageBlock extends TypeComponentBase {
   entourageBlockImage?: TypeComponentBasicMedia;
   entourageBlockGroupsCollection?: { items: TypeComponentEntourageGroup[] };
   entourageBlockBackgroundImage?: TypeComponentBasicMedia;
+  entourageBlockBackgroundOverlay?: TypeComponentBasicMedia;
+  entourageBlockClassName?: string;
 }

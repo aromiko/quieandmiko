@@ -15,7 +15,7 @@ const positions = [
   "-left-12 top-40 lg:left-24 rotate-[-10.95deg] lg:rotate-[-4.95deg]",
   "top-4 right-10 lg:top-30 lg:right-34 rotate-[8.33deg]",
   "top-22 -right-18 lg:top-60 lg:right-0 rotate-[-8.53deg] lg:rotate-[-18.53deg]",
-  "bottom-44 -right-6 lg:bottom-32 lg:right-48 rotate-[-5.93deg]"
+  "bottom-44 -right-6 lg:bottom-20 lg:right-48 rotate-[-5.93deg]"
 ];
 
 const sizes = [

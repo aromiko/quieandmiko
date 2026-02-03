@@ -16,13 +16,13 @@ export default function HeaderVisibility({
     const onScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > 150) {
+      if (currentScrollY > 64) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
 
-      if (currentScrollY > lastScrollY.current && currentScrollY > 150) {
+      if (currentScrollY > lastScrollY.current && currentScrollY > 64) {
         setHidden(true);
       } else {
         setHidden(false);

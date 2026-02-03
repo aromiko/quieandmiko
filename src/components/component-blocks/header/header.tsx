@@ -12,14 +12,15 @@ export default function Header({
   headerVariant
 }: TypeComponentHeader) {
   return (
-    <div className="group-data-[scrolled=true]:bg-coffee/40 h-16 justify-items-center bg-transparent transition duration-300">
-      <div className="flex w-full items-center justify-between p-4 font-bold lg:container">
+    <div className="h-16 justify-items-center bg-transparent transition duration-300 group-data-[scrolled=true]:bg-black/40">
+      <div className="mx-auto flex w-full items-center justify-between p-4 font-bold lg:container">
         <Link
           href="/"
           className={cn(
+            "p-0",
             buttonVariants({ variant: "link" }),
             {
-              "group-data-[scrolled=false]:filter-[brightness(0)_saturate(100%)_invert(10%)_sepia(23%)_saturate(7489%)_hue-rotate(350deg)_brightness(95%)_contrast(92%)]":
+              "group-data-[scrolled=true]:filter-[brightness(0)_invert(1)]":
                 headerVariant === "solid"
             },
             "hover:opacity-50"
