@@ -1,15 +1,18 @@
 "use client";
 
-import { buttonVariants } from "@/components/ui/button";
+import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger
 } from "@/components/ui/sheet";
+import { TypeComponentBasicMedia } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -19,9 +22,14 @@ type MobileHeaderProps = {
     linkUrl?: string | null;
   }[];
   variant?: "solid" | "transparent";
+  logo?: TypeComponentBasicMedia;
 };
 
-export default function MobileHeader({ links, variant }: MobileHeaderProps) {
+export default function MobileHeader({
+  links,
+  variant,
+  logo
+}: MobileHeaderProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -39,10 +47,25 @@ export default function MobileHeader({ links, variant }: MobileHeaderProps) {
 
         <SheetContent
           side="right"
-          className="w-[280px] transition-transform duration-300 ease-out"
+          className="w-[280px] transition-transform duration-300 ease-out [&>button]:hidden"
         >
-          <SheetHeader>
-            <SheetTitle className="font-serif text-xl">Quie & Miko</SheetTitle>
+          <SheetHeader className="flex h-16 flex-row items-center justify-between p-0 px-4">
+            <SheetTitle>
+              {logo && (
+                <Link
+                  href="/"
+                  className={cn("filter-[brightness(0)]", "hover:opacity-50")}
+                >
+                  <BasicMedia data={logo} wrapperCssClass="w-16 h-16" />
+                </Link>
+              )}
+            </SheetTitle>
+
+            <SheetClose asChild>
+              <Button aria-label="Close menu" variant={"outline"} size={"icon"}>
+                <X className="size-6" />
+              </Button>
+            </SheetClose>
           </SheetHeader>
 
           <nav className="mt-6">

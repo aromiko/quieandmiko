@@ -13,7 +13,7 @@ export default function Header({
 }: TypeComponentHeader) {
   return (
     <div className="h-16 justify-items-center bg-transparent transition duration-300 group-data-[scrolled=true]:bg-black/40">
-      <div className="mx-auto flex w-full items-center justify-between p-4 font-bold lg:container">
+      <nav className="mx-auto flex h-full w-full items-center justify-between px-4 font-bold lg:container">
         <Link
           href="/"
           className={cn(
@@ -55,8 +55,9 @@ export default function Header({
         <MobileHeader
           links={headerLinksCollection?.items ?? []}
           variant={headerVariant}
+          logo={headerLogo}
         />
-      </div>
+      </nav>
     </div>
   );
 }

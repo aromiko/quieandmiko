@@ -1,4 +1,5 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
+import TimelineMapEmbed from "@/components/component-blocks/timeline-item/timeline-map-embed";
 import { TypeComponentTimelineItem } from "@/lib/types";
 
 const TimelineItem = ({
@@ -20,6 +21,7 @@ const TimelineItem = ({
             </h2>
           )}
         </div>
+
         {timelineItemImage && (
           <BasicMedia
             data={timelineItemImage}
@@ -27,26 +29,19 @@ const TimelineItem = ({
           />
         )}
       </div>
+
       <div className="flex w-full flex-col lg:w-2/3">
         {timelineItemTitle && (
           <h2 className="hidden font-serif text-3xl text-white lg:block">
             {timelineItemTitle}
           </h2>
         )}
+
         {timelineItemBody && (
           <p className="text-lg font-light lg:mt-4">{timelineItemBody}</p>
         )}
-        {timelineItemMapLink && (
-          <iframe
-            src={timelineItemMapLink}
-            width="100%"
-            style={{ border: 0 }}
-            loading="lazy"
-            allowFullScreen
-            referrerPolicy="no-referrer-when-downgrade"
-            className="h-120 mt-8 lg:h-96"
-          />
-        )}
+
+        {timelineItemMapLink && <TimelineMapEmbed src={timelineItemMapLink} />}
 
         {timelineItemBodyImage && (
           <BasicMedia
