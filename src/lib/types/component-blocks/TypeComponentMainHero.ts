@@ -11,4 +11,5 @@ export interface TypeComponentMainHero extends TypeComponentBase {
   mainHeroMonogram?: TypeComponentBasicMedia;
   mainHeroDateBadge?: TypeComponentBasicMedia;
   mainHeroImagesCollection?: { items: TypeComponentBasicMedia[] };
+  mainHeroClassName?: string;
 }

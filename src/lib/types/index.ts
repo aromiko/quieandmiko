@@ -14,6 +14,7 @@ export type { TypeComponentFooter } from "@/lib/types/component-blocks/TypeCompo
 export type { TypeComponentHeader } from "@/lib/types/component-blocks/TypeComponentHeader";
 export type { TypeComponentHero } from "@/lib/types/component-blocks/TypeComponentHero";
 export type { TypeComponentImageCarousel } from "@/lib/types/component-blocks/TypeComponentImageCarousel";
+export type { TypeComponentImageCarouselBlock } from "@/lib/types/component-blocks/TypeComponentImageCarouselBlock";
 export type { TypeComponentMainHero } from "@/lib/types/component-blocks/TypeComponentMainHero";
 export type { TypeComponentRecommendationBlock } from "@/lib/types/component-blocks/TypeComponentRecommendationBlock";
 export type { TypeComponentRecommendationItem } from "@/lib/types/component-blocks/TypeComponentRecommendationItem";

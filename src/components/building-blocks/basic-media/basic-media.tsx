@@ -1,19 +1,27 @@
 import { BasicMediaLink } from "@/components/building-blocks/basic-media/basic-media-link/basic-media-with-link";
-import Image from "next/image";
 import { TypeComponentBasicMedia } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
+import Image from "next/image";
 
 interface BasicMediaProps {
   data: TypeComponentBasicMedia;
   imageCssClass?: string;
   wrapperCssClass?: string;
+  sizes?: string;
+  decorative?: boolean;
 }
 
 export default function BasicMedia({
   data,
   imageCssClass,
-  wrapperCssClass
+  wrapperCssClass,
+  sizes,
+  decorative = false
 }: BasicMediaProps) {
+  const altText = decorative
+    ? ""
+    : data.basicMediaAltText || data.basicMediaImage.description || "";
+
   if (data.basicMediaFill) {
     return (
       <BasicMediaLink
@@ -24,12 +32,10 @@ export default function BasicMedia({
           <Image
             className={imageCssClass}
             src={data.basicMediaImage.url}
-            alt={
-              data.basicMediaAltText ||
-              data.basicMediaImage.description ||
-              "Basic media image"
-            }
+            alt={altText}
+            aria-hidden={decorative}
             fill={true}
+            sizes={sizes || "100vw"}
             loading={data.basicMediaEager ? "eager" : "lazy"}
             priority={data.basicMediaPriority}
           />
@@ -47,11 +53,8 @@ export default function BasicMedia({
         <Image
           className={imageCssClass}
           src={data.basicMediaImage.url}
-          alt={
-            data.basicMediaAltText ||
-            data.basicMediaImage.description ||
-            "Basic media image"
-          }
+          alt={altText}
+          aria-hidden={decorative}
           height={data.basicMediaHeight || data.basicMediaImage.height}
           width={data.basicMediaWidth || data.basicMediaImage.width}
           loading={data.basicMediaEager ? "eager" : "lazy"}

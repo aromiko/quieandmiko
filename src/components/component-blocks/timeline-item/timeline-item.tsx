@@ -1,4 +1,5 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
+import TimelineMapEmbed from "@/components/component-blocks/timeline-item/timeline-map-embed";
 import { TypeComponentTimelineItem } from "@/lib/types";
 
 const TimelineItem = ({
@@ -20,39 +21,35 @@ const TimelineItem = ({
             </h2>
           )}
         </div>
+
         {timelineItemImage && (
           <BasicMedia
             data={timelineItemImage}
             wrapperCssClass="w-40 md:w-50 w-[100px] lg:w-[150px] lg:h-[150px] aspect-[1/1] lg:mb-22"
+            sizes="(min-width: 1024px) 150px, 100px"
           />
         )}
       </div>
+
       <div className="flex w-full flex-col lg:w-2/3">
         {timelineItemTitle && (
           <h2 className="hidden font-serif text-3xl text-white lg:block">
             {timelineItemTitle}
           </h2>
         )}
+
         {timelineItemBody && (
           <p className="text-lg font-light lg:mt-4">{timelineItemBody}</p>
         )}
-        {timelineItemMapLink && (
-          <iframe
-            src={timelineItemMapLink}
-            width="100%"
-            style={{ border: 0 }}
-            loading="lazy"
-            allowFullScreen
-            referrerPolicy="no-referrer-when-downgrade"
-            className="h-120 mt-8 lg:h-96"
-          />
-        )}
+
+        {timelineItemMapLink && <TimelineMapEmbed src={timelineItemMapLink} />}
 
         {timelineItemBodyImage && (
           <BasicMedia
             data={timelineItemBodyImage}
             wrapperCssClass="mt-8 w-full h-120 lg:h-96 overflow-hidden"
             imageCssClass="object-cover object-top"
+            sizes="(min-width: 1024px) 66vw, 100vw"
           />
         )}
       </div>

@@ -16,7 +16,7 @@ const EntourageGroup = ({
         <ul className="mt-6">
           {entourageGroupNames.map((name, index) => (
             <li
-              key={index}
+              key={name + index}
               className="pl-6 text-lg font-light text-white lg:text-xl"
             >
               {name}

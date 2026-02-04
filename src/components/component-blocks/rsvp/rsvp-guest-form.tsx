@@ -78,7 +78,7 @@ export default function RsvpGuestForm({
 
   return (
     <section className="mx-auto max-w-4xl space-y-6 p-6">
-      <h1>{"Répondez s'il vous plaît"}</h1>
+      <h1 lang="fr">{"Répondez s'il vous plaît"}</h1>
 
       <div className="space-y-2">
         <p>
@@ -112,7 +112,7 @@ export default function RsvpGuestForm({
         </div>
       )}
 
-      <p className="text-muted-foreground text-base">
+      <p aria-live="polite" className="text-muted-foreground text-base">
         {"You've confirmed "}
         <strong className="font-mono">
           {Object.values(responses).filter((v) => v === true).length}
@@ -122,7 +122,7 @@ export default function RsvpGuestForm({
       </p>
 
       {hasUnanswered && (
-        <p className="text-destructive text-sm">
+        <p role="alert" className="text-destructive text-sm">
           Please select Yes or No for all guests.
         </p>
       )}

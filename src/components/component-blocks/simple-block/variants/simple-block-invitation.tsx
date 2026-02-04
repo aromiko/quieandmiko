@@ -19,6 +19,7 @@ const SimpleBlockInvitation = ({
           <BasicMedia
             data={simpleBlockImage2}
             wrapperCssClass="w-40 md:w-50 lg:w-[200px] lg:h-[200px] aspect-[1/1]"
+            sizes="(min-width: 1024px) 200px, (min-width: 768px) 200px, 160px"
           />
         )}
 
@@ -26,6 +27,7 @@ const SimpleBlockInvitation = ({
           <BasicMedia
             data={simpleBlockImage1}
             wrapperCssClass="hidden lg:block w-full shadow-lg/50 aspect-[1.42/1]"
+            sizes="(min-width: 1024px) 60vw, 0px"
           />
         )}
 
@@ -33,6 +35,7 @@ const SimpleBlockInvitation = ({
           <BasicMedia
             data={simpleBlockImage4}
             wrapperCssClass="block lg:hidden w-full shadow-lg/50 aspect-[1/1.42]"
+            sizes="(min-width: 1024px) 0px, 100vw"
           />
         )}
 
@@ -40,6 +43,7 @@ const SimpleBlockInvitation = ({
           <BasicMedia
             data={simpleBlockImage3}
             wrapperCssClass="mt-4 lg:mt-0 w-40 md:w-50 lg:w-[200px] lg:h-[200px] aspect-[1/1]"
+            sizes="(min-width: 1024px) 200px, (min-width: 768px) 200px, 160px"
           />
         )}
       </div>

@@ -15,6 +15,7 @@ const SimpleBlockStory = ({
         <BasicMedia
           data={simpleBlockImage1}
           wrapperCssClass="w-full lg:w-[1000px] lg:h-[700px] lg:absolute aspect-[10/7]"
+          sizes="(min-width: 1024px) 1000px, 100vw"
         />
       )}
       <div className="absolute z-10 flex aspect-[10/7] w-full lg:h-[700px] lg:w-[1000px] lg:pb-16 lg:pt-8">
@@ -40,12 +41,14 @@ const SimpleBlockStory = ({
             <BasicMedia
               data={simpleBlockImage2}
               wrapperCssClass="w-[50%] lg:w-[400px] absolute z-10 rotate-[-6.65deg] bottom-15 right-5 lg:-bottom-10 lg:-right-20 aspect-[1.5/1]"
+              sizes="(min-width: 1024px) 400px, 50vw"
             />
           )}
           {simpleBlockImage3 && (
             <BasicMedia
               data={simpleBlockImage3}
               wrapperCssClass="w-1/2 lg:w-[213px] mr-14 mb-14 lg:mb-0 lg:mr-0 lg:h-[319px] aspect-[0.67/1]"
+              sizes="(min-width: 1024px) 213px, 50vw"
             />
           )}
         </div>

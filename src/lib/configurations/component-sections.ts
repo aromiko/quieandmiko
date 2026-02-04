@@ -10,7 +10,7 @@ export const ComponentSections = {
     ComponentRegistry.TimelineBlock,
     ComponentRegistry.EntourageBlock,
     ComponentRegistry.RecommendationBlock,
-    ComponentRegistry.ImageCarousel
+    ComponentRegistry.ImageCarouselBlock
   ],
   Footer: [ComponentRegistry.Footer]
 };

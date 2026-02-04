@@ -1,5 +1,6 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
 import { TypeComponentMainHero } from "@/lib/types";
+import { cn } from "@/lib/utils/classnames";
 
 import HeroImages from "./main-hero-images";
 
@@ -9,14 +10,21 @@ export default function MainHero({
   mainHeroInitials1,
   mainHeroInitials2,
   mainHeroDateBadge,
-  mainHeroImagesCollection
+  mainHeroImagesCollection,
+  mainHeroClassName
 }: TypeComponentMainHero) {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-8 py-16 lg:px-12">
+    <section
+      className={cn(
+        "relative flex min-h-[calc(100vh-64px)] flex-col items-center justify-center overflow-hidden px-8 py-16 lg:px-12",
+        mainHeroClassName
+      )}
+    >
       {mainHeroMonogram && (
         <BasicMedia
           data={mainHeroMonogram}
           wrapperCssClass="w-50 h-50 lg:w-[350px] lg:h-[350px] z-10"
+          sizes="(min-width: 1024px) 350px, 200px"
         />
       )}
 
@@ -61,6 +69,7 @@ export default function MainHero({
         <BasicMedia
           data={mainHeroDateBadge}
           wrapperCssClass="w-40 lg:w-[240px] z-10 -mt-10 lg:-mt-16 aspect-[1/1]"
+          sizes="(min-width: 1024px) 240px, 160px"
         />
       )}
 

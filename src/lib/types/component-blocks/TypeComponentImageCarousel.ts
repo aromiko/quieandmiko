@@ -6,4 +6,5 @@ export interface TypeComponentImageCarousel extends TypeComponentBase {
   sys: { id: string };
   imageCarouselTitle?: string;
   imageCarouselItemsCollection?: { items: TypeComponentBasicMedia[] };
+  imageCarouselClassName?: string;
 }

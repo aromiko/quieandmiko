@@ -24,6 +24,7 @@ const AttireCard = ({
             data={{ ...attireCardBackground, basicMediaFill: true }}
             wrapperCssClass="w-full h-full"
             imageCssClass="object-cover object-left lg:object-center"
+            sizes="(min-width: 768px) 410px, 311px"
           />
         </div>
       )}

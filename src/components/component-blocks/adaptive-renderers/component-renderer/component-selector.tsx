@@ -6,7 +6,7 @@ import Footer from "@/components/component-blocks/footer/footer";
 import Header from "@/components/component-blocks/header/header";
 import Hero from "@/components/component-blocks/hero/hero";
 import MainHero from "@/components/component-blocks/hero/main-hero";
-import ImageCarousel from "@/components/component-blocks/image-carousel/image-carousel";
+import ImageCarouselBlock from "@/components/component-blocks/image-carousel-block/image-carousel-block";
 import RecommendationBlock from "@/components/component-blocks/recommendation-block/recommendation-block";
 import SimpleBlock from "@/components/component-blocks/simple-block/simple-block";
 import TimelineBlock from "@/components/component-blocks/timeline-block/timeline-block";
@@ -20,7 +20,7 @@ import {
   TypeComponentFooter,
   TypeComponentHeader,
   TypeComponentHero,
-  TypeComponentImageCarousel,
+  TypeComponentImageCarouselBlock,
   TypeComponentMainHero,
   TypeComponentRecommendationBlock,
   TypeComponentSimpleBlock,
@@ -62,9 +62,11 @@ export default function ComponentSelector({
       return (
         <RecommendationBlock {...(data as TypeComponentRecommendationBlock)} />
       );
-    case ComponentRegistry.RecommendationBlock:
-      return <ImageCarousel {...(data as TypeComponentImageCarousel)} />;
-    case ComponentRegistry.ImageCarousel:
+    case ComponentRegistry.ImageCarouselBlock:
+      return (
+        <ImageCarouselBlock {...(data as TypeComponentImageCarouselBlock)} />
+      );
+    case ComponentRegistry.ImageCarouselBlock:
     default:
       // Fallback for __typename values that are valid strings but have no matching component.
       // The initial console.warn can be here or in the ComponentRenderer.

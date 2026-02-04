@@ -14,6 +14,7 @@ const SimpleBlockBanner = ({
             data={simpleBlockImage1}
             wrapperCssClass="w-full h-full"
             imageCssClass="object-cover object-left lg:object-center"
+            sizes="100vw"
           />
         </div>
       )}

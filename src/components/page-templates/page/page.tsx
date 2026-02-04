@@ -51,7 +51,7 @@ export default async function Page({
         <SectionRenderer components={headerComponents} sectionAs="header" />
       </HeaderVisibility>
       <PageTransition>
-        <main className={cn(mainClassName)}>
+        <main id="main-content" className={cn("scroll-mt-16", mainClassName)}>
           {injectedComponent}
           <SectionRenderer
             components={mainComponents}

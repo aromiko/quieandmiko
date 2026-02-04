@@ -18,4 +18,8 @@ fragment EntourageBlockFragment on ComponentEntourageBlock {
       ...EntourageGroupFragment
     }
   }
+  entourageBlockBackgroundOverlay {
+    ...BasicMediaFragment
+  }
+  entourageBlockClassName
 }
