@@ -15,4 +15,5 @@ fragment RecommendationItemFragment on ComponentRecommendationItem {
   recommendationItemBackgroundImage {
     ...BasicMediaFragment
   }
+  recommendationItemLink
 }

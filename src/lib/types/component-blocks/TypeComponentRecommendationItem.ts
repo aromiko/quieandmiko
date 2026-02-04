@@ -11,4 +11,5 @@ export interface TypeComponentRecommendationItem extends TypeComponentBase {
   recommendationItemImage?: TypeComponentBasicMedia;
   recommendationItemBackgroundImage?: TypeComponentBasicMedia;
   recommendationItemClassName?: string;
+  recommendationItemLink?: string;
 }
