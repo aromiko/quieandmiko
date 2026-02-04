@@ -11,11 +11,24 @@ const {
   SSR_REVALIDATE_TIME
 } = process.env;
 
+// Validate required environment variables
+if (!CONTENTFUL_SPACE_ID) {
+  throw new Error(
+    "[GraphQLService]: CONTENTFUL_SPACE_ID environment variable is required but not set"
+  );
+}
+
 // Determine access token based on API mode
 const accessToken =
   CONTENTFUL_API_MODE === "delivery"
     ? CONTENTFUL_DELIVERY_ACCESS_TOKEN
     : CONTENTFUL_PREVIEW_ACCESS_TOKEN;
+
+if (!accessToken) {
+  throw new Error(
+    `[GraphQLService]: Access token is required but not set. Please set ${CONTENTFUL_API_MODE === "delivery" ? "CONTENTFUL_DELIVERY_ACCESS_TOKEN" : "CONTENTFUL_PREVIEW_ACCESS_TOKEN"} environment variable`
+  );
+}
 
 // Fallbacks from default settings
 const environment =
