@@ -19,6 +19,7 @@ export const ComponentRegistry = {
   EntourageBlock: "ComponentEntourageBlock",
   EntourageGroup: "ComponentEntourageGroup",
   ImageCarousel: "ComponentImageCarousel",
+  ImageCarouselBlock: "ComponentImageCarouselBlock",
   RecommendationBlock: "ComponentRecommendationBlock",
   RecommendationItem: "ComponentRecommendationItem"
 } as const;

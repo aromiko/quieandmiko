@@ -36,13 +36,18 @@ export default function MobileHeader({
     <div className="md:hidden">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
-          <button aria-label="Open menu" className="p-2">
+          <Button
+            aria-label="Open menu"
+            className="p-2"
+            variant={"ghost"}
+            size={"icon"}
+          >
             <Menu
-              className={cn("text-cream h-6 w-6", {
+              className={cn("text-cream size-6", {
                 "group-data-[scrolled=false]:text-wine": variant === "solid"
               })}
             />
-          </button>
+          </Button>
         </SheetTrigger>
 
         <SheetContent
@@ -71,7 +76,7 @@ export default function MobileHeader({
           <nav className="mt-6">
             <ul className="flex flex-col gap-4">
               {links.map((link, index) => (
-                <li key={index}>
+                <li key={link.linkText ? link.linkText + index : index}>
                   <Link
                     href={link.linkUrl ?? "/"}
                     onClick={() => setOpen(false)}

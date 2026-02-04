@@ -1,0 +1,14 @@
+#import "@/queries/component-blocks/image-carousel.gql"
+
+fragment ImageCarouselBlockFragment on ComponentImageCarouselBlock {
+  sys {
+    id
+  }
+  __typename
+  imageCarouselBlockTitle
+  imageCarouselBlockSlidersCollection(limit: 2) {
+    items {
+      ...ImageCarouselFragment
+    }
+  }
+}

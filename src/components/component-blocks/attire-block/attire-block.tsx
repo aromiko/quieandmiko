@@ -20,8 +20,8 @@ const AttireBlock = ({
 
       {attireBlockCardsCollection && (
         <div className="mt-12 flex w-full flex-col flex-wrap items-center justify-center gap-6 lg:flex-row">
-          {attireBlockCardsCollection.items.map((attireCard, index) => {
-            return <AttireCard key={index} {...attireCard} />;
+          {attireBlockCardsCollection.items.map((attireCard) => {
+            return <AttireCard key={attireCard.sys.id} {...attireCard} />;
           })}
         </div>
       )}

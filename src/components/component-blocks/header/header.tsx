@@ -34,7 +34,10 @@ export default function Header({
         {/* Desktop nav */}
         <ul className="hidden flex-row gap-4 md:flex">
           {headerLinksCollection?.items?.map((headerLink, index) => (
-            <li className={cn("font-serif")} key={index}>
+            <li
+              className={cn("font-serif")}
+              key={headerLink.linkText ? headerLink.linkText + index : index}
+            >
               <Link
                 href={headerLink.linkUrl ?? "/"}
                 className={cn(

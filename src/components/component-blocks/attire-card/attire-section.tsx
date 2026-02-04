@@ -41,7 +41,7 @@ const AttireSection = ({
         <div className="mt-4 flex">
           {colorsCollection.items.map((color, index) => (
             <div
-              key={index}
+              key={color.textValue ?? index}
               className="size-[30px]"
               style={{ backgroundColor: `#${color.textValue}` }}
             />

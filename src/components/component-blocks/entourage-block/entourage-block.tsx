@@ -50,7 +50,7 @@ const EntourageBlock = ({
           entourageBlockGroupsCollection?.items.length > 0 &&
           entourageBlockGroupsCollection?.items.map((entourageGroup, index) => (
             <EntourageGroup
-              key={index}
+              key={entourageGroup.sys.id}
               {...entourageGroup}
               entourageGroupClassName={cn("w-full md:w-1/2", {
                 "mt-16": entourageGroup.entourageGroupTitle && index > 0,
