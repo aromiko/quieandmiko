@@ -4,11 +4,12 @@ export function middleware(req: NextRequest) {
   const auth = req.cookies.get("site_auth")?.value;
   const sitePassword = process.env.SITE_PASSWORD;
 
+  // In development or if no password is set, allow access
   if (!sitePassword) {
-    console.error(
-      "[Middleware]: SITE_PASSWORD environment variable is not set"
+    console.warn(
+      "[Middleware]: SITE_PASSWORD environment variable is not set - allowing access"
     );
-    return new NextResponse("Internal Server Error", { status: 500 });
+    return NextResponse.next();
   }
 
   if (!auth || auth !== sitePassword) {

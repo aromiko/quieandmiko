@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  env: {
+    SITE_PASSWORD: process.env.SITE_PASSWORD
+  },
   webpack: (config) => {
     const fileLoaderRule = config.module.rules.find(
       (rule: any) => rule.test && rule.test.test && rule.test.test(".svg")
