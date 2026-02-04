@@ -30,5 +30,9 @@ fragment SimpleBlockFragment on ComponentSimpleBlock {
   simpleBlockImage5 {
     ...BasicMediaFragment
   }
+  simpleBlockMoreInfo
+  simpleBlockMoreInfoLink {
+    ...BasicLinkFragment
+  }
   simpleBlockClassName
 }

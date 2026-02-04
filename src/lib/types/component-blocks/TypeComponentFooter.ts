@@ -1,5 +1,9 @@
 import { ComponentRegistry } from "@/lib/configurations/component-registry";
-import { TypeComponentBase, TypeComponentBasicMedia } from "@/lib/types";
+import {
+  TypeComponentBase,
+  TypeComponentBasicLink,
+  TypeComponentBasicMedia
+} from "@/lib/types";
 
 export interface TypeComponentFooter extends TypeComponentBase {
   __typename: typeof ComponentRegistry.Footer;
@@ -8,4 +12,5 @@ export interface TypeComponentFooter extends TypeComponentBase {
   footerBackground?: TypeComponentBasicMedia;
   footerLogo?: TypeComponentBasicMedia;
   footerVariant?: "center" | "left";
+  footerLinksCollection?: { items: TypeComponentBasicLink[] };
 }

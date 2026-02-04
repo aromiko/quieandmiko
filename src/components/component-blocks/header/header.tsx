@@ -27,7 +27,11 @@ export default function Header({
           )}
         >
           {headerLogo && (
-            <BasicMedia data={headerLogo} wrapperCssClass="w-16 h-16" />
+            <BasicMedia
+              data={headerLogo}
+              wrapperCssClass="w-16 h-16"
+              sizes="64px"
+            />
           )}
         </Link>
 

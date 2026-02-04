@@ -1,18 +1,20 @@
 import { BasicMediaLink } from "@/components/building-blocks/basic-media/basic-media-link/basic-media-with-link";
-import Image from "next/image";
 import { TypeComponentBasicMedia } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
+import Image from "next/image";
 
 interface BasicMediaProps {
   data: TypeComponentBasicMedia;
   imageCssClass?: string;
   wrapperCssClass?: string;
+  sizes?: string;
 }
 
 export default function BasicMedia({
   data,
   imageCssClass,
-  wrapperCssClass
+  wrapperCssClass,
+  sizes
 }: BasicMediaProps) {
   if (data.basicMediaFill) {
     return (
@@ -30,6 +32,7 @@ export default function BasicMedia({
               "Basic media image"
             }
             fill={true}
+            sizes={sizes || "100vw"}
             loading={data.basicMediaEager ? "eager" : "lazy"}
             priority={data.basicMediaPriority}
           />

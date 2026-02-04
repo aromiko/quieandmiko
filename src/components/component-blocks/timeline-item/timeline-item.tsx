@@ -26,6 +26,7 @@ const TimelineItem = ({
           <BasicMedia
             data={timelineItemImage}
             wrapperCssClass="w-40 md:w-50 w-[100px] lg:w-[150px] lg:h-[150px] aspect-[1/1] lg:mb-22"
+            sizes="(min-width: 1024px) 150px, 100px"
           />
         )}
       </div>
@@ -48,6 +49,7 @@ const TimelineItem = ({
             data={timelineItemBodyImage}
             wrapperCssClass="mt-8 w-full h-120 lg:h-96 overflow-hidden"
             imageCssClass="object-cover object-top"
+            sizes="(min-width: 1024px) 66vw, 100vw"
           />
         )}
       </div>

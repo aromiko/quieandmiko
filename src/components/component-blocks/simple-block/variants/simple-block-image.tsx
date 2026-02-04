@@ -4,10 +4,12 @@ import { cn } from "@/lib/utils/classnames";
 
 const SimpleBlockImage = ({
   simpleBlockImage1,
-  simpleBlockImage1Position
+  simpleBlockImage1Position,
+  simpleBlockMoreInfo,
+  simpleBlockMoreInfoLink
 }: TypeComponentSimpleBlock) => {
   return (
-    <section className="h-100 md:h-200 flex items-center justify-center">
+    <section className="h-100 md:h-200 flex flex-col items-center justify-center">
       {simpleBlockImage1 && (
         <BasicMedia
           data={simpleBlockImage1}
@@ -16,7 +18,23 @@ const SimpleBlockImage = ({
             "object-top": simpleBlockImage1Position === "top",
             "object-bottom": simpleBlockImage1Position === "bottom"
           })}
+          sizes="(min-width: 1024px) 715px, (min-width: 768px) 550px, 300px"
         />
+      )}
+      {simpleBlockMoreInfo && (
+        <div className="display mt-16 text-center">
+          <p className="font-mono text-lg font-light">{simpleBlockMoreInfo}</p>
+          {simpleBlockMoreInfoLink && (
+            <a
+              href={simpleBlockMoreInfoLink.linkUrl}
+              className="text-wine font-serif text-2xl hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {simpleBlockMoreInfoLink.linkText}
+            </a>
+          )}
+        </div>
       )}
     </section>
   );

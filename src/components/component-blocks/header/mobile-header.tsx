@@ -61,7 +61,11 @@ export default function MobileHeader({
                   href="/"
                   className={cn("filter-[brightness(0)]", "hover:opacity-50")}
                 >
-                  <BasicMedia data={logo} wrapperCssClass="w-16 h-16" />
+                  <BasicMedia
+                    data={logo}
+                    wrapperCssClass="w-16 h-16"
+                    sizes="64px"
+                  />
                 </Link>
               )}
             </SheetTitle>

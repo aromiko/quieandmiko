@@ -28,6 +28,7 @@ const EntourageBlock = ({
           data={entourageBlockImage}
           wrapperCssClass="aspect-[0.81/1] w-[100px] lg:w-[141px] absolute right-2 lg:right-24 top-32 z-10"
           imageCssClass="object-cover object-left lg:object-center"
+          sizes="(min-width: 1024px) 141px, 100px"
         />
       )}
 

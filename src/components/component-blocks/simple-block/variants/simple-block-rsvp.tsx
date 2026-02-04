@@ -19,6 +19,7 @@ const SimpleBlockRsvp = ({
             data={{ ...simpleBlockImage1, basicMediaFill: true }}
             wrapperCssClass="w-full h-full"
             imageCssClass="object-cover object-left lg:object-center"
+            sizes="100vw"
           />
         </div>
       )}
@@ -59,6 +60,7 @@ const SimpleBlockRsvp = ({
             <BasicMedia
               data={simpleBlockImage2}
               wrapperCssClass="w-[450px] aspect-[2.8/1] shadow-lg/50 rotate-[-8.47deg] lg:-ml-40 mt-20 lg:mt-50"
+              sizes="450px"
             />
           )}
         </div>

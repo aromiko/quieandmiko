@@ -79,6 +79,7 @@ export default function HeroImages({ images }: MainHeroImagesProps) {
               "saturate-[0.2]": index === 1,
               [sizes[index]]: true
             })}
+            sizes="(min-width: 1024px) 360px, 240px"
           />
         </motion.div>
       ))}

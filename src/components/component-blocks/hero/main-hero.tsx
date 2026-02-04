@@ -24,6 +24,7 @@ export default function MainHero({
         <BasicMedia
           data={mainHeroMonogram}
           wrapperCssClass="w-50 h-50 lg:w-[350px] lg:h-[350px] z-10"
+          sizes="(min-width: 1024px) 350px, 200px"
         />
       )}
 
@@ -68,6 +69,7 @@ export default function MainHero({
         <BasicMedia
           data={mainHeroDateBadge}
           wrapperCssClass="w-40 lg:w-[240px] z-10 -mt-10 lg:-mt-16 aspect-[1/1]"
+          sizes="(min-width: 1024px) 240px, 160px"
         />
       )}
 

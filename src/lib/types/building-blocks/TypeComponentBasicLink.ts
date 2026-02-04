@@ -1,4 +1,6 @@
-export interface TypeComponentBasicLink {
+import { TypeComponentBase } from "./TypeComponentBase";
+
+export interface TypeComponentBasicLink extends TypeComponentBase {
   basicLinkName: string;
   linkText?: string;
   linkUrl?: string;
