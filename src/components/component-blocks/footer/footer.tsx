@@ -44,8 +44,9 @@ export default function Footer({
                 href={footerLink.linkUrl || ""}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:opacity-50"
+                className="hover:opacity-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
                 key={footerLink.linkText}
+                aria-label={`Visit our ${footerLink.linkText} (opens in new tab)`}
               >
                 {Icon && (
                   <Icon

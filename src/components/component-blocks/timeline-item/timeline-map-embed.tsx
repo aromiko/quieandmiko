@@ -21,6 +21,7 @@ export default function TimelineMapEmbed({ src }: TimelineMapEmbedProps) {
 
       <iframe
         src={src}
+        title="Map location"
         loading="lazy"
         allowFullScreen
         referrerPolicy="no-referrer-when-downgrade"

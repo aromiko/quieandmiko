@@ -47,7 +47,10 @@ export default function ImageSlides({
     <div className="w-full">
       {/* Swipe hint outside */}
       <div className="mb-2 text-right font-mono text-xs uppercase tracking-widest text-neutral-500">
-        Swipe to view
+        <span aria-hidden="true">Swipe to view</span>
+        <span className="sr-only">
+          Use left and right arrow keys or swipe to navigate slides
+        </span>
       </div>
 
       <Carousel
@@ -57,6 +60,7 @@ export default function ImageSlides({
           loop: true
         }}
         className="group relative w-full"
+        aria-label="Image carousel"
       >
         <CarouselContent>
           {slides.map((slide, i) => (
@@ -93,12 +97,20 @@ export default function ImageSlides({
         <CarouselNext className="right-2 bg-black/30 text-white hover:bg-black/50" />
 
         {/* Indicators */}
-        <div className="mt-4 flex gap-1 px-2">
+        <div
+          className="mt-4 flex gap-1 px-2"
+          role="tablist"
+          aria-label="Slide indicators"
+        >
           {slides.map((_, i) => (
-            <span
+            <button
               key={i}
+              role="tab"
+              aria-selected={i === current}
+              aria-label={`Go to slide ${i + 1} of ${slides.length}`}
+              onClick={() => api?.scrollTo(i)}
               className={cn(
-                "h-[2px] w-full transition-colors duration-300",
+                "h-[2px] w-full cursor-pointer transition-colors duration-300",
                 i === current ? "bg-wine" : "bg-neutral-300"
               )}
             />

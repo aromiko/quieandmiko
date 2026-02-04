@@ -31,7 +31,7 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
           <Monogram />
           <div className="mt-10 flex gap-4">
-            <Label htmlFor="rsvp-code-input">Password:</Label>
+            <Label htmlFor="page-password">Password:</Label>
             <Input
               id="page-password"
               placeholder="Enter password"

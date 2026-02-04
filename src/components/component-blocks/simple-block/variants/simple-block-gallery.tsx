@@ -77,11 +77,12 @@ const SimpleBlockGallery = ({
           {simpleBlockMoreInfoLink && (
             <a
               href={simpleBlockMoreInfoLink.linkUrl}
-              className="text-wine font-serif text-2xl hover:underline"
+              className="text-wine font-serif text-2xl hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2"
               target="_blank"
               rel="noopener noreferrer"
             >
               {simpleBlockMoreInfoLink.linkText}
+              <span className="sr-only"> (opens in new tab)</span>
             </a>
           )}
         </div>

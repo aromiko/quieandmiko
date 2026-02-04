@@ -8,14 +8,20 @@ interface BasicMediaProps {
   imageCssClass?: string;
   wrapperCssClass?: string;
   sizes?: string;
+  decorative?: boolean;
 }
 
 export default function BasicMedia({
   data,
   imageCssClass,
   wrapperCssClass,
-  sizes
+  sizes,
+  decorative = false
 }: BasicMediaProps) {
+  const altText = decorative
+    ? ""
+    : data.basicMediaAltText || data.basicMediaImage.description || "";
+
   if (data.basicMediaFill) {
     return (
       <BasicMediaLink
@@ -26,11 +32,8 @@ export default function BasicMedia({
           <Image
             className={imageCssClass}
             src={data.basicMediaImage.url}
-            alt={
-              data.basicMediaAltText ||
-              data.basicMediaImage.description ||
-              "Basic media image"
-            }
+            alt={altText}
+            aria-hidden={decorative}
             fill={true}
             sizes={sizes || "100vw"}
             loading={data.basicMediaEager ? "eager" : "lazy"}
@@ -50,11 +53,8 @@ export default function BasicMedia({
         <Image
           className={imageCssClass}
           src={data.basicMediaImage.url}
-          alt={
-            data.basicMediaAltText ||
-            data.basicMediaImage.description ||
-            "Basic media image"
-          }
+          alt={altText}
+          aria-hidden={decorative}
           height={data.basicMediaHeight || data.basicMediaImage.height}
           width={data.basicMediaWidth || data.basicMediaImage.width}
           loading={data.basicMediaEager ? "eager" : "lazy"}

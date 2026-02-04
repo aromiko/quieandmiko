@@ -34,12 +34,19 @@ export default function AdminDashboard({ guests }: AdminDashboardProps) {
   return (
     <div className="container mx-auto space-y-4 p-6">
       <h1>Guest List</h1>
-      <Input
-        placeholder="Search name or group"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <ul className="space-y-2">
+      <div>
+        <label htmlFor="guest-search" className="sr-only">
+          Search guests
+        </label>
+        <Input
+          id="guest-search"
+          placeholder="Search name or group"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          aria-label="Search guests by name or group"
+        />
+      </div>
+      <ul className="space-y-2" role="list" aria-label="Guest list">
         {guests
           .filter((g) =>
             g.full_name.toLowerCase().includes(search.toLowerCase())

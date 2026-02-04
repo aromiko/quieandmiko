@@ -25,6 +25,7 @@ export default function SaveTheDateClient() {
       </div>
       <iframe
         src="/std/index.html"
+        title="Save the Date digital invitation"
         style={{ border: 0, width: "100%", height: "100%" }}
         allow="fullscreen"
       />
