@@ -1,4 +1,10 @@
+import * as crypto from "crypto";
 import { NextResponse } from "next/server";
+
+// Generate a secure session token instead of storing password
+function generateSessionToken(): string {
+  return crypto.randomBytes(32).toString("base64url");
+}
 
 export async function POST(req: Request) {
   const { password } = await req.json();
@@ -14,12 +20,14 @@ export async function POST(req: Request) {
   }
 
   const res = NextResponse.json({ ok: true });
+  const sessionToken = generateSessionToken();
 
-  res.cookies.set("site_auth", password, {
+  res.cookies.set("site_auth", sessionToken, {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
-    path: "/"
+    path: "/",
+    maxAge: 60 * 60 * 24 * 7 // 7 days
   });
 
   return res;

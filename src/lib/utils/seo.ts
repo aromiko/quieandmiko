@@ -1,5 +1,5 @@
-import { ContentsFacade } from "@/queries/content-facade";
 import { DefaultSeoContents } from "@/lib/defaults/default-seo-contents";
+import { ContentsFacade } from "@/queries/content-facade";
 
 export async function buildMetadata(slug: string) {
   const page = await ContentsFacade.getPageBySlug(slug);
@@ -24,13 +24,16 @@ export async function buildMetadata(slug: string) {
     title: pageSeoTitle || DefaultSeoContents.seoDefaultTitle,
     description: pageSeoDescription || DefaultSeoContents.seoDefaultDescription,
     openGraph: {
-      pageSeoTitle,
-      pageSeoDescription,
-      images: pageSeoOgImage?.url ? [{ url: pageSeoOgImage.url }] : undefined
+      title: pageSeoTitle || DefaultSeoContents.seoDefaultTitle,
+      description:
+        pageSeoDescription || DefaultSeoContents.seoDefaultDescription,
+      images: pageSeoOgImage?.url ? [{ url: pageSeoOgImage.url }] : undefined,
+      type: "website",
+      url: pageSeoCanonicalUrl || DefaultSeoContents.seoOgUrl
     },
     robots: pageSeoNoIndex ? "noindex, nofollow" : "index, follow",
     alternates: pageSeoCanonicalUrl
       ? { canonical: pageSeoCanonicalUrl }
-      : DefaultSeoContents.seoOgUrl
+      : { canonical: DefaultSeoContents.seoOgUrl }
   };
 }

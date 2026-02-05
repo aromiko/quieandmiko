@@ -46,8 +46,6 @@ export default function ComponentSelector({
       return <Footer {...(data as TypeComponentFooter)} />;
     case ComponentRegistry.Hero:
       return <Hero {...(data as TypeComponentHero)} />;
-    case ComponentRegistry.Hero:
-      return <Hero {...(data as TypeComponentHero)} />;
     case ComponentRegistry.MainHero:
       return <MainHero {...(data as TypeComponentMainHero)} />;
     case ComponentRegistry.SimpleBlock:
@@ -66,7 +64,6 @@ export default function ComponentSelector({
       return (
         <ImageCarouselBlock {...(data as TypeComponentImageCarouselBlock)} />
       );
-    case ComponentRegistry.ImageCarouselBlock:
     default:
       // Fallback for __typename values that are valid strings but have no matching component.
       // The initial console.warn can be here or in the ComponentRenderer.
