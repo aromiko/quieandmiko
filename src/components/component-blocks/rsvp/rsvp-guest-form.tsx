@@ -169,7 +169,7 @@ export default function RsvpGuestForm({
       <div
         key={guest.id}
         className={cn(
-          "w-full space-y-4 rounded-lg border p-4 transition-colors",
+          "w-full space-y-4 rounded-lg border p-6 transition-colors",
           isPrimary
             ? "border-wine/30 bg-wine/5"
             : "border-neutral-200 bg-white/50"
@@ -184,7 +184,7 @@ export default function RsvpGuestForm({
           )}
           {typeLabel && <Badge variant="secondary">{typeLabel}</Badge>}
           {!guest.is_adult && (
-            <Badge variant="outline" className="text-neutral-600">
+            <Badge variant="outline" className="bg-matcha text-cream">
               Child
             </Badge>
           )}
@@ -207,14 +207,14 @@ export default function RsvpGuestForm({
             )}
           >
             <div className="overflow-hidden">
-              <div className="mt-4 space-y-3 border-t border-neutral-100 pt-4">
-                <p className="text-sm text-neutral-600">
+              <div className="border-t border-neutral-100">
+                <p className="mt-4 px-2 text-base text-neutral-600">
                   Please provide contact details{" "}
                   <span className="text-destructive">*</span>
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="space-y-1">
-                    <Label htmlFor={`email-${guest.id}`} className="text-sm">
+                  <div className="space-y-1 p-2">
+                    <Label htmlFor={`email-${guest.id}`} className="text-base">
                       Email <span className="text-destructive">*</span>
                     </Label>
                     <Input
@@ -233,8 +233,11 @@ export default function RsvpGuestForm({
                       )}
                     />
                   </div>
-                  <div className="space-y-1">
-                    <Label htmlFor={`contact-${guest.id}`} className="text-sm">
+                  <div className="space-y-1 p-2">
+                    <Label
+                      htmlFor={`contact-${guest.id}`}
+                      className="text-base"
+                    >
                       Contact Number <span className="text-destructive">*</span>
                     </Label>
                     <Input
@@ -251,7 +254,7 @@ export default function RsvpGuestForm({
                         )
                       }
                       className={cn(
-                        "transition-colors",
+                        "z-10 transition-colors",
                         !contactInfo[guest.id]?.contact_number?.trim() &&
                           "border-destructive"
                       )}
@@ -274,11 +277,10 @@ export default function RsvpGuestForm({
       <div className="w-full space-y-4">
         <div className="flex items-center gap-2">
           <User className="text-wine size-5" />
-          <h2 className="text-lg font-medium">Your RSVP</h2>
+          <h2 className="font-serif text-lg font-medium">Your RSVP</h2>
         </div>
-        <p className="text-muted-foreground text-sm">
-          You are RSVPing as{" "}
-          <strong className="text-foreground">{primaryGuest.full_name}</strong>
+        <p className="text-muted-foreground mb-0 text-base">
+          You are RSVPing as:
         </p>
 
         {renderGuestCard(primaryGuest, true)}
@@ -289,12 +291,12 @@ export default function RsvpGuestForm({
         <div className="w-full space-y-4">
           <div className="flex items-center gap-2 border-t border-neutral-200 pt-6">
             <Users className="size-5 text-neutral-500" />
-            <h2 className="text-lg font-medium">Your Group</h2>
+            <h2 className="font-serif text-lg font-medium">Your Group</h2>
             <Badge variant="outline" className="ml-auto">
               Optional
             </Badge>
           </div>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-base">
             RSVP on behalf of other members in{" "}
             {groupLabel && (
               <strong className="text-foreground">{groupLabel}</strong>
@@ -328,13 +330,13 @@ export default function RsvpGuestForm({
         >
           <div className="overflow-hidden">
             {primaryUnanswered && (
-              <p role="alert" className="text-destructive py-1 text-sm">
+              <p role="alert" className="text-destructive py-1 text-base">
                 Please select Yes or No for yourself.
               </p>
             )}
 
             {missingContactInfo && !primaryUnanswered && (
-              <p role="alert" className="text-destructive py-1 text-sm">
+              <p role="alert" className="text-destructive py-1 text-base">
                 Please fill in email and contact number for all attending
                 adults.
               </p>

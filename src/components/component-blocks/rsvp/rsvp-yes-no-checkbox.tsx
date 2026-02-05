@@ -20,8 +20,9 @@ export default function RsvpYesNoCheckbox({
   onChange
 }: RsvpYesNoCheckboxProps) {
   return (
-    <fieldset className="space-y-2">
+    <fieldset className="mb-0">
       <legend className="font-medium">{guest.full_name}</legend>
+      <div className="mb-2 mt-4">Attending?</div>
 
       <div
         className="flex items-center space-x-6"
