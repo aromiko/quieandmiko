@@ -1,4 +1,5 @@
 import RsvpGuestForm from "@/components/component-blocks/rsvp/rsvp-guest-form";
+import Page from "@/components/page-templates/page/page";
 import { createSupabaseServerClient } from "@/lib/services/supabase-server";
 import { generateDeterministicCode } from "@/lib/utils/crypto";
 import { notFound } from "next/navigation";
@@ -24,7 +25,9 @@ export default async function RsvpPage({
   // Get all guests and compare deterministic hashes
   const { data: guests } = await supabase
     .from("guests")
-    .select("id, rsvp_code, full_name, group_id, group_label, is_attending");
+    .select(
+      "id, rsvp_code, full_name, group_id, group_label, is_attending, is_adult, guest_type, email, contact_number"
+    );
 
   if (!guests) return notFound();
 
@@ -39,12 +42,15 @@ export default async function RsvpPage({
   );
 
   return (
-    <main>
-      <RsvpGuestForm
-        primaryGuest={primary}
-        groupLabel={primary.group_label}
-        groupGuests={group}
-      />
-    </main>
+    <Page
+      slug="rsvp"
+      injectedComponent={
+        <RsvpGuestForm
+          primaryGuest={primary}
+          groupLabel={primary.group_label}
+          groupGuests={group}
+        />
+      }
+    />
   );
 }

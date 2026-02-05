@@ -12,10 +12,21 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
+interface ContactInfo {
+  email: string;
+  contact_number: string;
+}
+
 export async function POST(req: Request) {
   const body = await req.json();
 
-  const { responses }: { responses: Record<string, boolean> } = body;
+  const {
+    responses,
+    contactInfo
+  }: {
+    responses: Record<string, boolean>;
+    contactInfo?: Record<string, ContactInfo>;
+  } = body;
 
   if (!responses || typeof responses !== "object") {
     return NextResponse.json(
@@ -25,13 +36,38 @@ export async function POST(req: Request) {
   }
 
   try {
-    const updates = await Promise.all(
+    // Update attendance for all guests
+    const attendanceUpdates = await Promise.all(
       Object.entries(responses).map(([id, is_attending]) =>
-        supabase.from("guests").update({ is_attending }).eq("id", id)
+        supabase
+          .from("guests")
+          .update({ is_attending, updated_at: new Date().toISOString() })
+          .eq("id", id)
       )
     );
 
-    const hasError = updates.some((res) => res.error);
+    // Update contact info for adult guests (only if provided and attending)
+    const contactUpdates = contactInfo
+      ? await Promise.all(
+          Object.entries(contactInfo).map(([id, info]) => {
+            // Only update if the guest is attending
+            if (responses[id] !== true) return { error: null };
+
+            return supabase
+              .from("guests")
+              .update({
+                email: info.email || null,
+                contact_number: info.contact_number || null,
+                updated_at: new Date().toISOString()
+              })
+              .eq("id", id);
+          })
+        )
+      : [];
+
+    const hasError =
+      attendanceUpdates.some((res) => res.error) ||
+      contactUpdates.some((res) => res.error);
 
     if (hasError) {
       return NextResponse.json(

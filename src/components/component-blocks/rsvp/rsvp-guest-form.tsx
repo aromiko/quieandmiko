@@ -1,7 +1,12 @@
 "use client";
 
 import RsvpYesNoCheckbox from "@/components/component-blocks/rsvp/rsvp-yes-no-checkbox";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils/classnames";
+import { User, Users } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
@@ -9,6 +14,15 @@ interface Guest {
   id: number;
   full_name: string;
   is_attending: boolean | null;
+  is_adult: boolean;
+  guest_type: "guest" | "primary_sponsor" | "entourage";
+  email: string | null;
+  contact_number: string | null;
+}
+
+interface ContactInfo {
+  email: string;
+  contact_number: string;
 }
 
 export default function RsvpGuestForm({
@@ -37,16 +51,62 @@ export default function RsvpGuestForm({
   const [responses, setResponses] = useState(originalResponses);
   const [loading, setLoading] = useState(false);
 
+  // Contact info state for adult guests only
+  const [contactInfo, setContactInfo] = useState<Record<number, ContactInfo>>(
+    () => {
+      const allGuests = [primaryGuest, ...groupGuests];
+      const map: Record<number, ContactInfo> = {};
+
+      allGuests.forEach((g) => {
+        if (g.is_adult) {
+          map[g.id] = {
+            email: g.email || "",
+            contact_number: g.contact_number || ""
+          };
+        }
+      });
+
+      return map;
+    }
+  );
+
   const hasChanges = useMemo(() => {
-    return Object.keys(originalResponses).some((key) => {
+    const allGuests = [primaryGuest, ...groupGuests];
+
+    // Check attendance changes
+    const attendanceChanged = Object.keys(originalResponses).some((key) => {
       const id = Number(key);
       return originalResponses[id] !== responses[id];
     });
-  }, [originalResponses, responses]);
 
-  const hasUnanswered = useMemo(() => {
-    return Object.values(responses).some((val) => val === null);
-  }, [responses]);
+    // Check contact info changes for adults
+    const contactChanged = allGuests.some((g) => {
+      if (!g.is_adult) return false;
+      const current = contactInfo[g.id];
+      return (
+        current?.email !== (g.email || "") ||
+        current?.contact_number !== (g.contact_number || "")
+      );
+    });
+
+    return attendanceChanged || contactChanged;
+  }, [originalResponses, responses, contactInfo, primaryGuest, groupGuests]);
+
+  // Only require primary guest to answer - group members are optional
+  const primaryUnanswered = useMemo(() => {
+    return responses[primaryGuest.id] === null;
+  }, [responses, primaryGuest.id]);
+
+  // Check if attending adults have missing required contact info
+  const missingContactInfo = useMemo(() => {
+    const allGuests = [primaryGuest, ...groupGuests];
+    return allGuests.some((g) => {
+      // Only check adults who are attending
+      if (!g.is_adult || responses[g.id] !== true) return false;
+      const info = contactInfo[g.id];
+      return !info?.email?.trim() || !info?.contact_number?.trim();
+    });
+  }, [responses, contactInfo, primaryGuest, groupGuests]);
 
   const handleChange = (id: number, value: boolean) => {
     setResponses((prev) => ({
@@ -55,12 +115,26 @@ export default function RsvpGuestForm({
     }));
   };
 
+  const handleContactChange = (
+    id: number,
+    field: keyof ContactInfo,
+    value: string
+  ) => {
+    setContactInfo((prev) => ({
+      ...prev,
+      [id]: {
+        ...prev[id],
+        [field]: value
+      }
+    }));
+  };
+
   const handleSubmit = async () => {
     setLoading(true);
 
     const res = await fetch("/api/rsvp", {
       method: "POST",
-      body: JSON.stringify({ responses }),
+      body: JSON.stringify({ responses, contactInfo }),
       headers: {
         "Content-Type": "application/json"
       }
@@ -76,63 +150,208 @@ export default function RsvpGuestForm({
     setLoading(false);
   };
 
-  return (
-    <section className="mx-auto max-w-4xl space-y-6 p-6">
-      <h1 lang="fr">{"Répondez s'il vous plaît"}</h1>
+  const getGuestTypeLabel = (type: Guest["guest_type"]) => {
+    switch (type) {
+      case "primary_sponsor":
+        return "Primary Sponsor";
+      case "entourage":
+        return "Entourage";
+      default:
+        return null;
+    }
+  };
 
-      <div className="space-y-2">
-        <p>
-          You are RSVPing as <strong>{primaryGuest.full_name}</strong>
-        </p>
+  const renderGuestCard = (guest: Guest, isPrimary = false) => {
+    const typeLabel = getGuestTypeLabel(guest.guest_type);
+    const isAttending = responses[guest.id] === true;
+
+    return (
+      <div
+        key={guest.id}
+        className={cn(
+          "w-full space-y-4 rounded-lg border p-4 transition-colors",
+          isPrimary
+            ? "border-wine/30 bg-wine/5"
+            : "border-neutral-200 bg-white/50"
+        )}
+      >
+        <div className="flex flex-wrap items-center gap-2">
+          {isPrimary && (
+            <Badge variant="default" className="bg-wine text-cream">
+              <User className="size-3" />
+              You
+            </Badge>
+          )}
+          {typeLabel && <Badge variant="secondary">{typeLabel}</Badge>}
+          {!guest.is_adult && (
+            <Badge variant="outline" className="text-neutral-600">
+              Child
+            </Badge>
+          )}
+        </div>
 
         <RsvpYesNoCheckbox
-          guest={primaryGuest}
-          value={responses[primaryGuest.id]}
+          guest={guest}
+          value={responses[guest.id]}
           onChange={handleChange}
         />
+
+        {/* Show contact fields only for adults who are attending - accordion style */}
+        {guest.is_adult && (
+          <div
+            className={cn(
+              "grid transition-all duration-300 ease-in-out",
+              isAttending
+                ? "grid-rows-[1fr] opacity-100"
+                : "grid-rows-[0fr] opacity-0"
+            )}
+          >
+            <div className="overflow-hidden">
+              <div className="mt-4 space-y-3 border-t border-neutral-100 pt-4">
+                <p className="text-sm text-neutral-600">
+                  Please provide contact details{" "}
+                  <span className="text-destructive">*</span>
+                </p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="space-y-1">
+                    <Label htmlFor={`email-${guest.id}`} className="text-sm">
+                      Email <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id={`email-${guest.id}`}
+                      type="email"
+                      placeholder="your@email.com"
+                      required
+                      value={contactInfo[guest.id]?.email || ""}
+                      onChange={(e) =>
+                        handleContactChange(guest.id, "email", e.target.value)
+                      }
+                      className={cn(
+                        "transition-colors",
+                        !contactInfo[guest.id]?.email?.trim() &&
+                          "border-destructive"
+                      )}
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor={`contact-${guest.id}`} className="text-sm">
+                      Contact Number <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id={`contact-${guest.id}`}
+                      type="tel"
+                      placeholder="+63 9XX XXX XXXX"
+                      required
+                      value={contactInfo[guest.id]?.contact_number || ""}
+                      onChange={(e) =>
+                        handleContactChange(
+                          guest.id,
+                          "contact_number",
+                          e.target.value
+                        )
+                      }
+                      className={cn(
+                        "transition-colors",
+                        !contactInfo[guest.id]?.contact_number?.trim() &&
+                          "border-destructive"
+                      )}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <section className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center space-y-8 p-6">
+      <h1 lang="fr">{"Répondez s'il vous plaît"}</h1>
+
+      {/* Primary Guest Section - "Your RSVP" */}
+      <div className="w-full space-y-4">
+        <div className="flex items-center gap-2">
+          <User className="text-wine size-5" />
+          <h2 className="text-lg font-medium">Your RSVP</h2>
+        </div>
+        <p className="text-muted-foreground text-sm">
+          You are RSVPing as{" "}
+          <strong className="text-foreground">{primaryGuest.full_name}</strong>
+        </p>
+
+        {renderGuestCard(primaryGuest, true)}
       </div>
 
+      {/* Group Members Section - "Your Group" */}
       {groupGuests.length > 0 && (
-        <div className="space-y-4">
-          <p className="mt-4">
-            You can also RSVP for other members of your group{" "}
-            {groupLabel && <strong>{groupLabel}</strong>}
+        <div className="w-full space-y-4">
+          <div className="flex items-center gap-2 border-t border-neutral-200 pt-6">
+            <Users className="size-5 text-neutral-500" />
+            <h2 className="text-lg font-medium">Your Group</h2>
+            <Badge variant="outline" className="ml-auto">
+              Optional
+            </Badge>
+          </div>
+          <p className="text-muted-foreground text-sm">
+            RSVP on behalf of other members in{" "}
+            {groupLabel && (
+              <strong className="text-foreground">{groupLabel}</strong>
+            )}
           </p>
 
-          {groupGuests.map((guest) => (
-            <div key={guest.id}>
-              {" "}
-              <RsvpYesNoCheckbox
-                guest={guest}
-                value={responses[guest.id]}
-                onChange={handleChange}
-              />
-            </div>
-          ))}
+          <div className="space-y-3">
+            {groupGuests.map((guest) => renderGuestCard(guest, false))}
+          </div>
         </div>
       )}
 
-      <p aria-live="polite" className="text-muted-foreground text-base">
-        {"You've confirmed "}
-        <strong className="font-mono">
-          {Object.values(responses).filter((v) => v === true).length}
-        </strong>{" "}
-        out of <strong className="font-mono">{groupGuests.length + 1}</strong>{" "}
-        guests attending.
-      </p>
-
-      {hasUnanswered && (
-        <p role="alert" className="text-destructive text-sm">
-          Please select Yes or No for all guests.
+      {/* Summary */}
+      <div className="w-full space-y-4 rounded-lg bg-neutral-50 p-4 text-center">
+        <p aria-live="polite" className="text-muted-foreground text-base">
+          {"You've confirmed "}
+          <strong className="text-wine font-mono text-lg">
+            {Object.values(responses).filter((v) => v === true).length}
+          </strong>{" "}
+          out of <strong className="font-mono">{groupGuests.length + 1}</strong>{" "}
+          guests attending.
         </p>
-      )}
 
-      <Button
-        onClick={handleSubmit}
-        disabled={loading || hasUnanswered || !hasChanges}
-      >
-        {loading ? "Submitting..." : "Submit RSVP"}
-      </Button>
+        <div
+          className={cn(
+            "grid transition-all duration-200 ease-in-out",
+            primaryUnanswered || missingContactInfo
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
+          )}
+        >
+          <div className="overflow-hidden">
+            {primaryUnanswered && (
+              <p role="alert" className="text-destructive py-1 text-sm">
+                Please select Yes or No for yourself.
+              </p>
+            )}
+
+            {missingContactInfo && !primaryUnanswered && (
+              <p role="alert" className="text-destructive py-1 text-sm">
+                Please fill in email and contact number for all attending
+                adults.
+              </p>
+            )}
+          </div>
+        </div>
+
+        <Button
+          onClick={handleSubmit}
+          disabled={
+            loading || primaryUnanswered || missingContactInfo || !hasChanges
+          }
+          className="w-full sm:w-auto"
+        >
+          {loading ? "Submitting..." : "Submit RSVP"}
+        </Button>
+      </div>
     </section>
   );
 }
