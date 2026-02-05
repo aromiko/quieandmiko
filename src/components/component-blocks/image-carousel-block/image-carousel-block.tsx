@@ -13,14 +13,14 @@ const ImageCarouselBlock = ({
           {imageCarouselBlockTitle}
         </h2>
       )}
-      <div className="flex w-full flex-wrap justify-center gap-20 md:gap-0">
+      <div className="flex w-full flex-col flex-wrap items-center justify-center gap-6 lg:flex-row">
         {imageCarouselBlockSlidersCollection?.items &&
           imageCarouselBlockSlidersCollection.items.length > 0 &&
           imageCarouselBlockSlidersCollection.items.map((carousel) => (
             <ImageCarousel
               key={carousel.sys.id}
               {...carousel}
-              imageCarouselClassName="w-full md:w-1/2"
+              imageCarouselClassName="w-[311px] md:w-[410px]"
             />
           ))}
       </div>

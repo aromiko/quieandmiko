@@ -10,7 +10,7 @@ const SimpleBlockStory = ({
   simpleBlockImage3
 }: TypeComponentSimpleBlock) => {
   return (
-    <section className="flex min-h-screen flex-col items-center px-8 py-16 lg:justify-center lg:px-12">
+    <section className="flex flex-col items-center px-8 py-16 lg:min-h-screen lg:justify-center lg:px-12">
       {simpleBlockImage1 && (
         <BasicMedia
           data={simpleBlockImage1}
@@ -53,14 +53,12 @@ const SimpleBlockStory = ({
           )}
         </div>
       </div>
-      <div>
+      <div className="mb-8 mt-16 lg:hidden">
         {simpleBlockBody1 && (
-          <p className="mr-10 mt-4 block lg:hidden">{simpleBlockBody1}</p>
+          <p className="mr-10 mt-4 block">{simpleBlockBody1}</p>
         )}
         {simpleBlockBody2 && (
-          <p className="mt-8 block pl-10 text-right lg:hidden">
-            {simpleBlockBody2}
-          </p>
+          <p className="mt-8 block pl-10 text-right">{simpleBlockBody2}</p>
         )}
       </div>
     </section>

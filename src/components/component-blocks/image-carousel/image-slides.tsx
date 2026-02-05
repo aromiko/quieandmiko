@@ -1,5 +1,7 @@
 "use client";
 
+import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
+import AttireCard from "@/components/component-blocks/attire-card/attire-card";
 import {
   Carousel,
   type CarouselApi,
@@ -8,27 +10,21 @@ import {
   CarouselNext,
   CarouselPrevious
 } from "@/components/ui/carousel";
+import { TypeComponentAttireCard, TypeComponentBasicMedia } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
-import Image from "next/image";
 import * as React from "react";
 
-type Slide = {
-  src: string;
-  alt: string;
-  label?: string;
-};
-
 type ImageSlidesProps = {
-  slides: Slide[];
-  aspect?: "portrait" | "landscape";
+  cover?: TypeComponentAttireCard;
+  items: TypeComponentBasicMedia[];
 };
 
-export default function ImageSlides({
-  slides,
-  aspect = "portrait"
-}: ImageSlidesProps) {
+export default function ImageSlides({ cover, items }: ImageSlidesProps) {
   const [api, setApi] = React.useState<CarouselApi | null>(null);
   const [current, setCurrent] = React.useState(0);
+
+  const filteredItems = items.filter((item) => item && item.sys);
+  const totalSlides = (cover ? 1 : 0) + filteredItems.length;
 
   React.useEffect(() => {
     if (!api) return;
@@ -63,31 +59,26 @@ export default function ImageSlides({
         aria-label="Image carousel"
       >
         <CarouselContent>
-          {slides.map((slide, i) => (
-            <CarouselItem key={i}>
-              <div
-                className={cn(
-                  "relative overflow-hidden rounded-lg",
-                  aspect === "portrait" && "aspect-[3/4]",
-                  aspect === "landscape" && "aspect-[16/9]"
-                )}
-              >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority={i === 0}
-                />
+          {/* Render AttireCard cover as first slide */}
+          {cover && (
+            <CarouselItem key={cover.sys.id}>
+              <AttireCard {...cover} />
+            </CarouselItem>
+          )}
 
-                {slide.label && (
-                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                    <span className="font-serif text-3xl tracking-wide text-white lg:text-4xl">
-                      {slide.label}
-                    </span>
-                  </div>
-                )}
+          {/* Render BasicMedia items */}
+          {filteredItems.map((item) => (
+            <CarouselItem key={item.sys.id}>
+              <div className="relative aspect-[0.67/1] overflow-hidden rounded-lg">
+                <BasicMedia
+                  data={{
+                    ...item,
+                    basicMediaFill: true
+                  }}
+                  wrapperCssClass="w-full h-full"
+                  imageCssClass="object-cover"
+                  sizes="(max-width: 768px) 311px, 410px"
+                />
               </div>
             </CarouselItem>
           ))}
@@ -102,12 +93,12 @@ export default function ImageSlides({
           role="tablist"
           aria-label="Slide indicators"
         >
-          {slides.map((_, i) => (
+          {Array.from({ length: totalSlides }).map((_, i) => (
             <button
               key={i}
               role="tab"
               aria-selected={i === current}
-              aria-label={`Go to slide ${i + 1} of ${slides.length}`}
+              aria-label={`Go to slide ${i + 1} of ${totalSlides}`}
               onClick={() => api?.scrollTo(i)}
               className={cn(
                 "h-[2px] w-full cursor-pointer transition-colors duration-300",
