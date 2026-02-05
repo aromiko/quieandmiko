@@ -1,11 +1,11 @@
+import DOMPurify from "dompurify";
 import HTMLReactParser from "html-react-parser";
-import DOMPurify from "isomorphic-dompurify";
 
 // Configure DOMPurify hook once on module load to avoid repeated setup
 let isHookConfigured = false;
 
 function configureDOMPurifyHook() {
-  if (isHookConfigured) return;
+  if (typeof window === "undefined" || isHookConfigured) return;
 
   // ISSUE: DOMPurify does not allow and removes 'target' attribute for security purposes upon sanitization.
   // FIX: Add a hook before sanitizing html where all <a> tags with 'target' attribute will be set with '_blank'. Also added the rel='noopener noreferrer' by default for security purposes in case an external link is used. Reference: https://github.com/cure53/DOMPurify/issues/317
@@ -22,6 +22,12 @@ function configureDOMPurifyHook() {
 
 export const sanitizeAndParse = (htmlString: string) => {
   if (!htmlString) return null;
+
+  // On server-side, return parsed HTML without sanitization (content from CMS is trusted)
+  // DOMPurify requires DOM APIs which aren't available on server
+  if (typeof window === "undefined") {
+    return HTMLReactParser(htmlString);
+  }
 
   configureDOMPurifyHook();
 
