@@ -1,3 +1,7 @@
+import {
+  sendGuestConfirmation,
+  sendRsvpNotification
+} from "@/lib/services/email-notification";
 import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
 
@@ -76,6 +80,47 @@ export async function POST(req: Request) {
         { error: "Some updates failed" },
         { status: 500 }
       );
+    }
+
+    // Fetch updated guest data and send email notification (fire-and-forget)
+    const guestIds = Object.keys(responses);
+    console.log("[RSVP API] Fetching guests for email notification:", guestIds);
+
+    const { data: guests, error: fetchError } = await supabase
+      .from("guests")
+      .select("full_name, is_attending, email, contact_number, food_allergies")
+      .in("id", guestIds);
+
+    if (fetchError) {
+      console.error("[RSVP API] Failed to fetch guests for email:", fetchError);
+    }
+
+    if (guests && guests.length > 0) {
+      console.log(
+        "[RSVP API] Sending email notification for",
+        guests.length,
+        "guest(s)"
+      );
+
+      const guestData = guests.map((g) => ({
+        name: g.full_name,
+        isAttending: g.is_attending,
+        email: g.email,
+        contactNumber: g.contact_number,
+        foodAllergies: g.food_allergies
+      }));
+
+      // Send admin notification
+      sendRsvpNotification({ guests: guestData }).catch((err) => {
+        console.error("[RSVP API] Email notification promise rejected:", err);
+      });
+
+      // Send guest confirmation emails
+      sendGuestConfirmation({ guests: guestData }).catch((err) => {
+        console.error("[RSVP API] Guest confirmation promise rejected:", err);
+      });
+    } else {
+      console.warn("[RSVP API] No guests found for email notification");
     }
 
     return NextResponse.json({ success: true });
