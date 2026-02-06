@@ -9,6 +9,7 @@ import { InjectionRegistry } from "@/lib/configurations/injection-registry";
 import { createSupabaseServerClient } from "@/lib/services/supabase-server";
 import { generateDeterministicCode } from "@/lib/utils/crypto";
 import { ContentsFacade } from "@/queries/content-facade";
+import { AlertCircle, Camera } from "lucide-react";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata() {
@@ -85,6 +86,9 @@ export default async function RsvpPage({
             <div className="mt-12 flex w-full max-w-2xl flex-col gap-6">
               {/* Adults Only */}
               <div className="border-coffee/20 bg-cream/50 rounded-lg border p-6 text-center">
+                <div className="bg-wine/15 text-wine mx-auto mb-4 flex size-12 items-center justify-center rounded-full">
+                  <AlertCircle className="size-6" />
+                </div>
                 <h3 className="text-coffee mb-3 font-serif text-xl">
                   Adults-Only Celebration
                 </h3>
@@ -96,6 +100,9 @@ export default async function RsvpPage({
 
               {/* Unplugged Ceremony */}
               <div className="border-coffee/20 bg-cream/50 rounded-lg border p-6 text-center">
+                <div className="bg-wine/15 text-wine mx-auto mb-4 flex size-12 items-center justify-center rounded-full">
+                  <Camera className="size-6" />
+                </div>
                 <h3 className="text-coffee mb-3 font-serif text-xl">
                   Unplugged Ceremony
                 </h3>
