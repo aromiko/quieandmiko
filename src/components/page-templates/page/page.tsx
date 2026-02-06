@@ -33,8 +33,6 @@ export default async function Page({
   const allComponents = page.pageContentsCollection
     ?.items as TypePageContentItem[];
 
-  console.log(allComponents);
-
   const headerComponents = filterComponentsForAssembly(
     allComponents,
     ComponentSections.Header
