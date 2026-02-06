@@ -14,6 +14,7 @@ import {
   ComponentRegistry,
   ComponentTypenames
 } from "@/lib/configurations/component-registry";
+import { PageInjections } from "@/lib/configurations/injection-registry";
 import {
   TypeComponentAttireBlock,
   TypeComponentEntourageBlock,
@@ -22,6 +23,7 @@ import {
   TypeComponentHero,
   TypeComponentImageCarouselBlock,
   TypeComponentMainHero,
+  TypeComponentPageInjection,
   TypeComponentRecommendationBlock,
   TypeComponentSimpleBlock,
   TypeComponentTimelineBlock,
@@ -31,13 +33,31 @@ import { JSX } from "react";
 
 interface ComponentSelectorProps {
   data: TypePageContentItem;
+  injections?: PageInjections;
   typeName: ComponentTypenames;
 }
 
 export default function ComponentSelector({
   data,
+  injections,
   typeName
 }: ComponentSelectorProps): JSX.Element | null {
+  // Handle page injection points
+  if (typeName === "ComponentPageInjection") {
+    const injectionData = data as TypeComponentPageInjection;
+    const targetName = injectionData.pageInjectionTargetName;
+
+    if (targetName && injections) {
+      const injectedComponent = injections[targetName as keyof typeof injections];
+      if (injectedComponent) {
+        return <>{injectedComponent}</>;
+      }
+    }
+
+    // If no injection found, return null (placeholder will be invisible)
+    return null;
+  }
+
   switch (typeName) {
     case ComponentRegistry.Header:
       // We cast 'content' to its specific type, which is safe due to the 'typeName' check.

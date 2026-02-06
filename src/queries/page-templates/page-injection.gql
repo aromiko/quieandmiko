@@ -1,0 +1,7 @@
+fragment PageInjectionFragment on ComponentPageInjection {
+  sys {
+    id
+  }
+  __typename
+  pageInjectionTargetName
+}
