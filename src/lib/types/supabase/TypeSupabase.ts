@@ -22,7 +22,15 @@ export type Database = {
           updated_at: string | null;
           email: string | null;
           contact_number: string | null;
-          guest_type: "guest" | "primary_sponsor" | "entourage";
+          food_allergies: string | null;
+          guest_type:
+            | "guest"
+            | "primary_sponsor"
+            | "entourage"
+            | "best_man"
+            | "maid_of_honor"
+            | "mother"
+            | "father";
           is_adult: boolean;
         };
         Insert: {
@@ -37,7 +45,15 @@ export type Database = {
           updated_at?: string | null;
           email?: string | null;
           contact_number?: string | null;
-          guest_type?: "guest" | "primary_sponsor" | "entourage";
+          food_allergies?: string | null;
+          guest_type?:
+            | "guest"
+            | "primary_sponsor"
+            | "entourage"
+            | "best_man"
+            | "maid_of_honor"
+            | "mother"
+            | "father";
           is_adult?: boolean;
         };
         Update: {
@@ -52,7 +68,15 @@ export type Database = {
           updated_at?: string | null;
           email?: string | null;
           contact_number?: string | null;
-          guest_type?: "guest" | "primary_sponsor" | "entourage";
+          food_allergies?: string | null;
+          guest_type?:
+            | "guest"
+            | "primary_sponsor"
+            | "entourage"
+            | "best_man"
+            | "maid_of_honor"
+            | "mother"
+            | "father";
           is_adult?: boolean;
         };
         Relationships: [];

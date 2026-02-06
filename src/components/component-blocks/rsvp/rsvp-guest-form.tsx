@@ -15,14 +15,23 @@ interface Guest {
   full_name: string;
   is_attending: boolean | null;
   is_adult: boolean;
-  guest_type: "guest" | "primary_sponsor" | "entourage";
+  guest_type:
+    | "guest"
+    | "primary_sponsor"
+    | "entourage"
+    | "best_man"
+    | "maid_of_honor"
+    | "mother"
+    | "father";
   email: string | null;
   contact_number: string | null;
+  food_allergies: string | null;
 }
 
 interface ContactInfo {
   email: string;
   contact_number: string;
+  food_allergies: string;
 }
 
 export default function RsvpGuestForm({
@@ -61,7 +70,8 @@ export default function RsvpGuestForm({
         if (g.is_adult) {
           map[g.id] = {
             email: g.email || "",
-            contact_number: g.contact_number || ""
+            contact_number: g.contact_number || "",
+            food_allergies: g.food_allergies || ""
           };
         }
       });
@@ -85,7 +95,8 @@ export default function RsvpGuestForm({
       const current = contactInfo[g.id];
       return (
         current?.email !== (g.email || "") ||
-        current?.contact_number !== (g.contact_number || "")
+        current?.contact_number !== (g.contact_number || "") ||
+        current?.food_allergies !== (g.food_allergies || "")
       );
     });
 
@@ -153,9 +164,17 @@ export default function RsvpGuestForm({
   const getGuestTypeLabel = (type: Guest["guest_type"]) => {
     switch (type) {
       case "primary_sponsor":
-        return "Primary Sponsor";
+        return "Principal Sponsor";
       case "entourage":
         return "Entourage";
+      case "best_man":
+        return "Best Man";
+      case "maid_of_honor":
+        return "Maid of Honor";
+      case "mother":
+        return "Mother";
+      case "father":
+        return "Father";
       default:
         return null;
     }
@@ -207,7 +226,7 @@ export default function RsvpGuestForm({
             )}
           >
             <div className="overflow-hidden">
-              <div className="border-t border-neutral-100">
+              <div>
                 <p className="mt-4 px-2 text-base text-neutral-600">
                   Please provide contact details{" "}
                   <span className="text-destructive">*</span>
@@ -261,6 +280,29 @@ export default function RsvpGuestForm({
                     />
                   </div>
                 </div>
+                <div className="space-y-1 p-2">
+                  <Label
+                    htmlFor={`allergies-${guest.id}`}
+                    className="text-base"
+                  >
+                    Food Allergies{" "}
+                    <span className="text-muted-foreground">(Optional)</span>
+                  </Label>
+                  <Input
+                    id={`allergies-${guest.id}`}
+                    type="text"
+                    placeholder="e.g., Nuts, Seafood, Dairy..."
+                    value={contactInfo[guest.id]?.food_allergies || ""}
+                    onChange={(e) =>
+                      handleContactChange(
+                        guest.id,
+                        "food_allergies",
+                        e.target.value
+                      )
+                    }
+                    className="transition-colors"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -271,6 +313,20 @@ export default function RsvpGuestForm({
 
   return (
     <section className="mx-auto flex max-w-4xl flex-col items-center justify-center space-y-8 p-6">
+      {/* Reserved Seats Notice */}
+      <div className="border-wine/20 bg-wine/5 w-full rounded-lg border p-6 text-center">
+        <p className="text-wine font-serif text-lg">
+          We have reserved{" "}
+          <span className="font-bold">
+            {groupGuests.length + 1} seat{groupGuests.length + 1 > 1 ? "s" : ""}
+          </span>{" "}
+          in your honor.
+        </p>
+        {groupGuests.length > 0 && (
+          <p className="text-wine/70 mt-2 text-sm">For you and your group</p>
+        )}
+      </div>
+
       {/* Primary Guest Section - "Your RSVP" */}
       <div className="w-full space-y-4">
         <div className="flex items-center gap-2">
@@ -308,7 +364,7 @@ export default function RsvpGuestForm({
       )}
 
       {/* Summary */}
-      <div className="w-full space-y-4 rounded-lg bg-neutral-50 p-4 text-center">
+      <div className="w-full space-y-4 rounded-lg border border-neutral-200 bg-white/50 p-4 text-center">
         <p aria-live="polite" className="text-muted-foreground text-base">
           {"You've confirmed "}
           <strong className="text-wine font-mono text-lg">

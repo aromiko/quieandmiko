@@ -7,7 +7,8 @@ const ImageCarousel = ({
   imageCarouselTitle,
   imageCarouselCover,
   imageCarouselItemsCollection,
-  imageCarouselClassName
+  imageCarouselClassName,
+  imageCarouselHideTitle
 }: TypeComponentImageCarousel) => {
   const items = imageCarouselItemsCollection?.items || [];
   const hasContent = imageCarouselCover || items.length > 0;
@@ -19,7 +20,7 @@ const ImageCarousel = ({
         imageCarouselClassName
       )}
     >
-      {imageCarouselTitle && (
+      {!imageCarouselHideTitle && imageCarouselTitle && (
         <div>
           <h4 className="text-coffee max-w-2xl text-center font-serif text-3xl">
             {imageCarouselTitle}

@@ -14,4 +14,5 @@ export interface TypeComponentImageCarousel extends TypeComponentBase {
     items: TypeComponentBasicMedia[];
   };
   imageCarouselClassName?: string;
+  imageCarouselHideTitle?: boolean;
 }

@@ -15,6 +15,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 interface ContactInfo {
   email: string;
   contact_number: string;
+  food_allergies: string;
 }
 
 export async function POST(req: Request) {
@@ -58,6 +59,7 @@ export async function POST(req: Request) {
               .update({
                 email: info.email || null,
                 contact_number: info.contact_number || null,
+                food_allergies: info.food_allergies || null,
                 updated_at: new Date().toISOString()
               })
               .eq("id", id);

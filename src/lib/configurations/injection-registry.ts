@@ -7,7 +7,8 @@
  */
 export const InjectionRegistry = {
   RsvpCodeForm: "rsvp-code-form",
-  RsvpGuestForm: "rsvp-form"
+  RsvpGuestForm: "rsvp-form",
+  RsvpAttireCarousel: "rsvp-attire-carousel"
 } as const;
 
 /**
