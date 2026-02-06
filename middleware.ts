@@ -33,8 +33,11 @@ export async function middleware(request: NextRequest) {
     data: { user }
   } = await supabase.auth.getUser();
 
-  // Protect admin routes - require authenticated user
-  if (request.nextUrl.pathname.startsWith("/admin")) {
+  // Protect admin routes - require authenticated user (except login page)
+  if (
+    request.nextUrl.pathname.startsWith("/admin") &&
+    request.nextUrl.pathname !== "/admin/login"
+  ) {
     if (!user) {
       const redirectUrl = new URL("/admin/login", request.url);
       redirectUrl.searchParams.set("redirect", request.nextUrl.pathname);

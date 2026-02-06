@@ -15,7 +15,7 @@ const EntourageBlock = ({
   return (
     <section
       className={cn(
-        "container relative mx-auto flex flex-col items-center justify-center px-8 py-16 lg:px-32",
+        "container relative mx-auto flex flex-col items-center justify-center px-8 py-16 xl:px-32",
         entourageBlockClassName
       )}
     >
