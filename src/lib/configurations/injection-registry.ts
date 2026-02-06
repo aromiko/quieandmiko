@@ -1,7 +1,7 @@
 /**
  * Registry of all available page injection points.
  * Maps injection target names to their metadata.
- * 
+ *
  * These names must match the `pageInjectionTargetName` values
  * set in Contentful's ComponentPageInjection content type.
  */
@@ -21,4 +21,6 @@ export type InjectionTargetName =
  * Type for the injections prop used in Page components.
  * Maps injection target names to React nodes.
  */
-export type PageInjections = Partial<Record<InjectionTargetName, React.ReactNode>>;
+export type PageInjections = Partial<
+  Record<InjectionTargetName, React.ReactNode>
+>;

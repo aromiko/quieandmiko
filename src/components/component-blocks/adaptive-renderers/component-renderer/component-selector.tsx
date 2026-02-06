@@ -48,7 +48,8 @@ export default function ComponentSelector({
     const targetName = injectionData.pageInjectionTargetName;
 
     if (targetName && injections) {
-      const injectedComponent = injections[targetName as keyof typeof injections];
+      const injectedComponent =
+        injections[targetName as keyof typeof injections];
       if (injectedComponent) {
         return <>{injectedComponent}</>;
       }
