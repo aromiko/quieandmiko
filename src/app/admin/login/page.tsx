@@ -6,10 +6,10 @@ import { Label } from "@/components/ui/label";
 import { createSupabaseBrowserClient } from "@/lib/services/supabase-browser";
 import { Loader2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { toast } from "sonner";
 
-export default function AdminLoginPage() {
+function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -42,6 +42,52 @@ export default function AdminLoginPage() {
   };
 
   return (
+    <form
+      onSubmit={handleLogin}
+      className="space-y-6 rounded-lg border border-neutral-200 bg-white p-8 shadow-sm"
+    >
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
+          type="email"
+          placeholder="admin@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          autoComplete="email"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="password">Password</Label>
+        <Input
+          id="password"
+          type="password"
+          placeholder="••••••••"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          autoComplete="current-password"
+        />
+      </div>
+
+      <Button type="submit" className="w-full" disabled={loading}>
+        {loading ? (
+          <>
+            <Loader2 className="mr-2 size-4 animate-spin" />
+            Signing in...
+          </>
+        ) : (
+          "Sign In"
+        )}
+      </Button>
+    </form>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
     <main className="flex min-h-screen items-center justify-center bg-neutral-50 p-6">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
@@ -51,47 +97,15 @@ export default function AdminLoginPage() {
           </p>
         </div>
 
-        <form
-          onSubmit={handleLogin}
-          className="space-y-6 rounded-lg border border-neutral-200 bg-white p-8 shadow-sm"
+        <Suspense
+          fallback={
+            <div className="flex justify-center py-8">
+              <Loader2 className="size-6 animate-spin text-neutral-400" />
+            </div>
+          }
         >
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="admin@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              autoComplete="email"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              autoComplete="current-password"
-            />
-          </div>
-
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? (
-              <>
-                <Loader2 className="mr-2 size-4 animate-spin" />
-                Signing in...
-              </>
-            ) : (
-              "Sign In"
-            )}
-          </Button>
-        </form>
+          <LoginForm />
+        </Suspense>
 
         <p className="text-muted-foreground text-center text-xs">
           Protected area for wedding coordinators only.
