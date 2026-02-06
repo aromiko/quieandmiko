@@ -1,6 +1,6 @@
 import { TypeComponentSimpleBlock } from "@/lib/types";
 
-const SimpleBlockBanner = ({
+const SimpleBlockBannerRsvp = ({
   simpleBlockTitle,
   simpleBlockImage1
 }: TypeComponentSimpleBlock) => {
@@ -21,4 +21,4 @@ const SimpleBlockBanner = ({
   );
 };
 
-export default SimpleBlockBanner;
+export default SimpleBlockBannerRsvp;

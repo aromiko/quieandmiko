@@ -43,7 +43,7 @@ export default async function RsvpPage({
 
   return (
     <Page
-      slug="rsvp"
+      slug="rsvp-form"
       injectedComponent={
         <RsvpGuestForm
           primaryGuest={primary}

@@ -52,12 +52,12 @@ export default async function Page({
       </HeaderVisibility>
       <PageTransition>
         <main id="main-content" className={cn("scroll-mt-16", mainClassName)}>
-          {injectedComponent}
           <SectionRenderer
             components={mainComponents}
             sectionAs="div"
             className="w-full"
           />
+          {injectedComponent}
         </main>
       </PageTransition>
       <SectionRenderer components={footerComponents} sectionAs="footer" />

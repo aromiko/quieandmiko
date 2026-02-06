@@ -270,9 +270,7 @@ export default function RsvpGuestForm({
   };
 
   return (
-    <section className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center space-y-8 p-6">
-      <h1 lang="fr">{"Répondez s'il vous plaît"}</h1>
-
+    <section className="mx-auto flex max-w-4xl flex-col items-center justify-center space-y-8 p-6">
       {/* Primary Guest Section - "Your RSVP" */}
       <div className="w-full space-y-4">
         <div className="flex items-center gap-2">

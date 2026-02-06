@@ -40,8 +40,7 @@ export default function RsvpCodeForm() {
   };
 
   return (
-    <section className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center space-y-6 p-6">
-      <h1>{"Répondez s'il vous plaît"}</h1>
+    <section className="mx-auto flex max-w-4xl flex-col items-center justify-center space-y-6 p-6">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center space-y-6"
