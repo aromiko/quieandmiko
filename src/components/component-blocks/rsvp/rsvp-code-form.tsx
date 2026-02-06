@@ -63,7 +63,7 @@ export default function RsvpCodeForm() {
         }}
       >
         {/* Overlay for text contrast */}
-        <div className="absolute inset-0 bg-white/85" />
+        <div className="absolute inset-0 bg-white/70" />
 
         {/* Content wrapper */}
         <div className="relative z-10 p-8 sm:p-12">
@@ -79,8 +79,8 @@ export default function RsvpCodeForm() {
               Welcome, Dear Guest
             </h2>
             <p className="mx-auto max-w-sm text-sm leading-relaxed text-neutral-600">
-              Please enter the unique RSVP code from your invitation to access
-              your personalized response form.
+              Please enter the unique RSVP code or scan the QR code from your
+              invitation to access your personalized response form.
             </p>
           </div>
 
@@ -125,8 +125,16 @@ export default function RsvpCodeForm() {
           </form>
 
           {/* Bottom decorative text */}
-          <p className="mt-8 text-center text-xs text-neutral-500">
-            Can&apos;t find your code? Check your invitation card or contact us.
+          <p className="text-coffee mt-8 text-center text-xs">
+            Can&apos;t find your code? Check your invitation card for the RSVP
+            code/QR code or contact us at{" "}
+            <a
+              className="text-wine hover:underline"
+              href="mailto:contact@quieandmiko.com"
+            >
+              contact@quieandmiko.com
+            </a>
+            .
           </p>
 
           {/* Bottom decorative line */}

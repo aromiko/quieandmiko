@@ -18,6 +18,7 @@ export interface TypeComponentSimpleBlock extends TypeComponentBase {
     | "banner"
     | "banner-rsvp"
     | "gallery"
+    | "gift"
     | "image"
     | "invitation"
     | "rsvp"
