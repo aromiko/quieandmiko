@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils/classnames";
-import { User, Users } from "lucide-react";
+import { Hotel, Ticket, User, Users } from "lucide-react";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
@@ -26,6 +27,7 @@ interface Guest {
   email: string | null;
   contact_number: string | null;
   food_allergies: string | null;
+  has_hotel_booking: boolean | null;
 }
 
 interface ContactInfo {
@@ -313,19 +315,67 @@ export default function RsvpGuestForm({
     );
   };
 
+  // Check if primary guest has hotel booking
+  const hasHotelBooking = primaryGuest.has_hotel_booking === true;
+
   return (
     <section className="mx-auto flex max-w-4xl flex-col items-center justify-center space-y-8 p-6">
+      {/* Museum Ticket Image */}
+      <div className="relative aspect-[2.8/1] w-full">
+        <Image
+          src="https://images.ctfassets.net/jfr6f08fp6u3/FdVOOzkEayR63cgYhPD0L/2ef980d9801d2f47b5302a53c8f63d74/TicketMuseum-Ticket.png"
+          alt="Wedding Ticket"
+          fill
+          className="rounded-lg object-cover shadow-lg"
+          priority
+        />
+      </div>
+
       {/* Reserved Seats Notice */}
-      <div className="border-wine/20 bg-wine/5 w-full rounded-lg border p-6 text-center">
-        <p className="text-wine font-serif text-lg">
-          We have reserved{" "}
-          <span className="font-bold">
-            {groupGuests.length + 1} seat{groupGuests.length + 1 > 1 ? "s" : ""}
-          </span>{" "}
-          in your honor.
-        </p>
-        {groupGuests.length > 0 && (
-          <p className="text-wine/70 mt-2 text-sm">For you and your group</p>
+      <div className="w-full space-y-4 text-center">
+        {/* Ticket icon */}
+        <div className="bg-wine/10 mx-auto flex size-12 items-center justify-center rounded-full">
+          <Ticket className="text-wine size-6" />
+        </div>
+
+        {/* Main message */}
+        <div>
+          <p className="text-coffee font-serif text-xl sm:text-2xl">
+            We have reserved{" "}
+            <span className="text-wine font-bold">
+              {groupGuests.length + 1} seat
+              {groupGuests.length + 1 > 1 ? "s" : ""}
+            </span>{" "}
+            in your honor.
+          </p>
+
+          {groupGuests.length > 0 && (
+            <p className="text-coffee/70 mt-2 text-sm">
+              For you and your group
+            </p>
+          )}
+        </div>
+
+        {/* Hotel Booking Notice for Primary Sponsors */}
+        {hasHotelBooking && (
+          <div className="mx-auto w-full max-w-md">
+            <div className="border-wine/20 bg-wine/5 rounded-lg border px-4 py-3">
+              <div className="flex items-start gap-3">
+                <div className="bg-wine/10 flex size-8 shrink-0 items-center justify-center rounded-full">
+                  <Hotel className="text-wine size-4" />
+                </div>
+                <div className="text-left">
+                  <p className="text-coffee text-sm font-medium">
+                    Hotel Accommodation Included
+                  </p>
+                  <p className="text-coffee/70 mt-0.5 text-xs leading-relaxed">
+                    We&apos;ve booked a room for you. Details will be sent one
+                    month before the wedding.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
       </div>
 

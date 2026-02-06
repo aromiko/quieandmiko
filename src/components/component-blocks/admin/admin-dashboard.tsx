@@ -13,11 +13,22 @@ import {
 } from "@/components/ui/select";
 import { createSupabaseBrowserClient } from "@/lib/services/supabase-browser";
 import { Database } from "@/lib/types";
-import { ChevronLeft, ChevronRight, LogOut, Users } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Hotel,
+  LogOut,
+  Pencil,
+  Plus,
+  Trash2,
+  Users
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
 import { toast } from "sonner";
 
+import DeleteGuestDialog from "./delete-guest-dialog";
+import GuestFormDialog from "./guest-form-dialog";
 import RsvpQrCode from "./rsvp-qr-code";
 
 type Guest = Database["public"]["Tables"]["guests"]["Row"];
@@ -66,14 +77,43 @@ function formatGuestType(type: string | null): string {
 }
 
 export default function AdminDashboard({
-  guests,
+  guests: initialGuests,
   userEmail
 }: AdminDashboardProps) {
+  const [guests, setGuests] = useState(initialGuests);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [typeFilter, setTypeFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
+
+  // Dialog states
+  const [formDialogOpen, setFormDialogOpen] = useState(false);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [selectedGuest, setSelectedGuest] = useState<Guest | null>(null);
+
+  const refreshGuests = async () => {
+    const supabase = createSupabaseBrowserClient();
+    const { data } = await supabase.from("guests").select("*");
+    if (data) {
+      setGuests(data);
+    }
+  };
+
+  const handleAddGuest = () => {
+    setSelectedGuest(null);
+    setFormDialogOpen(true);
+  };
+
+  const handleEditGuest = (guest: Guest) => {
+    setSelectedGuest(guest);
+    setFormDialogOpen(true);
+  };
+
+  const handleDeleteGuest = (guest: Guest) => {
+    setSelectedGuest(guest);
+    setDeleteDialogOpen(true);
+  };
 
   const handleLogout = async () => {
     const supabase = createSupabaseBrowserClient();
@@ -101,23 +141,34 @@ export default function AdminDashboard({
     []
   );
 
-  // Filter guests based on search, status, and type
+  // Filter and sort guests based on search, status, and type
   const filteredGuests = useMemo(() => {
-    return guests.filter((g) => {
-      const matchesSearch =
-        g.full_name.toLowerCase().includes(search.toLowerCase()) ||
-        (g.group_label?.toLowerCase().includes(search.toLowerCase()) ?? false);
+    return guests
+      .filter((g) => {
+        const matchesSearch =
+          g.full_name.toLowerCase().includes(search.toLowerCase()) ||
+          (g.group_label?.toLowerCase().includes(search.toLowerCase()) ??
+            false);
 
-      const matchesStatus =
-        statusFilter === "all" ||
-        (statusFilter === "attending" && g.is_attending === true) ||
-        (statusFilter === "not_attending" && g.is_attending === false) ||
-        (statusFilter === "pending" && g.is_attending === null);
+        const matchesStatus =
+          statusFilter === "all" ||
+          (statusFilter === "attending" && g.is_attending === true) ||
+          (statusFilter === "not_attending" && g.is_attending === false) ||
+          (statusFilter === "pending" && g.is_attending === null);
 
-      const matchesType = typeFilter === "all" || g.guest_type === typeFilter;
+        const matchesType = typeFilter === "all" || g.guest_type === typeFilter;
 
-      return matchesSearch && matchesStatus && matchesType;
-    });
+        return matchesSearch && matchesStatus && matchesType;
+      })
+      .sort((a, b) => {
+        // Sort by created_at descending (newest first), fallback to id
+        if (a.created_at && b.created_at) {
+          return (
+            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+          );
+        }
+        return b.id - a.id;
+      });
   }, [guests, search, statusFilter, typeFilter]);
 
   // Pagination
@@ -135,6 +186,41 @@ export default function AdminDashboard({
     },
     []
   );
+
+  // Generate page numbers to display
+  const pageNumbers = useMemo(() => {
+    const pages: (number | "ellipsis")[] = [];
+    const maxVisible = 5;
+
+    if (totalPages <= maxVisible + 2) {
+      // Show all pages if there are few
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      // Always show first page
+      pages.push(1);
+
+      if (currentPage > 3) {
+        pages.push("ellipsis");
+      }
+
+      // Show pages around current
+      const start = Math.max(2, currentPage - 1);
+      const end = Math.min(totalPages - 1, currentPage + 1);
+
+      for (let i = start; i <= end; i++) {
+        if (!pages.includes(i)) pages.push(i);
+      }
+
+      if (currentPage < totalPages - 2) {
+        pages.push("ellipsis");
+      }
+
+      // Always show last page
+      if (!pages.includes(totalPages)) pages.push(totalPages);
+    }
+
+    return pages;
+  }, [totalPages, currentPage]);
 
   const stats = useMemo(
     () => ({
@@ -215,8 +301,12 @@ export default function AdminDashboard({
 
       {/* Guest List */}
       <Card>
-        <CardHeader>
+        <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Guest List</CardTitle>
+          <Button onClick={handleAddGuest}>
+            <Plus className="mr-2 size-4" />
+            Add Guest
+          </Button>
         </CardHeader>
         <CardContent className="space-y-4">
           {/* Filters */}
@@ -309,8 +399,17 @@ export default function AdminDashboard({
                       Allergies: {guest.food_allergies}
                     </Badge>
                   )}
+                  {guest.has_hotel_booking && (
+                    <Badge
+                      variant="outline"
+                      className="border-blue-300 bg-blue-50 text-blue-700"
+                    >
+                      <Hotel className="mr-1 size-3" />
+                      Hotel Booked
+                    </Badge>
+                  )}
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   <RsvpQrCode
                     guestName={guest.full_name}
                     rsvpCode={guest.rsvp_code || ""}
@@ -330,6 +429,21 @@ export default function AdminDashboard({
                   >
                     Copy RSVP Link
                   </Button>
+                  <Button
+                    onClick={() => handleEditGuest(guest)}
+                    variant="outline"
+                    size="sm"
+                  >
+                    <Pencil className="size-4" />
+                  </Button>
+                  <Button
+                    onClick={() => handleDeleteGuest(guest)}
+                    variant="outline"
+                    size="sm"
+                    className="text-destructive hover:bg-destructive hover:text-destructive-foreground"
+                  >
+                    <Trash2 className="size-4" />
+                  </Button>
                 </div>
               </li>
             ))}
@@ -346,20 +460,41 @@ export default function AdminDashboard({
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between border-t border-neutral-200 pt-4">
+            <div className="flex flex-col items-center gap-3 border-t border-neutral-200 pt-4 sm:flex-row sm:justify-between">
               <p className="text-muted-foreground text-sm">
                 Page {currentPage} of {totalPages}
               </p>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap items-center justify-center gap-1">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
                 >
-                  <ChevronLeft className="mr-1 size-4" />
-                  Previous
+                  <ChevronLeft className="size-4" />
                 </Button>
+
+                {pageNumbers.map((page, idx) =>
+                  page === "ellipsis" ? (
+                    <span
+                      key={`ellipsis-${idx}`}
+                      className="px-2 text-neutral-400"
+                    >
+                      ...
+                    </span>
+                  ) : (
+                    <Button
+                      key={page}
+                      variant={currentPage === page ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setCurrentPage(page)}
+                      className="min-w-[36px]"
+                    >
+                      {page}
+                    </Button>
+                  )
+                )}
+
                 <Button
                   variant="outline"
                   size="sm"
@@ -368,14 +503,27 @@ export default function AdminDashboard({
                   }
                   disabled={currentPage === totalPages}
                 >
-                  Next
-                  <ChevronRight className="ml-1 size-4" />
+                  <ChevronRight className="size-4" />
                 </Button>
               </div>
             </div>
           )}
         </CardContent>
       </Card>
+
+      {/* Dialogs */}
+      <GuestFormDialog
+        open={formDialogOpen}
+        onOpenChange={setFormDialogOpen}
+        guest={selectedGuest}
+        onSuccess={refreshGuests}
+      />
+      <DeleteGuestDialog
+        open={deleteDialogOpen}
+        onOpenChange={setDeleteDialogOpen}
+        guest={selectedGuest}
+        onSuccess={refreshGuests}
+      />
     </div>
   );
 }

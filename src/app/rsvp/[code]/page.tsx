@@ -30,11 +30,10 @@ export default async function RsvpPage({
   const supabase = await createSupabaseServerClient();
 
   // Get all guests and compare deterministic hashes
-  // Note: Add 'food_allergies' column to guests table in Supabase, then add it to this select
   const { data: guests } = await supabase
     .from("guests")
     .select(
-      "id, rsvp_code, full_name, group_id, group_label, is_attending, is_adult, guest_type, email, contact_number, food_allergies"
+      "id, rsvp_code, full_name, group_id, group_label, is_attending, is_adult, guest_type, email, contact_number, food_allergies, has_hotel_booking"
     );
 
   if (!guests) return notFound();

@@ -31,7 +31,7 @@ export default function NotFoundPage() {
             </div>
 
             {/* Decorative ampersand */}
-            <div className="text-wine/10 font-script pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16rem] leading-none">
+            <div className="text-wine/10 pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-[16rem] leading-none">
               &
             </div>
 
@@ -65,7 +65,7 @@ export default function NotFoundPage() {
               <Button
                 asChild
                 variant="outline"
-                className="border-wine/30 text-wine hover:text-wine hover:bg-wine/5 h-12 rounded-xl px-6"
+                className="border-wine/30 text-wine hover:bg-wine/5 h-12 rounded-xl px-6"
               >
                 <Link href="/rsvp">
                   <ArrowLeft className="mr-2 size-4" />
@@ -83,6 +83,11 @@ export default function NotFoundPage() {
             <div className="bg-wine/40 absolute bottom-0 left-1/2 h-1 w-32 -translate-x-1/2 rounded-t-full" />
           </div>
         </div>
+
+        {/* Bottom flourish */}
+        <p className="text-wine/40 mt-8 font-serif text-sm italic">
+          ~ Quie & Miko ~
+        </p>
       </section>
     </main>
   );

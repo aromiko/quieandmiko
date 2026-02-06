@@ -32,6 +32,7 @@ export type Database = {
             | "mother"
             | "father";
           is_adult: boolean;
+          has_hotel_booking: boolean | null;
         };
         Insert: {
           created_at?: string;
@@ -55,6 +56,7 @@ export type Database = {
             | "mother"
             | "father";
           is_adult?: boolean;
+          has_hotel_booking?: boolean | null;
         };
         Update: {
           created_at?: string;
@@ -78,6 +80,7 @@ export type Database = {
             | "mother"
             | "father";
           is_adult?: boolean;
+          has_hotel_booking?: boolean | null;
         };
         Relationships: [];
       };

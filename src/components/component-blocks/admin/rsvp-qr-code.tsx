@@ -20,7 +20,7 @@ export default function RsvpQrCode({
   const [isOpen, setIsOpen] = useState(false);
   const [url, setUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const qrRef = useRef<HTMLDivElement>(null);
+  const hdQrRef = useRef<HTMLDivElement>(null);
 
   const handleOpen = useCallback(async () => {
     setLoading(true);
@@ -33,16 +33,16 @@ export default function RsvpQrCode({
   }, [rsvpCode, generateLink]);
 
   const handleDownload = useCallback(() => {
-    if (!qrRef.current) return;
+    if (!hdQrRef.current) return;
 
-    const canvas = qrRef.current.querySelector("canvas");
+    const canvas = hdQrRef.current.querySelector("canvas");
     if (!canvas) return;
 
     // Create a new canvas with white background and padding
     const paddedCanvas = document.createElement("canvas");
-    const padding = 40;
+    const padding = 120;
     paddedCanvas.width = canvas.width + padding * 2;
-    paddedCanvas.height = canvas.height + padding * 2 + 60; // Extra space for name
+    paddedCanvas.height = canvas.height + padding * 2 + 100; // Extra space for code
 
     const ctx = paddedCanvas.getContext("2d");
     if (!ctx) return;
@@ -54,22 +54,58 @@ export default function RsvpQrCode({
     // Draw QR code
     ctx.drawImage(canvas, padding, padding);
 
-    // Add guest name below
+    // Add RSVP code below
     ctx.fillStyle = "#1f1f1f";
-    ctx.font = "bold 16px system-ui, sans-serif";
+    ctx.font = "bold 60px monospace";
     ctx.textAlign = "center";
     ctx.fillText(
-      guestName,
+      rsvpCode,
       paddedCanvas.width / 2,
-      canvas.height + padding + 35
+      canvas.height + padding + 80
     );
 
     // Download
     const link = document.createElement("a");
-    link.download = `RSVP-QR-${guestName.replace(/\s+/g, "-")}.png`;
+    link.download = `RSVP-QR-${rsvpCode}-HD.png`;
     link.href = paddedCanvas.toDataURL("image/png");
     link.click();
-  }, [guestName]);
+  }, [rsvpCode]);
+
+  const handleDownloadHD = useCallback(() => {
+    if (!hdQrRef.current) return;
+
+    const canvas = hdQrRef.current.querySelector("canvas");
+    if (!canvas) return;
+
+    // Create a new canvas with transparent background and padding
+    const paddedCanvas = document.createElement("canvas");
+    const padding = 120;
+    paddedCanvas.width = canvas.width + padding * 2;
+    paddedCanvas.height = canvas.height + padding * 2 + 100; // Extra space for code
+
+    const ctx = paddedCanvas.getContext("2d");
+    if (!ctx) return;
+
+    // Transparent background (no fillRect)
+    // Draw QR code
+    ctx.drawImage(canvas, padding, padding);
+
+    // Add RSVP code below
+    ctx.fillStyle = "#1f1f1f";
+    ctx.font = "bold 60px monospace";
+    ctx.textAlign = "center";
+    ctx.fillText(
+      rsvpCode,
+      paddedCanvas.width / 2,
+      canvas.height + padding + 80
+    );
+
+    // Download
+    const link = document.createElement("a");
+    link.download = `RSVP-QR-${rsvpCode}-HD.png`;
+    link.href = paddedCanvas.toDataURL("image/png");
+    link.click();
+  }, [rsvpCode]);
 
   const handleCopyLink = useCallback(async () => {
     if (url) {
@@ -98,7 +134,7 @@ export default function RsvpQrCode({
           {/* Modal Content */}
           <div
             className={cn(
-              "relative w-full max-w-sm rounded-lg bg-white p-6 shadow-xl",
+              "relative w-full max-w-md rounded-lg bg-white p-6 shadow-xl",
               "animate-in fade-in zoom-in-95 duration-200"
             )}
             onClick={(e) => e.stopPropagation()}
@@ -115,15 +151,24 @@ export default function RsvpQrCode({
             <div className="flex flex-col items-center space-y-4">
               <h3 className="font-serif text-lg font-semibold">{guestName}</h3>
 
-              {/* QR Code */}
-              <div
-                ref={qrRef}
-                className="rounded-lg border border-neutral-200 bg-white p-4"
-              >
+              {/* QR Code Display */}
+              <div className="rounded-lg border border-neutral-200 bg-white p-4">
                 {url && (
                   <QRCodeCanvas
                     value={url}
-                    size={200}
+                    size={300}
+                    level="H"
+                    includeMargin={false}
+                  />
+                )}
+              </div>
+
+              {/* Hidden HD canvas for HD download */}
+              <div ref={hdQrRef} className="hidden">
+                {url && (
+                  <QRCodeCanvas
+                    value={url}
+                    size={900}
                     level="H"
                     includeMargin={false}
                   />
@@ -136,18 +181,24 @@ export default function RsvpQrCode({
               </p>
 
               {/* Actions */}
-              <div className="flex w-full gap-2">
-                <Button
-                  onClick={handleCopyLink}
-                  variant="outline"
-                  className="flex-1"
-                >
+              <div className="flex w-full flex-col gap-2">
+                <Button onClick={handleCopyLink} variant="outline">
                   Copy Link
                 </Button>
-                <Button onClick={handleDownload} className="flex-1">
-                  <Download className="mr-2 size-4" />
-                  Download
-                </Button>
+                <div className="flex gap-2">
+                  <Button
+                    onClick={handleDownload}
+                    variant="outline"
+                    className="flex-1"
+                  >
+                    <Download className="mr-2 size-4" />
+                    HD (White)
+                  </Button>
+                  <Button onClick={handleDownloadHD} className="flex-1">
+                    <Download className="mr-2 size-4" />
+                    HD (Transparent)
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
