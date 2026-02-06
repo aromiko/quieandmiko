@@ -194,20 +194,22 @@ export default function RsvpGuestForm({
             : "border-neutral-200 bg-white/50"
         )}
       >
-        <div className="flex flex-wrap items-center gap-2">
-          {isPrimary && (
-            <Badge variant="default" className="bg-wine text-cream">
-              <User className="size-3" />
-              You
-            </Badge>
-          )}
-          {typeLabel && <Badge variant="secondary">{typeLabel}</Badge>}
-          {!guest.is_adult && (
-            <Badge variant="outline" className="bg-matcha text-cream">
-              Child
-            </Badge>
-          )}
-        </div>
+        {(isPrimary || typeLabel || !guest.is_adult) && (
+          <div className="flex flex-wrap items-center gap-2">
+            {isPrimary && (
+              <Badge variant="default" className="bg-wine text-cream">
+                <User className="size-3" />
+                You
+              </Badge>
+            )}
+            {typeLabel && <Badge variant="secondary">{typeLabel}</Badge>}
+            {!guest.is_adult && (
+              <Badge variant="outline" className="bg-matcha text-cream">
+                Child
+              </Badge>
+            )}
+          </div>
+        )}
 
         <RsvpYesNoCheckbox
           guest={guest}
