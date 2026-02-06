@@ -1,6 +1,14 @@
+import ImageCarousel from "@/components/component-blocks/image-carousel/image-carousel";
 import RsvpGuestForm from "@/components/component-blocks/rsvp/rsvp-guest-form";
+import Page from "@/components/page-templates/page/page";
+import {
+  GuestType,
+  getCarouselTitleForGuestType
+} from "@/lib/configurations/guest-type-carousel-map";
+import { InjectionRegistry } from "@/lib/configurations/injection-registry";
 import { createSupabaseServerClient } from "@/lib/services/supabase-server";
 import { generateDeterministicCode } from "@/lib/utils/crypto";
+import { ContentsFacade } from "@/queries/content-facade";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata() {
@@ -24,7 +32,9 @@ export default async function RsvpPage({
   // Get all guests and compare deterministic hashes
   const { data: guests } = await supabase
     .from("guests")
-    .select("id, rsvp_code, full_name, group_id, group_label, is_attending");
+    .select(
+      "id, rsvp_code, full_name, group_id, group_label, is_attending, is_adult, guest_type, email, contact_number, food_allergies, has_hotel_booking"
+    );
 
   if (!guests) return notFound();
 
@@ -38,13 +48,72 @@ export default async function RsvpPage({
     (g) => g.group_id === primary.group_id && g.id !== primary.id
   );
 
+  // Fetch attire carousel based on guest type
+  const carouselTitle = getCarouselTitleForGuestType(
+    primary.guest_type as GuestType
+  );
+  const attireCarousel =
+    await ContentsFacade.getImageCarouselByTitle(carouselTitle);
+
   return (
-    <main>
-      <RsvpGuestForm
-        primaryGuest={primary}
-        groupLabel={primary.group_label}
-        groupGuests={group}
-      />
-    </main>
+    <Page
+      slug="rsvp-form"
+      injections={{
+        [InjectionRegistry.RsvpGuestForm]: (
+          <RsvpGuestForm
+            primaryGuest={primary}
+            groupLabel={primary.group_label}
+            groupGuests={group}
+          />
+        ),
+        [InjectionRegistry.RsvpAttireCarousel]: attireCarousel && (
+          <section className="flex flex-col items-center justify-center px-8 py-16">
+            <h2 className="text-coffee mb-4 text-center font-serif text-2xl lg:text-3xl">
+              Your Dress Code
+            </h2>
+            <p className="text-coffee mb-8 max-w-md text-center font-mono text-sm font-light">
+              Based on your guest type, here&apos;s your recommended attire
+            </p>
+            <div className="w-[311px] md:w-[410px]">
+              <ImageCarousel
+                {...attireCarousel}
+                imageCarouselHideTitle={true}
+              />
+            </div>
+
+            {/* Important Reminders */}
+            <div className="mt-12 flex w-full max-w-2xl flex-col gap-6">
+              {/* Adults Only */}
+              <div className="border-coffee/20 bg-cream/50 rounded-lg border p-6 text-center">
+                <h3 className="text-coffee mb-3 font-serif text-xl">
+                  Adults-Only Celebration
+                </h3>
+                <p className="text-coffee/80 font-mono text-sm leading-relaxed">
+                  While we love your little ones, we kindly ask that our wedding
+                  be an adults-only celebration.
+                </p>
+              </div>
+
+              {/* Unplugged Ceremony */}
+              <div className="border-coffee/20 bg-cream/50 rounded-lg border p-6 text-center">
+                <h3 className="text-coffee mb-3 font-serif text-xl">
+                  Unplugged Ceremony
+                </h3>
+                <p className="text-coffee/80 font-mono text-sm leading-relaxed">
+                  We invite you to be fully present with us during our unplugged
+                  ceremony. Kindly refrain from using phones and cameras as our
+                  professional photo and video team will capture the moments for
+                  us.
+                </p>
+                <p className="text-coffee/60 mt-3 font-mono text-xs">
+                  You are welcome to take photos and videos during the
+                  reception.
+                </p>
+              </div>
+            </div>
+          </section>
+        )
+      }}
+    />
   );
 }

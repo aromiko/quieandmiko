@@ -1,5 +1,6 @@
 // src/components/component-blocks/adaptive-renderers/component-renderer/component-renderer.tsx
 // Adjust the path as per your project structure
+import { PageInjections } from "@/lib/configurations/injection-registry";
 import { TypePageContentItem } from "@/lib/types";
 // Adjust path
 import { JSX } from "react";
@@ -10,10 +11,12 @@ import ComponentSelector from "./component-selector";
 
 interface ComponentRendererProps {
   data: TypePageContentItem;
+  injections?: PageInjections;
 }
 
 export default function ComponentRenderer({
-  data
+  data,
+  injections
 }: ComponentRendererProps): JSX.Element | null {
   // Safely get __typename and id for logging, even if content or its properties are sparse initially.
   const logReadyTypeName: string = String(data?.__typename); // Handles potential null/undefined content
@@ -37,7 +40,13 @@ export default function ComponentRenderer({
 
     // typeName is now a validated string.
     // Delegate the actual component rendering to ComponentSelector.
-    return <ComponentSelector data={data} typeName={typeName} />;
+    return (
+      <ComponentSelector
+        data={data}
+        typeName={typeName}
+        injections={injections}
+      />
+    );
   } catch (error) {
     console.error(
       `[ComponentRenderer] Critical error during component selection/rendering (type: "${logReadyTypeName}", id: "${logReadyId}"):`,

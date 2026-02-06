@@ -25,6 +25,7 @@ export type { TypeComponentTimelineItem } from "@/lib/types/component-blocks/Typ
 //Page Templates
 export type { TypePageContentItem } from "@/lib/types/page-templates/TypePageContentItem";
 export type { TypePageData } from "@/lib/types/page-templates/TypePageData";
+export type { TypeComponentPageInjection } from "@/lib/types/page-templates/TypePageInjection";
 export type { TypePageSeo } from "@/lib/types/page-templates/TypePageSeo";
 
 //Database

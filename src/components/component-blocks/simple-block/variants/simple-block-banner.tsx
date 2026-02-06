@@ -1,4 +1,3 @@
-import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
 import { TypeComponentSimpleBlock } from "@/lib/types";
 
 const SimpleBlockBanner = ({
@@ -6,19 +5,12 @@ const SimpleBlockBanner = ({
   simpleBlockImage1
 }: TypeComponentSimpleBlock) => {
   return (
-    <section className="h-144 relative flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      {simpleBlockImage1 && (
-        <div className="absolute inset-0 -left-12 z-0 lg:left-0">
-          <BasicMedia
-            data={simpleBlockImage1}
-            wrapperCssClass="w-full h-full"
-            imageCssClass="object-cover object-left lg:object-center"
-            sizes="100vw"
-          />
-        </div>
-      )}
-
+    <section
+      className="h-144 relative flex items-center justify-center overflow-hidden bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${simpleBlockImage1?.basicMediaImage.url})`
+      }}
+    >
       {/* Black overlay */}
       <div className="absolute inset-0 z-10 bg-black/20" />
 

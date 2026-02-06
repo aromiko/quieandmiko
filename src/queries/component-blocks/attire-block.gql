@@ -1,4 +1,5 @@
 #import "@/queries/component-blocks/attire-card.gql"
+#import "@/queries/component-blocks/image-carousel.gql"
 
 fragment AttireBlockFragment on ComponentAttireBlock {
   sys {
@@ -6,11 +7,15 @@ fragment AttireBlockFragment on ComponentAttireBlock {
   }
   __typename
   attireBlockTitle
+  attireBlockSubtitle
   attireBlockBody
   attireBlockCardsCollection(limit: 3) {
     items {
       ... on ComponentAttireCard {
         ...AttireCardFragment
+      }
+      ... on ComponentImageCarousel {
+        ...ImageCarouselFragment
       }
     }
   }

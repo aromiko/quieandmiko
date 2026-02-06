@@ -8,6 +8,7 @@ import {
   TypeComponentImageCarousel,
   TypeComponentImageCarouselBlock,
   TypeComponentMainHero,
+  TypeComponentPageInjection,
   TypeComponentRecommendationBlock,
   TypeComponentRecommendationItem,
   TypeComponentSimpleBlock,
@@ -27,4 +28,5 @@ export type TypePageContentItem =
   | TypeComponentRecommendationBlock
   | TypeComponentRecommendationItem
   | TypeComponentImageCarousel
-  | TypeComponentImageCarouselBlock;
+  | TypeComponentImageCarouselBlock
+  | TypeComponentPageInjection;

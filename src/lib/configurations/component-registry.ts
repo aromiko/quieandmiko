@@ -21,7 +21,8 @@ export const ComponentRegistry = {
   ImageCarousel: "ComponentImageCarousel",
   ImageCarouselBlock: "ComponentImageCarouselBlock",
   RecommendationBlock: "ComponentRecommendationBlock",
-  RecommendationItem: "ComponentRecommendationItem"
+  RecommendationItem: "ComponentRecommendationItem",
+  PageInjection: "ComponentPageInjection"
 } as const;
 
 export type ComponentTypenames =

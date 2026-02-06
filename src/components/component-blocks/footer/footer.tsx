@@ -13,9 +13,10 @@ export default function Footer({
   return (
     <section
       className={cn(
-        "h-100 lg:h-144 relative flex w-full flex-col bg-cover bg-center",
+        "h-100 lg:h-144 relative flex w-full flex-col bg-cover bg-center px-8 py-16 lg:px-12",
         {
-          "items-center": footerVariant === "center"
+          "items-center": footerVariant === "center",
+          "flex-row items-start justify-between": footerVariant === "left"
         }
       )}
       style={{
@@ -30,10 +31,24 @@ export default function Footer({
           sizes="(min-width: 1024px) 160px, 128px"
         />
       )}
-      <div className="container z-10 mt-4 p-4 text-center font-mono text-sm font-light text-white lg:text-lg">
-        {footerText}
-      </div>
-      <div className="mb-12 flex gap-4 p-4 lg:mb-24">
+      {footerText && (
+        <div
+          className={cn(
+            "container z-10 mt-4 flex justify-center p-4 text-center font-mono text-sm font-light text-white lg:text-lg",
+            {
+              "items-center": footerVariant === "center",
+              "h-full items-end": footerVariant === "left"
+            }
+          )}
+        >
+          {footerText}
+        </div>
+      )}
+      <div
+        className={cn("flex gap-4 p-4", {
+          "h-full items-end": footerVariant === "left"
+        })}
+      >
         {footerLinksCollection?.items &&
           footerLinksCollection?.items.length > 0 &&
           footerLinksCollection?.items.map((footerLink) => {

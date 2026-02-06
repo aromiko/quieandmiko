@@ -11,7 +11,7 @@ const SimpleBlockInvitation = ({
   return (
     <section className="bg-wine flex min-h-screen flex-col items-center justify-center px-8 py-16 lg:px-12">
       {simpleBlockTitle && (
-        <h2 className="text-cream mb-12 text-7xl">{simpleBlockTitle}</h2>
+        <h2 className="text-cream mb-12 text-8xl">{simpleBlockTitle}</h2>
       )}
 
       <div className="flex w-full flex-col items-center justify-center gap-3 lg:flex-row">

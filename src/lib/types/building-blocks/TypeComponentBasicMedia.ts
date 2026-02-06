@@ -1,6 +1,6 @@
-import { TypeComponentMedia } from "@/lib/types";
+import { TypeComponentBase, TypeComponentMedia } from "@/lib/types";
 
-export interface TypeComponentBasicMedia {
+export interface TypeComponentBasicMedia extends TypeComponentBase {
   basicMediaName?: string;
   basicMediaImage: TypeComponentMedia;
   basicMediaAltText: string;

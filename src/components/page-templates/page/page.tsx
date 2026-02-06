@@ -2,6 +2,7 @@ import SectionRenderer from "@/components/component-blocks/adaptive-renderers/se
 import PageTransition from "@/components/component-blocks/animation-wrapper/page-transition";
 import HeaderVisibility from "@/components/component-blocks/header/header-visibility";
 import { ComponentSections } from "@/lib/configurations/component-sections";
+import { PageInjections } from "@/lib/configurations/injection-registry";
 import { TypePageContentItem } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
 import { filterComponentsForAssembly } from "@/lib/utils/component-filter";
@@ -10,12 +11,14 @@ import { notFound } from "next/navigation";
 
 interface PageProps {
   slug: string;
+  injections?: PageInjections;
   injectedComponent?: React.ReactNode;
   mainClassName?: string;
 }
 
 export default async function Page({
   slug,
+  injections,
   injectedComponent,
   mainClassName
 }: PageProps) {
@@ -48,19 +51,28 @@ export default async function Page({
   return (
     <>
       <HeaderVisibility>
-        <SectionRenderer components={headerComponents} sectionAs="header" />
+        <SectionRenderer
+          components={headerComponents}
+          sectionAs="header"
+          injections={injections}
+        />
       </HeaderVisibility>
       <PageTransition>
         <main id="main-content" className={cn("scroll-mt-16", mainClassName)}>
-          {injectedComponent}
           <SectionRenderer
             components={mainComponents}
             sectionAs="div"
             className="w-full"
+            injections={injections}
           />
+          {injectedComponent}
         </main>
       </PageTransition>
-      <SectionRenderer components={footerComponents} sectionAs="footer" />
+      <SectionRenderer
+        components={footerComponents}
+        sectionAs="footer"
+        injections={injections}
+      />
     </>
   );
 }

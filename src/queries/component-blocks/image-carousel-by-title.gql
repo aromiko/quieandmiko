@@ -1,0 +1,13 @@
+#import "@/queries/component-blocks/image-carousel.gql"
+
+query ImageCarouselByTitle($title: String!, $isPreview: Boolean = false) {
+  componentImageCarouselCollection(
+    where: { imageCarouselTitle: $title }
+    limit: 1
+    preview: $isPreview
+  ) {
+    items {
+      ...ImageCarouselFragment
+    }
+  }
+}

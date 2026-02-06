@@ -16,6 +16,7 @@ export interface TypeComponentSimpleBlock extends TypeComponentBase {
   simpleBlockCta?: TypeComponentBasicLink;
   simpleBlockVariant?:
     | "banner"
+    | "banner-rsvp"
     | "gallery"
     | "image"
     | "invitation"

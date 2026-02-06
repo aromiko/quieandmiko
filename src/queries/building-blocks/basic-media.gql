@@ -2,6 +2,7 @@ fragment BasicMediaFragment on ComponentBasicMedia {
   sys {
     id
   }
+  __typename
   basicMediaName
   basicMediaImage {
     url

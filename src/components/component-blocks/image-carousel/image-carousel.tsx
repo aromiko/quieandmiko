@@ -5,33 +5,30 @@ import ImageSlides from "./image-slides";
 
 const ImageCarousel = ({
   imageCarouselTitle,
+  imageCarouselCover,
   imageCarouselItemsCollection,
-  imageCarouselClassName
+  imageCarouselClassName,
+  imageCarouselHideTitle
 }: TypeComponentImageCarousel) => {
+  const items = imageCarouselItemsCollection?.items || [];
+  const hasContent = imageCarouselCover || items.length > 0;
+
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center gap-4",
+        "flex w-full flex-col items-center justify-center gap-4",
         imageCarouselClassName
       )}
     >
-      <div>
-        <h2 className="text-coffee max-w-2xl text-center font-serif text-4xl">
-          {imageCarouselTitle}
-        </h2>
-      </div>
-      <div className="max-w-120 w-full p-4">
-        {imageCarouselItemsCollection?.items &&
-          imageCarouselItemsCollection.items.length > 0 && (
-            <ImageSlides
-              slides={imageCarouselItemsCollection.items.map((item) => {
-                return {
-                  src: item.basicMediaImage.url,
-                  alt: item.basicMediaAltText
-                };
-              })}
-            />
-          )}
+      {!imageCarouselHideTitle && imageCarouselTitle && (
+        <div>
+          <h4 className="text-coffee max-w-2xl text-center font-serif text-3xl">
+            {imageCarouselTitle}
+          </h4>
+        </div>
+      )}
+      <div className="w-full">
+        {hasContent && <ImageSlides cover={imageCarouselCover} items={items} />}
       </div>
     </div>
   );

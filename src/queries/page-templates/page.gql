@@ -8,6 +8,7 @@
 #import "@/queries/component-blocks/image-carousel-block.gql"
 #import "@/queries/component-blocks/recommendation-block.gql"
 #import "@/queries/page-templates/page-seo.gql"
+#import "@/queries/page-templates/page-injection.gql"
 
 query QUERY_PAGE_BY_SLUG($slug: String!, $isPreview: Boolean!) {
   componentPageCollection(
@@ -49,6 +50,9 @@ query QUERY_PAGE_BY_SLUG($slug: String!, $isPreview: Boolean!) {
           }
           ... on ComponentRecommendationBlock {
             ...RecommendationBlockFragment
+          }
+          ... on ComponentPageInjection {
+            ...PageInjectionFragment
           }
         }
       }

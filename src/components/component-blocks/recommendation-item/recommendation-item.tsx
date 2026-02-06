@@ -33,7 +33,7 @@ const RecommendationItem = ({
           data={recommendationItemImage}
           wrapperCssClass="w-[248px] aspect-[1/1]"
           imageCssClass="object-cover"
-          sizes="248px"
+          sizes="500px"
         />
       )}
       <div className="mt-2 flex flex-row items-baseline gap-2">

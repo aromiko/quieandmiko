@@ -29,7 +29,7 @@ export default function MainHero({
       )}
 
       {mainHeroInitials1 && (
-        <div className="absolute left-12 top-12 flex flex-col items-center space-y-1 font-mono text-base leading-none text-[#B6AE94] lg:top-16">
+        <div className="text-matcha absolute left-12 top-12 flex flex-col items-center space-y-1 font-mono text-base leading-none lg:top-16">
           {mainHeroInitials1
             .split(".")
             .filter(Boolean)
@@ -55,7 +55,7 @@ export default function MainHero({
         })()}
 
       {mainHeroInitials2 && (
-        <div className="absolute bottom-12 right-12 flex flex-col items-center space-y-1 font-mono text-base leading-none text-[#B6AE94] lg:bottom-16">
+        <div className="text-matcha absolute bottom-12 right-12 flex flex-col items-center space-y-1 font-mono text-base leading-none lg:bottom-16">
           {mainHeroInitials2
             .split(".")
             .filter(Boolean)

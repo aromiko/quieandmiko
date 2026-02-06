@@ -1,6 +1,7 @@
 import { TypeComponentSimpleBlock } from "@/lib/types";
 
 import SimpleBlockBanner from "./simple-block-banner";
+import SimpleBlockBannerRsvp from "./simple-block-banner-rsvp";
 import SimpleBlockGallery from "./simple-block-gallery";
 import SimpleBlockImage from "./simple-block-image";
 import SimpleBlockInvitation from "./simple-block-invitation";
@@ -9,6 +10,7 @@ import SimpleBlockStory from "./simple-block-story";
 
 export const SimpleBlockVariants = {
   banner: SimpleBlockBanner,
+  "banner-rsvp": SimpleBlockBannerRsvp,
   gallery: SimpleBlockGallery,
   image: SimpleBlockImage,
   invitation: SimpleBlockInvitation,
