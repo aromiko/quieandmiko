@@ -1,3 +1,4 @@
+import ScrollReveal from "@/components/component-blocks/animation-wrapper/scroll-reveal";
 import { TypeComponentRecommendationBlock } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
 
@@ -18,9 +19,12 @@ const RecommendationBlock = ({
           }
         )}
       >
-        <div className="flex w-full items-center justify-center sm:w-1/2 xl:w-1/3">
+        <ScrollReveal
+          variant="fade-up"
+          className="flex w-full items-center justify-center sm:w-1/2 xl:w-1/3"
+        >
           <h2 className="leading-15">{recommendationBlockTitle}</h2>
-        </div>
+        </ScrollReveal>
 
         {recommendationBlockItemsCollection?.items &&
           recommendationBlockItemsCollection?.items.length > 0 &&
@@ -30,6 +34,7 @@ const RecommendationBlock = ({
                 key={index}
                 {...recommendationItem}
                 recommendationItemClassName="w-full sm:w-1/2 xl:w-1/3"
+                index={index}
               />
             )
           )}

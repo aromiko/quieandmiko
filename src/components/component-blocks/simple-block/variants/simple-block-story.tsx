@@ -1,4 +1,5 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
+import ScrollReveal from "@/components/component-blocks/animation-wrapper/scroll-reveal";
 import { TypeComponentSimpleBlock } from "@/lib/types";
 
 const SimpleBlockStory = ({
@@ -21,19 +22,25 @@ const SimpleBlockStory = ({
       <div className="absolute z-10 flex aspect-[10/7] w-full lg:h-[700px] lg:w-[1000px] lg:pb-16 lg:pt-8">
         <div className="flex w-1/2 flex-col items-center justify-center lg:ml-24 lg:p-8">
           {simpleBlockTitle && (
-            <h2 className="ml-18 mb-12 text-4xl md:text-5xl lg:mb-0 lg:ml-0 lg:text-6xl">
-              {simpleBlockTitle}
-            </h2>
+            <ScrollReveal variant="fade-up" delay={0.3}>
+              <h2 className="ml-18 mb-12 text-4xl md:text-5xl lg:mb-0 lg:ml-0 lg:text-6xl">
+                {simpleBlockTitle}
+              </h2>
+            </ScrollReveal>
           )}
           {simpleBlockBody1 && (
-            <p className="hidden text-sm lg:mr-16 lg:mt-4 lg:block">
-              {simpleBlockBody1}
-            </p>
+            <ScrollReveal variant="fade" delay={0.5}>
+              <p className="hidden text-sm lg:mr-16 lg:mt-4 lg:block">
+                {simpleBlockBody1}
+              </p>
+            </ScrollReveal>
           )}
           {simpleBlockBody2 && (
-            <p className="hidden text-right text-sm lg:mt-8 lg:block lg:pl-16">
-              {simpleBlockBody2}
-            </p>
+            <ScrollReveal variant="fade" delay={0.65}>
+              <p className="hidden text-right text-sm lg:mt-8 lg:block lg:pl-16">
+                {simpleBlockBody2}
+              </p>
+            </ScrollReveal>
           )}
         </div>
         <div className="lg:mr-18 relative flex w-1/2 flex-col items-center justify-center">
@@ -55,10 +62,14 @@ const SimpleBlockStory = ({
       </div>
       <div className="mb-8 mt-16 lg:hidden">
         {simpleBlockBody1 && (
-          <p className="mr-10 mt-4 block">{simpleBlockBody1}</p>
+          <ScrollReveal variant="fade-up" delay={0.2}>
+            <p className="mr-10 mt-4 block">{simpleBlockBody1}</p>
+          </ScrollReveal>
         )}
         {simpleBlockBody2 && (
-          <p className="mt-8 block pl-10 text-right">{simpleBlockBody2}</p>
+          <ScrollReveal variant="fade-up" delay={0.35}>
+            <p className="mt-8 block pl-10 text-right">{simpleBlockBody2}</p>
+          </ScrollReveal>
         )}
       </div>
     </section>

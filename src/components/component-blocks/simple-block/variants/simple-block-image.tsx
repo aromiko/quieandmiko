@@ -1,4 +1,5 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
+import ScrollReveal from "@/components/component-blocks/animation-wrapper/scroll-reveal";
 import { TypeComponentSimpleBlock } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
 
@@ -11,30 +12,36 @@ const SimpleBlockImage = ({
   return (
     <section className="h-100 md:h-200 flex flex-col items-center justify-center">
       {simpleBlockImage1 && (
-        <BasicMedia
-          data={simpleBlockImage1}
-          wrapperCssClass="w-[300px] md:w-[550px] lg:w-[715px] aspect-[1.79/1]"
-          imageCssClass={cn("object-cover", {
-            "object-top": simpleBlockImage1Position === "top",
-            "object-bottom": simpleBlockImage1Position === "bottom"
-          })}
-          sizes="(min-width: 1024px) 715px, (min-width: 768px) 550px, 300px"
-        />
+        <ScrollReveal variant="scale" duration={0.9}>
+          <BasicMedia
+            data={simpleBlockImage1}
+            wrapperCssClass="w-[300px] md:w-[550px] lg:w-[715px] aspect-[1.79/1]"
+            imageCssClass={cn("object-cover", {
+              "object-top": simpleBlockImage1Position === "top",
+              "object-bottom": simpleBlockImage1Position === "bottom"
+            })}
+            sizes="(min-width: 1024px) 715px, (min-width: 768px) 550px, 300px"
+          />
+        </ScrollReveal>
       )}
       {simpleBlockMoreInfo && (
-        <div className="display mt-16 text-center">
-          <p className="font-mono text-lg font-light">{simpleBlockMoreInfo}</p>
-          {simpleBlockMoreInfoLink && (
-            <a
-              href={simpleBlockMoreInfoLink.linkUrl}
-              className="text-wine font-serif text-2xl hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {simpleBlockMoreInfoLink.linkText}
-            </a>
-          )}
-        </div>
+        <ScrollReveal variant="fade-up" delay={0.2}>
+          <div className="display mt-16 text-center">
+            <p className="font-mono text-lg font-light">
+              {simpleBlockMoreInfo}
+            </p>
+            {simpleBlockMoreInfoLink && (
+              <a
+                href={simpleBlockMoreInfoLink.linkUrl}
+                className="text-wine font-serif text-2xl hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {simpleBlockMoreInfoLink.linkText}
+              </a>
+            )}
+          </div>
+        </ScrollReveal>
       )}
     </section>
   );

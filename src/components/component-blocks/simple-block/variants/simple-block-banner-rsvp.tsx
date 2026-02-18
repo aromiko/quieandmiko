@@ -1,3 +1,5 @@
+import ParallaxBackground from "@/components/component-blocks/animation-wrapper/parallax-background";
+import ScrollReveal from "@/components/component-blocks/animation-wrapper/scroll-reveal";
 import { TypeComponentSimpleBlock } from "@/lib/types";
 
 const SimpleBlockBannerRsvp = ({
@@ -5,15 +7,13 @@ const SimpleBlockBannerRsvp = ({
   simpleBlockImage1
 }: TypeComponentSimpleBlock) => {
   return (
-    <section
-      className="h-144 relative flex items-center justify-center overflow-hidden bg-cover bg-center lg:bg-[position:center_55%]"
-      style={{
-        backgroundImage: `url(${simpleBlockImage1?.basicMediaImage.url})`
-      }}
+    <ParallaxBackground
+      imageUrl={simpleBlockImage1?.basicMediaImage.url}
+      speed={0.25}
+      overlay="bg-black/20"
+      className="h-144 flex items-center justify-center"
+      imagePosition="center 20%"
     >
-      {/* Black overlay */}
-      <div className="absolute inset-0 z-10 bg-black/20" />
-
       {/* Decorative RSVP letters in corners */}
       <span className="font-script lg:h-30 absolute left-4 top-24 z-20 w-20 text-7xl font-bold text-white/50 lg:left-10 lg:top-24 lg:w-36 lg:text-9xl">
         R
@@ -28,10 +28,12 @@ const SimpleBlockBannerRsvp = ({
         P
       </span>
 
-      <h2 className="z-20 text-7xl text-white lg:text-8xl">
-        {simpleBlockTitle}
-      </h2>
-    </section>
+      <ScrollReveal variant="fade-up" duration={1}>
+        <h2 className="z-20 text-7xl text-white lg:text-8xl">
+          {simpleBlockTitle}
+        </h2>
+      </ScrollReveal>
+    </ParallaxBackground>
   );
 };
 

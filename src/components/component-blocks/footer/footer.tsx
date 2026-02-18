@@ -1,4 +1,6 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
+import ParallaxBackground from "@/components/component-blocks/animation-wrapper/parallax-background";
+import ScrollReveal from "@/components/component-blocks/animation-wrapper/scroll-reveal";
 import { TypeComponentFooter } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
 import { ICON_MAP } from "@/lib/utils/icon-map";
@@ -11,17 +13,14 @@ export default function Footer({
   footerLinksCollection
 }: TypeComponentFooter) {
   return (
-    <section
-      className={cn(
-        "h-100 lg:h-144 relative flex w-full flex-col bg-cover bg-center px-8 py-16 lg:px-12",
-        {
-          "items-center": footerVariant === "center",
-          "flex-row items-start justify-between": footerVariant === "left"
-        }
-      )}
-      style={{
-        backgroundImage: `url(${footerBackground?.basicMediaImage.url})`
-      }}
+    <ParallaxBackground
+      imageUrl={footerBackground?.basicMediaImage.url}
+      speed={0.25}
+      className="h-100 lg:h-144 w-full"
+      innerClassName={cn("px-8 py-16 lg:px-12", {
+        "items-center": footerVariant === "center",
+        "flex-row items-start justify-between": footerVariant === "left"
+      })}
     >
       {footerLogo && (
         <BasicMedia
@@ -32,17 +31,19 @@ export default function Footer({
         />
       )}
       {footerText && (
-        <div
-          className={cn(
-            "container z-10 mt-4 flex justify-center p-4 text-center font-mono text-sm font-light text-white lg:text-lg",
-            {
-              "items-center": footerVariant === "center",
-              "h-full items-end": footerVariant === "left"
-            }
-          )}
-        >
-          {footerText}
-        </div>
+        <ScrollReveal variant="fade" delay={0.2}>
+          <div
+            className={cn(
+              "container z-10 mt-4 flex justify-center p-4 text-center font-mono text-sm font-light text-white lg:text-lg",
+              {
+                "items-center": footerVariant === "center",
+                "h-full items-end": footerVariant === "left"
+              }
+            )}
+          >
+            {footerText}
+          </div>
+        </ScrollReveal>
       )}
       <div
         className={cn("flex gap-4 p-4", {
@@ -74,6 +75,6 @@ export default function Footer({
             );
           })}
       </div>
-    </section>
+    </ParallaxBackground>
   );
 }

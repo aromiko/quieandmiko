@@ -16,7 +16,7 @@ const TimelineBlock = ({
       {timelineBlockItemsCollection?.items &&
         timelineBlockItemsCollection?.items.length &&
         timelineBlockItemsCollection.items.map((timelineItem, index) => (
-          <TimelineItem key={index} {...timelineItem} />
+          <TimelineItem key={index} {...timelineItem} index={index} />
         ))}
     </section>
   );
