@@ -36,7 +36,7 @@ const EntourageBlock = ({
         style={{
           backgroundImage: `url(${entourageBlockBackgroundImage?.basicMediaImage.url})`
         }}
-        className="relative mx-8 my-16 flex w-full flex-wrap overflow-hidden bg-contain px-8 py-20 lg:mx-32 lg:px-20"
+        className="bg-matcha relative mx-8 my-16 flex w-full flex-wrap overflow-hidden bg-contain px-8 py-20 lg:mx-32 lg:px-20"
       >
         {entourageBlockBackgroundOverlay && (
           <div

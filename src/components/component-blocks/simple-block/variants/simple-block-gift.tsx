@@ -38,7 +38,7 @@ const SimpleBlockGift = ({
       {(simpleBlockImage1 || simpleBlockImage2) && (
         <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16">
           {simpleBlockImage1 && (
-            <div className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
+            <div className="group relative overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
               <BasicMedia
                 data={simpleBlockImage1}
                 wrapperCssClass="w-[220px] lg:w-[300px] aspect-[3/4]"
@@ -49,7 +49,7 @@ const SimpleBlockGift = ({
             </div>
           )}
           {simpleBlockImage2 && (
-            <div className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
+            <div className="group relative overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
               <BasicMedia
                 data={simpleBlockImage2}
                 wrapperCssClass="w-[220px] lg:w-[300px] aspect-[3/4]"

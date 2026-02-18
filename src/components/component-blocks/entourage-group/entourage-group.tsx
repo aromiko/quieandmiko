@@ -8,7 +8,7 @@ const EntourageGroup = ({
 }: TypeComponentEntourageGroup) => {
   return (
     <article className={cn("flex flex-col", entourageGroupClassName)}>
-      <h3 className="font-serif text-xl text-white lg:h-7 lg:text-2xl">
+      <h3 className="font-serif text-xl text-white md:h-7 lg:text-2xl">
         {entourageGroupTitle}
       </h3>
 

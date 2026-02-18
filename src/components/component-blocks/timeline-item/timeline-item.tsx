@@ -11,7 +11,7 @@ const TimelineItem = ({
   timelineItemImage
 }: TypeComponentTimelineItem) => {
   return (
-    <article className="not-first:border-t-1 border-cream flex w-full flex-col gap-0 px-0 py-14 text-white lg:flex-row lg:gap-24 xl:px-20">
+    <article className="not-first:border-t-1 border-cream flex w-full flex-col gap-0 px-0 py-14 text-white lg:flex-row lg:gap-20">
       <div className="lex-row flex w-full items-center lg:w-1/3 lg:flex-col">
         <div className="flex grow flex-col">
           <time className="font-mono text-2xl">{timelineItemTime}</time>
