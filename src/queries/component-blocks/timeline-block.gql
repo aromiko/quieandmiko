@@ -6,7 +6,7 @@ fragment TimelineBlockFragment on ComponentTimelineBlock {
     id
   }
   __typename
-  timelineBlockItemsCollection(limit: 4) {
+  timelineBlockItemsCollection(limit: 10) {
     items {
       ...TimelineItemFragment
     }

@@ -1,5 +1,6 @@
 // src/components/component-blocks/adaptive-renderers/component-selector/component-selector.tsx
 // Adjust the path as per your project structure
+import AccordionBlock from "@/components/component-blocks/accordion-block/accordion-block";
 import AttireBlock from "@/components/component-blocks/attire-block/attire-block";
 import EntourageBlock from "@/components/component-blocks/entourage-block/entourage-block";
 import Footer from "@/components/component-blocks/footer/footer";
@@ -16,6 +17,7 @@ import {
 } from "@/lib/configurations/component-registry";
 import { PageInjections } from "@/lib/configurations/injection-registry";
 import {
+  TypeComponentAccordionBlock,
   TypeComponentAttireBlock,
   TypeComponentEntourageBlock,
   TypeComponentFooter,
@@ -77,6 +79,8 @@ export default function ComponentSelector({
       return <TimelineBlock {...(data as TypeComponentTimelineBlock)} />;
     case ComponentRegistry.EntourageBlock:
       return <EntourageBlock {...(data as TypeComponentEntourageBlock)} />;
+    case ComponentRegistry.AccordionBlock:
+      return <AccordionBlock {...(data as TypeComponentAccordionBlock)} />;
     case ComponentRegistry.RecommendationBlock:
       return (
         <RecommendationBlock {...(data as TypeComponentRecommendationBlock)} />

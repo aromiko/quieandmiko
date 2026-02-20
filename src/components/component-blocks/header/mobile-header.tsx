@@ -33,7 +33,7 @@ export default function MobileHeader({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="lg:hidden">
+    <div className="flex h-full items-center lg:hidden">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button
@@ -43,7 +43,7 @@ export default function MobileHeader({
             size={"icon"}
           >
             <Menu
-              className={cn("text-cream size-6", {
+              className={cn("text-cream size-9", {
                 "group-data-[scrolled=false]:text-wine": variant === "solid"
               })}
             />

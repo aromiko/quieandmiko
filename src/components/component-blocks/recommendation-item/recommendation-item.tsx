@@ -1,7 +1,12 @@
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
+import ScrollReveal from "@/components/component-blocks/animation-wrapper/scroll-reveal";
 import { TypeComponentRecommendationItem } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
 import { ExternalLink } from "lucide-react";
+
+type RecommendationItemProps = TypeComponentRecommendationItem & {
+  index?: number;
+};
 
 const RecommendationItem = ({
   recommendationItemTitle,
@@ -11,8 +16,9 @@ const RecommendationItem = ({
   recommendationItemBody2,
   recommendationItemBackgroundImage,
   recommendationItemClassName,
-  recommendationItemLink
-}: TypeComponentRecommendationItem) => {
+  recommendationItemLink,
+  index = 0
+}: RecommendationItemProps) => {
   const cardContent = (
     <div
       className={cn(
@@ -48,7 +54,9 @@ const RecommendationItem = ({
   );
 
   return (
-    <div
+    <ScrollReveal
+      variant="scale-up"
+      delay={index * 0.12}
       className={cn("flex flex-col items-center", recommendationItemClassName)}
     >
       {recommendationItemLink ? (
@@ -66,7 +74,7 @@ const RecommendationItem = ({
       )}
       <span className="font-mono text-sm">{recommendationItemBody1}</span>
       <span className="font-mono text-sm">{recommendationItemBody2}</span>
-    </div>
+    </ScrollReveal>
   );
 };
 

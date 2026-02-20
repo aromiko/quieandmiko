@@ -1,3 +1,4 @@
+import ScrollReveal from "@/components/component-blocks/animation-wrapper/scroll-reveal";
 import { ComponentRegistry } from "@/lib/configurations/component-registry";
 import {
   TypeComponentAttireBlock,
@@ -23,29 +24,42 @@ const AttireBlock = ({
         attireBlockClassName
       )}
     >
-      <h2 className="text-coffee text-7xl lg:text-8xl">{attireBlockTitle}</h2>
+      <ScrollReveal variant="fade-up">
+        <h2 className="text-coffee text-7xl lg:text-8xl">{attireBlockTitle}</h2>
+      </ScrollReveal>
 
       {attireBlockSubtitle && (
-        <h3 className="text-coffee mt-12 text-center font-serif text-2xl lg:max-w-xl lg:text-3xl">
-          {attireBlockSubtitle}
-        </h3>
+        <ScrollReveal variant="fade-up" delay={0.15}>
+          <h3 className="text-coffee mt-12 text-center font-serif text-2xl lg:max-w-xl lg:text-3xl">
+            {attireBlockSubtitle}
+          </h3>
+        </ScrollReveal>
       )}
 
       {attireBlockCardsCollection && (
         <div className="mt-12 flex w-full flex-col flex-wrap items-center justify-center gap-6 lg:flex-row">
-          {attireBlockCardsCollection.items.map((item) => {
+          {attireBlockCardsCollection.items.map((item, index) => {
             if (item.__typename === ComponentRegistry.AttireCard) {
               return (
-                <AttireCard
+                <ScrollReveal
                   key={item.sys.id}
-                  {...(item as TypeComponentAttireCard)}
-                />
+                  variant="scale-up"
+                  delay={index * 0.15}
+                >
+                  <AttireCard {...(item as TypeComponentAttireCard)} />
+                </ScrollReveal>
               );
             } else if (item.__typename === ComponentRegistry.ImageCarousel) {
               return (
-                <div key={item.sys.id} className="w-[311px] md:w-[410px]">
-                  <ImageCarousel {...(item as TypeComponentImageCarousel)} />
-                </div>
+                <ScrollReveal
+                  key={item.sys.id}
+                  variant="scale-up"
+                  delay={index * 0.15}
+                >
+                  <div className="w-[311px] md:w-[410px]">
+                    <ImageCarousel {...(item as TypeComponentImageCarousel)} />
+                  </div>
+                </ScrollReveal>
               );
             }
             return null;
@@ -53,9 +67,11 @@ const AttireBlock = ({
         </div>
       )}
 
-      <p className="text-coffee mt-10 max-w-md text-center font-mono text-sm font-light lg:text-base">
-        {attireBlockBody}
-      </p>
+      <ScrollReveal variant="fade" delay={0.3}>
+        <p className="text-coffee mt-10 max-w-md text-center font-mono text-sm font-light lg:text-base">
+          {attireBlockBody}
+        </p>
+      </ScrollReveal>
     </section>
   );
 };

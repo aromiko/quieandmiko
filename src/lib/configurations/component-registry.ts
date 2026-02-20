@@ -22,7 +22,9 @@ export const ComponentRegistry = {
   ImageCarouselBlock: "ComponentImageCarouselBlock",
   RecommendationBlock: "ComponentRecommendationBlock",
   RecommendationItem: "ComponentRecommendationItem",
-  PageInjection: "ComponentPageInjection"
+  PageInjection: "ComponentPageInjection",
+  AccordionBlock: "ComponentAccordionBlock",
+  AccordionItem: "ComponentAccordionItem"
 } as const;
 
 export type ComponentTypenames =

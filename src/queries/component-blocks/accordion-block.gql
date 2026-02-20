@@ -1,0 +1,15 @@
+#import "@/queries/component-blocks/accordion-item.gql"
+
+fragment AccordionBlockFragment on ComponentAccordionBlock {
+  sys {
+    id
+  }
+  __typename
+  accordionBlockTitle
+  accordionBlockBody
+  accordionBlockItemsCollection(limit: 10) {
+    items {
+      ...AccordionItemFragment
+    }
+  }
+}

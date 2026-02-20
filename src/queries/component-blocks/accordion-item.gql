@@ -1,0 +1,13 @@
+#import "@/queries/building-blocks/basic-media.gql"
+
+fragment AccordionItemFragment on ComponentAccordionItem {
+  sys {
+    id
+  }
+  __typename
+  accordionItemTitle
+  accordionItemBody
+  accordionItemImage1 {
+    ...BasicMediaFragment
+  }
+}

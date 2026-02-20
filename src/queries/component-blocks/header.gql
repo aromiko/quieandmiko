@@ -10,7 +10,7 @@ fragment HeaderFragment on ComponentHeader {
   headerLogo {
     ...BasicMediaFragment
   }
-  headerLinksCollection(limit: 6) {
+  headerLinksCollection(limit: 8) {
     items {
       ...BasicLinkFragment
     }
