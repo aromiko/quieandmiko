@@ -10,6 +10,7 @@ export interface TypeComponentFooter extends TypeComponentBase {
   sys: { id: string };
   footerText?: string;
   footerBackground?: TypeComponentBasicMedia;
+  footerBackgroundPosition?: string;
   footerLogo?: TypeComponentBasicMedia;
   footerVariant?: "center" | "left";
   footerLinksCollection?: { items: TypeComponentBasicLink[] };
