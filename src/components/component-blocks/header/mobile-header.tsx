@@ -59,10 +59,7 @@ export default function MobileHeader({
               {logo && (
                 <Link
                   href="/"
-                  className={cn(
-                    "[&_img]:brightness-0",
-                    "hover:opacity-50"
-                  )}
+                  className={cn("[&_img]:brightness-0", "hover:opacity-50")}
                 >
                   <BasicMedia
                     data={logo}
