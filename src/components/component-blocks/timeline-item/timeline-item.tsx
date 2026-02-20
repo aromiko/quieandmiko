@@ -20,6 +20,7 @@ const TimelineItem = ({
     <ScrollReveal
       variant="fade-up"
       delay={index * 0.15}
+      amount={0}
       as="article"
       className="not-first:border-t-1 border-cream w-full"
     >

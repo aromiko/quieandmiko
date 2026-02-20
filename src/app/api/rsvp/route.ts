@@ -111,11 +111,13 @@ export async function POST(req: Request) {
       }));
 
       // Send admin notification first, then guest confirmations (sequential to respect rate limits)
-      sendRsvpNotification({ guests: guestData })
-        .then(() => sendGuestConfirmation({ guests: guestData }))
-        .catch((err) => {
-          console.error("[RSVP API] Email notification promise rejected:", err);
-        });
+      // Must await — Vercel serverless terminates after response, killing fire-and-forget promises
+      try {
+        await sendRsvpNotification({ guests: guestData });
+        await sendGuestConfirmation({ guests: guestData });
+      } catch (err) {
+        console.error("[RSVP API] Email notification error:", err);
+      }
     } else {
       console.warn("[RSVP API] No guests found for email notification");
     }
