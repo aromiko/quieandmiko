@@ -16,7 +16,7 @@ export default function MainHero({
   return (
     <section
       className={cn(
-        "relative flex min-h-[calc(100dvh-64px)] flex-col items-center justify-center overflow-hidden px-8 py-16 lg:px-12",
+        "relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-8 py-16 pt-32 lg:px-12",
         mainHeroClassName
       )}
     >
@@ -29,7 +29,7 @@ export default function MainHero({
       )}
 
       {mainHeroInitials1 && (
-        <div className="text-matcha absolute left-12 top-12 flex flex-col items-center space-y-1 font-mono text-base leading-none lg:top-16">
+        <div className="text-matcha absolute left-12 top-28 flex flex-col items-center space-y-1 font-mono text-base leading-none lg:top-32">
           {mainHeroInitials1
             .split(".")
             .filter(Boolean)
