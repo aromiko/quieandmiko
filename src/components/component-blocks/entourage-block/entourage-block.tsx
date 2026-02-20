@@ -35,7 +35,7 @@ const EntourageBlock = ({
         />
       )}
 
-      <ScrollReveal variant="fade-up" delay={0.2} className="w-full">
+      <ScrollReveal variant="fade-up" delay={0.2} amount={0} className="w-full">
         <div
           style={{
             backgroundImage: `url(${entourageBlockBackgroundImage?.basicMediaImage.url})`

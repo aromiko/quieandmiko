@@ -16,6 +16,7 @@ const EntourageGroup = ({
     <ScrollReveal
       variant="fade-up"
       delay={index * 0.1}
+      amount={0}
       as="article"
       className={cn("flex flex-col", entourageGroupClassName)}
     >
