@@ -35,7 +35,7 @@ const environment =
   CONTENTFUL_ENVIRONMENT || DefaultAppSettings.contentfulEnvironment;
 const graphqlEndpoint =
   CONTENTFUL_GRAPHQL_ENDPOINT || DefaultAppSettings.contentfulGraphqlEndpoint;
-const revalidateTime = parseInt(SSR_REVALIDATE_TIME ?? "60", 10);
+const revalidateTime = parseInt(SSR_REVALIDATE_TIME ?? "3600", 10);
 
 const CONTENTFUL_GRAPHQL_URL = `${graphqlEndpoint}/spaces/${CONTENTFUL_SPACE_ID}/environments/${environment}`;
 

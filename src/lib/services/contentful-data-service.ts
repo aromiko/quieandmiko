@@ -39,26 +39,6 @@ export const ContentfulDataService = {
     );
   },
 
-  async fetchDataById<TResponse>(
-    query: DocumentNode,
-    id: string,
-    additionalVariables: Record<string, unknown> = {}
-  ): Promise<TResponse> {
-    const queryName =
-      query.definitions[0]?.kind === "OperationDefinition"
-        ? query.definitions[0].name?.value
-        : "unnamed query";
-    return _executeGraphQLRequest<TResponse>(
-      () =>
-        GraphQLService.request<TResponse>(query, {
-          id,
-          ...additionalVariables,
-          isPreview
-        }),
-      `WorkspaceDataById (query: ${queryName || "GraphQL Query"}, id: ${id})`
-    );
-  },
-
   async fetchDataBySlug(
     query: DocumentNode,
     slug: string,
