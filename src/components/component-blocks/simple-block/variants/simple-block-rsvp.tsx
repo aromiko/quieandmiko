@@ -10,14 +10,15 @@ const SimpleBlockRsvp = ({
   simpleBlockSubtitle,
   simpleBlockCta,
   simpleBlockImage1,
+  simpleBlockImage1Position,
   simpleBlockImage2
 }: TypeComponentSimpleBlock) => {
   return (
     <ParallaxBackground
       imageUrl={simpleBlockImage1?.basicMediaImage.url}
+      imagePosition={simpleBlockImage1Position || "center center"}
       overlay="bg-black/50"
       className="h-144"
-      imagePosition="left center"
     >
       {/* Foreground content */}
       <div className="relative z-20 flex h-full flex-col items-center justify-center lg:flex-row">

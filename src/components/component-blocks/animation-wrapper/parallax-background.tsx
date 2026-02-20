@@ -37,7 +37,7 @@ export default function ParallaxBackground({
     <div ref={ref} className={cn("relative overflow-hidden", className)}>
       {imageUrl && (
         <motion.div
-          className="absolute inset-[-15%] z-0 bg-cover bg-no-repeat will-change-transform"
+          className="absolute inset-[-17%] z-0 bg-cover bg-no-repeat will-change-transform"
           style={{
             backgroundImage: `url(${imageUrl})`,
             backgroundPosition: imagePosition,

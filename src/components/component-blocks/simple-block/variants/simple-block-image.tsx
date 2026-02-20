@@ -20,7 +20,7 @@ const SimpleBlockImage = ({
               "object-top": simpleBlockImage1Position === "top",
               "object-bottom": simpleBlockImage1Position === "bottom"
             })}
-            sizes="(min-width: 1024px) 715px, (min-width: 768px) 550px, 300px"
+            sizes="(min-width: 1024px) 1440px, (min-width: 768px) 1024px, 768px"
           />
         </ScrollReveal>
       )}

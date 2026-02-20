@@ -16,7 +16,7 @@ export default function Footer({
     <ParallaxBackground
       imageUrl={footerBackground?.basicMediaImage.url}
       speed={0.25}
-      className="h-100 lg:h-144 w-full"
+      className="h-100 lg:h-156 w-full"
       innerClassName={cn("px-8 py-16 lg:px-12", {
         "items-center": footerVariant === "center",
         "flex-row items-start justify-between": footerVariant === "left"

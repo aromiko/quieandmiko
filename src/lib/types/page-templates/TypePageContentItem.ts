@@ -1,4 +1,5 @@
 import {
+  TypeComponentAccordionBlock,
   TypeComponentAttireBlock,
   TypeComponentEntourageBlock,
   TypeComponentEntourageGroup,
@@ -29,4 +30,5 @@ export type TypePageContentItem =
   | TypeComponentRecommendationItem
   | TypeComponentImageCarousel
   | TypeComponentImageCarouselBlock
+  | TypeComponentAccordionBlock
   | TypeComponentPageInjection;

@@ -11,7 +11,8 @@ export const ComponentSections = {
     ComponentRegistry.EntourageBlock,
     ComponentRegistry.RecommendationBlock,
     ComponentRegistry.ImageCarouselBlock,
-    ComponentRegistry.PageInjection
+    ComponentRegistry.PageInjection,
+    ComponentRegistry.AccordionBlock
   ],
   Footer: [ComponentRegistry.Footer]
 };

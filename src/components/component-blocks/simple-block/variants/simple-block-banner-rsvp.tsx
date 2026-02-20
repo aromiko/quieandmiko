@@ -12,7 +12,7 @@ const SimpleBlockBannerRsvp = ({
       speed={0.25}
       overlay="bg-black/20"
       className="h-144 flex items-center justify-center"
-      imagePosition="center 20%"
+      imagePosition="center 60%"
     >
       {/* Decorative RSVP letters in corners */}
       <span className="font-script lg:h-30 absolute left-4 top-24 z-20 w-20 text-7xl font-bold text-white/50 lg:left-10 lg:top-24 lg:w-36 lg:text-9xl">
