@@ -16,7 +16,7 @@ export default function MainHero({
   return (
     <section
       className={cn(
-        "relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-8 py-16 pt-32 lg:px-12",
+        "relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-8 py-16 pt-32 lg:px-12",
         mainHeroClassName
       )}
     >
