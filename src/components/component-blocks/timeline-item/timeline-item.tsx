@@ -41,7 +41,7 @@ const TimelineItem = ({
           </div>
 
           {timelineItemImage && (
-            <ScrollReveal variant="scale" delay={0.2}>
+            <ScrollReveal variant="scale" delay={0.2} amount={0}>
               <BasicMedia
                 data={timelineItemImage}
                 wrapperCssClass="w-40 md:w-50 w-[100px] lg:w-[150px] lg:h-[150px] aspect-[1/1] lg:mb-22"
@@ -53,7 +53,7 @@ const TimelineItem = ({
 
         <div className="flex w-full flex-col lg:w-2/3">
           {timelineItemTitle && (
-            <ScrollReveal variant="fade-left" delay={0.1}>
+            <ScrollReveal variant="fade-left" delay={0.1} amount={0}>
               <h2 className="hidden font-serif text-3xl text-white lg:block">
                 {timelineItemTitle}
               </h2>
@@ -61,7 +61,7 @@ const TimelineItem = ({
           )}
 
           {timelineItemBody && (
-            <ScrollReveal variant="fade" delay={0.2}>
+            <ScrollReveal variant="fade" delay={0.2} amount={0}>
               <p className="text-lg font-light lg:mt-4">{timelineItemBody}</p>
             </ScrollReveal>
           )}
@@ -71,7 +71,7 @@ const TimelineItem = ({
           )}
 
           {timelineItemBodyImage && (
-            <ScrollReveal variant="fade-up" delay={0.3}>
+            <ScrollReveal variant="fade-up" delay={0.3} amount={0}>
               <BasicMedia
                 data={timelineItemBodyImage}
                 wrapperCssClass="mt-8 w-full h-120 lg:h-96 overflow-hidden"
