@@ -8,6 +8,7 @@ import { ICON_MAP } from "@/lib/utils/icon-map";
 export default function Footer({
   footerText,
   footerBackground,
+  footerBackgroundPosition,
   footerLogo,
   footerVariant,
   footerLinksCollection
@@ -15,7 +16,7 @@ export default function Footer({
   return (
     <ParallaxBackground
       imageUrl={footerBackground?.basicMediaImage.url}
-      imagePosition="left center"
+      imagePosition={footerBackgroundPosition || "left center"}
       speed={0.25}
       className="h-100 lg:h-156 w-full"
       innerClassName={cn("px-8 py-16 lg:px-12", {
