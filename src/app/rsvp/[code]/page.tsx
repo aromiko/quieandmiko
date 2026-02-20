@@ -12,6 +12,8 @@ import { ContentsFacade } from "@/queries/content-facade";
 import { AlertCircle, Camera } from "lucide-react";
 import { notFound } from "next/navigation";
 
+export const revalidate = 3600; // 1 hour — Contentful content rarely changes
+
 export async function generateMetadata() {
   return {
     title: "RSVP | Quie & Miko",

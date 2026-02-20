@@ -1,6 +1,8 @@
 import Page from "@/components/page-templates/page/page";
 import { buildMetadata } from "@/lib/utils/seo";
 
+export const revalidate = 3600; // 1 hour — content rarely changes
+
 export async function generateMetadata() {
   return buildMetadata("home");
 }
