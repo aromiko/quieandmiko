@@ -15,6 +15,7 @@ export default function Footer({
   return (
     <ParallaxBackground
       imageUrl={footerBackground?.basicMediaImage.url}
+      imagePosition="left center"
       speed={0.25}
       className="h-100 lg:h-156 w-full"
       innerClassName={cn("px-8 py-16 lg:px-12", {
