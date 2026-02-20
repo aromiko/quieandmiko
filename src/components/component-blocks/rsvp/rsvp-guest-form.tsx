@@ -323,7 +323,7 @@ export default function RsvpGuestForm({
       {/* Museum Ticket Image */}
       <div className="relative aspect-[2.8/1] w-full">
         <Image
-          src="https://images.ctfassets.net/jfr6f08fp6u3/FdVOOzkEayR63cgYhPD0L/2ef980d9801d2f47b5302a53c8f63d74/TicketMuseum-Ticket.png"
+          src="https://images.ctfassets.net/jfr6f08fp6u3/FdVOOzkEayR63cgYhPD0L/d6bc6baba8d7676e693e6eafcc4d606a/TicketMuseum-Ticket.png"
           alt="Wedding Ticket"
           fill
           className="rounded-lg object-cover shadow-lg"
