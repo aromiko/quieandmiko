@@ -1,9 +1,6 @@
-"use client";
-
 import BasicMedia from "@/components/building-blocks/basic-media/basic-media";
 import { TypeComponentMainHero } from "@/lib/types";
 import { cn } from "@/lib/utils/classnames";
-import { useEffect, useRef } from "react";
 
 import HeroImages from "./main-hero-images";
 
@@ -16,19 +13,8 @@ export default function MainHero({
   mainHeroImagesCollection,
   mainHeroClassName
 }: TypeComponentMainHero) {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-
-    el.style.height = `${window.innerHeight}px`;
-    el.style.minHeight = "auto";
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       className={cn(
         "relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-8 py-16 pt-32 lg:px-12",
         mainHeroClassName
