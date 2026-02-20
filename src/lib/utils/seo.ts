@@ -27,13 +27,29 @@ export async function buildMetadata(slug: string) {
       title: pageSeoTitle || DefaultSeoContents.seoDefaultTitle,
       description:
         pageSeoDescription || DefaultSeoContents.seoDefaultDescription,
-      images: pageSeoOgImage?.url ? [{ url: pageSeoOgImage.url }] : undefined,
       type: "website",
-      url: pageSeoCanonicalUrl || DefaultSeoContents.seoOgUrl
+      url: pageSeoCanonicalUrl || DefaultSeoContents.seoOgUrl,
+      images: pageSeoOgImage?.url
+        ? [
+            {
+              url: pageSeoOgImage.url,
+              width: 1200,
+              height: 630,
+              alt: pageSeoTitle || "Wedding"
+            }
+          ]
+        : undefined
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageSeoTitle || DefaultSeoContents.seoDefaultTitle,
+      description:
+        pageSeoDescription || DefaultSeoContents.seoDefaultDescription,
+      images: pageSeoOgImage?.url ? [pageSeoOgImage.url] : undefined
     },
     robots: pageSeoNoIndex ? "noindex, nofollow" : "index, follow",
-    alternates: pageSeoCanonicalUrl
-      ? { canonical: pageSeoCanonicalUrl }
-      : { canonical: DefaultSeoContents.seoOgUrl }
+    alternates: {
+      canonical: pageSeoCanonicalUrl || DefaultSeoContents.seoOgUrl
+    }
   };
 }
