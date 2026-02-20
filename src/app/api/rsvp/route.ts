@@ -110,15 +110,12 @@ export async function POST(req: Request) {
         foodAllergies: g.food_allergies
       }));
 
-      // Send admin notification
-      sendRsvpNotification({ guests: guestData }).catch((err) => {
-        console.error("[RSVP API] Email notification promise rejected:", err);
-      });
-
-      // Send guest confirmation emails
-      sendGuestConfirmation({ guests: guestData }).catch((err) => {
-        console.error("[RSVP API] Guest confirmation promise rejected:", err);
-      });
+      // Send admin notification first, then guest confirmations (sequential to respect rate limits)
+      sendRsvpNotification({ guests: guestData })
+        .then(() => sendGuestConfirmation({ guests: guestData }))
+        .catch((err) => {
+          console.error("[RSVP API] Email notification promise rejected:", err);
+        });
     } else {
       console.warn("[RSVP API] No guests found for email notification");
     }
