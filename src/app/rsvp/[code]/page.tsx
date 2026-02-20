@@ -35,7 +35,8 @@ export default async function RsvpPage({
     .from("guests")
     .select(
       "id, rsvp_code, full_name, group_id, group_label, is_attending, is_adult, guest_type, email, contact_number, food_allergies, has_hotel_booking"
-    );
+    )
+    .order("id", { ascending: true });
 
   if (!guests) return notFound();
 
