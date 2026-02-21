@@ -33,15 +33,15 @@ const TimelineItem = ({
             <time className="hidden font-mono text-2xl lg:block">
               {timelineItemTime}
             </time>
-            {timelineItemTitle && (
-              <h2 className="block font-serif text-3xl text-white lg:hidden">
-                {timelineItemTitle}
-              </h2>
-            )}
           </div>
 
           {timelineItemImage && (
-            <ScrollReveal variant="scale" delay={0.2} amount={0}>
+            <ScrollReveal
+              variant="scale"
+              delay={0.2}
+              amount={0}
+              className="hidden lg:block"
+            >
               <BasicMedia
                 data={timelineItemImage}
                 wrapperCssClass="w-40 md:w-50 w-[100px] lg:w-[150px] lg:h-[150px] aspect-[1/1] lg:mb-22"
@@ -52,19 +52,39 @@ const TimelineItem = ({
         </div>
 
         <div className="flex w-full flex-col lg:w-2/3">
-          {timelineItemTitle && (
-            <ScrollReveal variant="fade-left" delay={0.1} amount={0}>
-              <h2 className="hidden font-serif text-3xl text-white lg:block">
-                {timelineItemTitle}
-              </h2>
-            </ScrollReveal>
-          )}
+          <div className="flex flex-row justify-between gap-4">
+            <div className="flex flex-col">
+              {timelineItemTitle && (
+                <ScrollReveal variant="fade-left" delay={0.1} amount={0}>
+                  <h2 className="font-serif text-3xl text-white lg:block">
+                    {timelineItemTitle}
+                  </h2>
+                </ScrollReveal>
+              )}
 
-          {timelineItemBody && (
-            <ScrollReveal variant="fade" delay={0.2} amount={0}>
-              <p className="text-lg font-light lg:mt-4">{timelineItemBody}</p>
-            </ScrollReveal>
-          )}
+              {timelineItemBody && (
+                <ScrollReveal variant="fade" delay={0.2} amount={0}>
+                  <p className="text-lg font-light lg:mt-4">
+                    {timelineItemBody}
+                  </p>
+                </ScrollReveal>
+              )}
+            </div>
+            {timelineItemImage && (
+              <ScrollReveal
+                variant="scale"
+                delay={0.2}
+                amount={0}
+                className="block lg:hidden"
+              >
+                <BasicMedia
+                  data={timelineItemImage}
+                  wrapperCssClass="w-30 aspect-[1/1] lg:mb-22"
+                  sizes="(min-width: 1024px) 150px, 100px"
+                />
+              </ScrollReveal>
+            )}
+          </div>
 
           {timelineItemMapLink && (
             <TimelineMapEmbed src={timelineItemMapLink} />
