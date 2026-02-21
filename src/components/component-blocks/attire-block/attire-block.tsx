@@ -24,7 +24,7 @@ const AttireBlock = ({
         attireBlockClassName
       )}
     >
-      <ScrollReveal variant="fade-up">
+      <ScrollReveal variant="fade-up" className="w-full text-center">
         <h2 className="text-coffee text-7xl lg:text-8xl">{attireBlockTitle}</h2>
       </ScrollReveal>
 

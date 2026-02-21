@@ -18,9 +18,9 @@ const SimpleBlockBanner = ({
       <ScrollReveal
         variant="fade-up"
         duration={1}
-        className="flex h-full items-center justify-center"
+        className="flex h-full w-full items-center justify-center text-center"
       >
-        <h2 className="relative z-20 text-7xl text-white lg:text-8xl">
+        <h2 className="relative z-20 w-full text-7xl text-white lg:text-8xl">
           {simpleBlockTitle}
         </h2>
       </ScrollReveal>

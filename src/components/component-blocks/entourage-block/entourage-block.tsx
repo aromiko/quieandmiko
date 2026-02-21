@@ -21,7 +21,7 @@ const EntourageBlock = ({
       )}
     >
       {entourageBlockTitle && (
-        <ScrollReveal variant="fade-up" className="z-20">
+        <ScrollReveal variant="fade-up" className="z-20 w-full text-center">
           <h2 className="text-7xl lg:text-8xl">{entourageBlockTitle}</h2>
         </ScrollReveal>
       )}

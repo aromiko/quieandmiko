@@ -12,7 +12,11 @@ const SimpleBlockInvitation = ({
   return (
     <section className="bg-wine flex min-h-screen flex-col items-center justify-center px-8 py-16 lg:px-12">
       {simpleBlockTitle && (
-        <ScrollReveal variant="fade-up" duration={0.9}>
+        <ScrollReveal
+          variant="fade-up"
+          duration={0.9}
+          className="w-full text-center"
+        >
           <h2 className="text-cream mb-12 text-7xl lg:text-8xl">
             {simpleBlockTitle}
           </h2>

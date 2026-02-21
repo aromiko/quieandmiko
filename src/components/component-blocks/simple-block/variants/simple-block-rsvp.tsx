@@ -32,7 +32,12 @@ const SimpleBlockRsvp = ({
           )}
 
           {simpleBlockTitle && (
-            <ScrollReveal variant="fade-up" delay={0.25} duration={0.9}>
+            <ScrollReveal
+              variant="fade-up"
+              delay={0.25}
+              duration={0.9}
+              className="w-full text-center"
+            >
               <h2 className="text-cream z-10 text-7xl lg:text-9xl">
                 {simpleBlockTitle}
               </h2>
