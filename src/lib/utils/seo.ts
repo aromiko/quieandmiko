@@ -32,10 +32,10 @@ export async function buildMetadata(slug: string) {
       images: pageSeoOgImage?.url
         ? [
             {
-              url: pageSeoOgImage.url,
+              url: "https://www.quieandmiko.com/og-image.jpg",
               width: 1200,
               height: 630,
-              alt: pageSeoTitle || "Wedding"
+              alt: "Quie & Miko Wedding"
             }
           ]
         : undefined
