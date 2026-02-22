@@ -15,7 +15,6 @@ export async function buildMetadata(slug: string) {
   const {
     pageSeoTitle,
     pageSeoDescription,
-    pageSeoOgImage,
     pageSeoCanonicalUrl,
     pageSeoNoIndex
   } = seo;
@@ -29,23 +28,28 @@ export async function buildMetadata(slug: string) {
         pageSeoDescription || DefaultSeoContents.seoDefaultDescription,
       type: "website",
       url: pageSeoCanonicalUrl || DefaultSeoContents.seoOgUrl,
-      images: pageSeoOgImage?.url
-        ? [
-            {
-              url: "https://www.quieandmiko.com/og-image.jpg",
-              width: 1200,
-              height: 630,
-              alt: "Quie & Miko Wedding"
-            }
-          ]
-        : undefined
+      images: [
+        {
+          url: "https://www.quieandmiko.com/og-image-1.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Quie & Miko Wedding"
+        }
+      ]
     },
     twitter: {
       card: "summary_large_image",
       title: pageSeoTitle || DefaultSeoContents.seoDefaultTitle,
       description:
         pageSeoDescription || DefaultSeoContents.seoDefaultDescription,
-      images: pageSeoOgImage?.url ? [pageSeoOgImage.url] : undefined
+      images: [
+        {
+          url: "https://www.quieandmiko.com/og-image-1.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Quie & Miko Wedding"
+        }
+      ]
     },
     robots: pageSeoNoIndex ? "noindex, nofollow" : "index, follow",
     alternates: {
