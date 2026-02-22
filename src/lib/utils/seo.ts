@@ -30,7 +30,7 @@ export async function buildMetadata(slug: string) {
       url: pageSeoCanonicalUrl || DefaultSeoContents.seoOgUrl,
       images: [
         {
-          url: "https://www.quieandmiko.com/og-image.jpg",
+          url: "https://www.quieandmiko.com/og-image-1.jpg",
           width: 1200,
           height: 630,
           alt: "Quie & Miko Wedding"
@@ -44,7 +44,7 @@ export async function buildMetadata(slug: string) {
         pageSeoDescription || DefaultSeoContents.seoDefaultDescription,
       images: [
         {
-          url: "https://www.quieandmiko.com/og-image.jpg",
+          url: "https://www.quieandmiko.com/og-image-1.jpg",
           width: 1200,
           height: 630,
           alt: "Quie & Miko Wedding"
